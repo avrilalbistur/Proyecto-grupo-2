@@ -177,6 +177,8 @@ footer p {
 
 main {
   min-height: calc(100vh - 210px);
+  background-image: url(../img/figma.jpg);
+  background-size: cover;
 }
 
 a.custom-card,
@@ -188,3 +190,29 @@ a.custom-card:hover {
 .checked {
   color: orange;
 }
+
+.login-container  {
+  font-family: 'Inter' ;
+  text-align: center;
+  padding: 15%;
+  
+}
+.login-container form {
+  background-color: #e88b348f;
+  padding: 10%;
+  display: grid;
+  gap: 15px;
+  margin: 10px 200px;
+  border: 2px solid #894B0F;
+  border-radius: 5%;
+}
+
+.login-container label {
+  display: grid;
+  justify-items: start;
+  
+}
+.login-container input {
+border: 2px solid #6C1C04;
+background-color:#894B0F4A ;
+ }
