@@ -4,7 +4,7 @@ async function getData(){
     const url = 'https://japceibal.github.io/emercado-api/cats_products/101.json';
     try{
         const response = await fetch(url);
-
+        
         if(!response.ok){
             throw new Error(`Response status: ${response.status}`);
         }
