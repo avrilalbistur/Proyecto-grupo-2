@@ -177,8 +177,7 @@ footer p {
 
 main {
   min-height: calc(100vh - 210px);
-  background-image: url(../img/figma.jpg);
-  background-size: cover;
+ 
 }
 
 a.custom-card,
@@ -240,4 +239,9 @@ border: 2px solid #6C1C04;
     justify-content: center;
     align-items: center;
     font-size: 18px;
+  }
+
+  #background-login {
+    background-image: url(../img/figma.jpg);
+    background-size: cover;
   }
