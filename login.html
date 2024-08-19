@@ -9,6 +9,9 @@
   <link href="https://fonts.googleapis.com/css?family=Raleway:300,300i,400,400i,700,700i,900,900i" rel="stylesheet">
   <link href="css/bootstrap.min.css" rel="stylesheet">
   <link href="css/styles.css" rel="stylesheet">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap" rel="stylesheet">
   <style>
     body {
       background-color: rgb(248, 249, 250);
@@ -18,15 +21,15 @@
 
 <body>
   <main class="mt-5">
-    <div class="container">
+    <div class="container" id="login">
     <div class="login-container">
       <form class="login-form">
           <h5>Iniciar sesión</h5>
           <label for="username">Usuario:</label>
-          <input type="text" id="username" name="username" class="form-control" required title="Por favor, ingresa tu usuario.">
+          <input type="text" id="username" name="username" class="form-control rounded-pill" required title="Por favor, ingresa tu usuario.">
           <label for="password">Contraseña:</label>
-          <input type="password" id="password" name="password" class="form-control" required title="Por favor, ingresa tu contraseña.">
-          <button type="submit" class="btn btn-primary mt-3">Ingresar</button>
+          <input type="password" id="password" name="password" class="form-control rounded-pill" required title="Por favor, ingresa tu contraseña.">
+          <button type="submit" id="ingresar-button" class="btn mt-3">Ingresar</button>
       </form>  
     </div>
     </div>
