@@ -1,33 +1,24 @@
-let productsContainer = document.getElementById('product-container')
-//function to access the products
-async function getData(){
-    const url = 'https://japceibal.github.io/emercado-api/cats_products/101.json';
-    try{
-        const response = await fetch(url);
-        
-        if(!response.ok){
-            throw new Error(`Response status: ${response.status}`);
-        }
+// Function to create product boxes
 
-        const json = await response.json();
-        let products = json.products;
-        let productsHTML = '';
-
-        products.forEach(product => {
-            productsHTML += `
+let showProducts = (productsArray) =>{
+    let htmlProductsToAppend = "";
+    productsArray.forEach(product => {
+        htmlProductsToAppend += `
             <h1>${product.name}</h1>
-            <img src="${product.image}" alt="">
-            <p>${product.description}</p>
             <p>Price: $${product.cost}</p>
-            `
-            
-        });
-        productsContainer.innerHTML = productsHTML;
-    }
-    catch(error){
-        productsContainer.innerHTML = `<p>Ocurrió un error al cargar los productos: ${error.message}</p>`;
-        console.error(error.message);
-    }
-};
+        `
+    })
+    document.getElementById('product-container').innerHTML = htmlProductsToAppend;
+}
 
-getData();
+//function that will be executed when the document completely is fully loaded 
+
+document.addEventListener('DOMContentLoaded',(e)=>{
+   getJSONData(PRODUCTS_URL+101+EXT_TYPE)
+        .then(object =>{
+            if(object.status === 'ok'){
+              let productsArray = object.data.products;
+            showProducts(productsArray);  
+            };
+        } );
+});
