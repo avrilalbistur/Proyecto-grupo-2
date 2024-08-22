@@ -9,3 +9,8 @@ function validarFormulario() {
 
     return true;
 }
+
+let btn = document.getElementById('btn');
+btn.addEventListener('click', ()=>{
+    location.replace('https://avrilalbistur.github.io/Proyecto-grupo-2/')
+})
