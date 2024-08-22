@@ -1,16 +1,23 @@
 function validarFormulario() {
-    var username = document.getElementById("username").value;
-    var password = document.getElementById("password").value;
+    let username = document.getElementById("username").value;
+    let password = document.getElementById("password").value;
 
     if (username.trim() === "" || password.trim() === "") {
-        alert("Los campos no pueden quedar vacíos.");
         return false;
     }
-
     return true;
 }
 
-let btn = document.getElementById('btn');
-btn.addEventListener('click', ()=>{
-    location.replace('https://avrilalbistur.github.io/Proyecto-grupo-2/')
+
+let btn = document.getElementById('ingresar-button');
+
+btn.addEventListener('click',()=>{
+    let validacionOk = validarFormulario();
+    if(!validacionOk){
+        alert("Los campos no pueden quedar vacíos.");
+    }
+    else{
+        window.location.href = 'index.html';
+    }
+    
 })
