@@ -1,11 +1,15 @@
 // Function to create product boxes
-
 let showProducts = (productsArray) =>{
     let htmlProductsToAppend = "";
     productsArray.forEach(product => {
         htmlProductsToAppend += `
-            <h1>${product.name}</h1>
-            <p>Price: $${product.cost}</p>
+            <div class="product">
+                <img src= "${product.image}" alt="${product.name}">
+                <h2>${product.name}</h2>
+                <p class="description">${product.description}</p>
+                <p class="price">${product.currency} ${product.cost}</p>
+                <p class="sold-quantity">Cantidad de vendidos:${product.soldCount}</p>
+            </div>
         `
     })
     document.getElementById('product-container').innerHTML = htmlProductsToAppend;
