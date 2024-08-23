@@ -5,6 +5,7 @@ function validarFormulario() {
     if (username.trim() === "" || password.trim() === "") {
         return false;
     }
+    localStorage.setItem('usuario', username);
     return true;
 }
 
