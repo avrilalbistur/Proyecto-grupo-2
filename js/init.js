@@ -39,3 +39,10 @@ let getJSONData = function(url){
         return result;
     });
 }
+// Funcion para guardar el usuario en el locastorage (DESAFIATE entrega 1)
+function checkLogin(){
+  if(localStorage.getItem('usuario') === null){
+    window.location.href = 'login.html';
+  }
+}
+checkLogin();

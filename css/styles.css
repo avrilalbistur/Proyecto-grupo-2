@@ -177,6 +177,7 @@ footer p {
 
 main {
   min-height: calc(100vh - 210px);
+ 
 }
 
 a.custom-card,
@@ -188,3 +189,59 @@ a.custom-card:hover {
 .checked {
   color: orange;
 }
+
+.login-container  {
+  font-family: 'Inter' ;
+  padding: 50px;
+    display: flex;
+    align-items: center;
+  
+}
+.login-container form {
+  background-color: #e88b348f;
+    border: 2px solid #894B0F;
+    border-radius: 20px;
+    height: 380px;
+    width: 300px;
+    padding: 25px 20px;
+    display: grid;
+    align-content: space-evenly;
+    justify-content: center;
+}
+
+.login-container label {
+  color: black;
+}
+.login-container input {
+border: 2px solid #6C1C04;
+background-color:#894B0F4A ;
+height: 35px;
+ }
+ #login {
+ display: flex;
+ justify-content: center;
+ align-items: center;
+ width: 550px;
+ height: 600px;}
+
+.login-container h5 {
+  font-size: 30px;
+    text-align: center;
+    color: black;
+}
+.login-container button { 
+border: 2px solid #6C1C04;
+    border-radius: 20px;
+    height: 35px;
+    background-color: #894B0F4A; 
+    color: black;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 18px;
+  }
+
+  #background-login {
+    background-image: url(../img/figma.jpg);
+    background-size: cover;
+  }

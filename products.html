@@ -1,65 +1,78 @@
 <!DOCTYPE html>
 <html lang="es">
-
 <head>
-  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <title>eMercado - Todo lo que busques está aquí</title>
-
-  <link href="https://fonts.googleapis.com/css?family=Raleway:300,300i,400,400i,700,700i,900,900i" rel="stylesheet">
-  <link href="css/font-awesome.min.css" rel="stylesheet">
-  <link href="css/bootstrap.min.css" rel="stylesheet">
-  <link href="css/styles.css" rel="stylesheet">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Autos 101</title>
+    <link href="https://fonts.googleapis.com/css?family=Raleway:300,300i,400,400i,700,700i,900,900i" rel="stylesheet">
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link href="css/styles.css" rel="stylesheet">
 </head>
-
 <body>
-  <nav class="navbar navbar-expand-lg navbar-dark bg-dark p-1">
-    <div class="container">
-      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
-        aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-      </button>
-      <div class="collapse navbar-collapse" id="navbarNav">
-        <ul class="navbar-nav w-100 justify-content-between">
-          <li class="nav-item">
-            <a class="nav-link" href="index.html">Inicio</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="categories.html">Categorías</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="sell.html">Vender</a>
-          </li>
-          <li class="nav-item">
-          </li>
-        </ul>
-      </div>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark p-1">
+        <div class="container">
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+            aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav w-100 justify-content-between">
+              <li class="nav-item">
+                <a class="nav-link active" href="index.html">Inicio</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="categories.html">Categorías</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="sell.html">Vender</a>
+              </li>
+              <li class="nav-item">
+              </li>
+            </ul>
+          </div>
+        </div>
+      </nav> 
+    <main>
+        <h1>Autos 101</h1>
+        <button class="category-button">Categoría</button>
+        <div class="product-list" >
+            <div class="product" id="product-container">
+                <img src="prod50921_1.jpg" alt="Chevrolet Onix Joy">
+                <h2>Chevrolet Onix Joy</h2>
+                <p>Generación 2019, variedad de colores. Motor 1.0, ideal para ciudad.</p>
+                <p class="price">USD 13500</p>
+                <p class="sold-quantity">Cantidad de vendidos: 14</p>
+            </div>
+            <div class="product">
+                <img src="prod50922_1.jpg" alt="Fiat Way">
+                <h2>Fiat Way</h2>
+                <p>La versión de Fiat que brinda confort y a un precio accesible.</p>
+                <p class="price">USD 14500</p>
+                <p class="sold-quantity">Cantidad de vendidos: 52</p>
+            </div>
+            <div class="product">
+                <img src="prod50923_1.jpg" alt="Suzuki Celerio">
+                <h2>Suzuki Celerio</h2>
+                <p>Un auto que se ha ganado la buena fama por su economía con el combustible.</p>
+                <p class="price">USD 12500</p>
+                <p class="sold-quantity">Cantidad de vendidos: 25</p>
+            </div>
+            <div class="product">
+                <img src="prod50924_1.jpg" alt="Suzuki Celerio">
+                <h2>Peugeot 208</h2>
+                <p>El modelo de auto que se sigue renovando y manteniendo su prestigio en comodidad.</p>
+                <p class="price">USD 15200</p>
+                <p class="sold-quantity">Cantidad de vendidos: 17</p>
+        </div>
+        <div class="product">
+            <img src="prod50925_3.jpg" alt="Suzuki Celerio">
+            <h2>Bugatti Chiron</h2>
+            <p>El mejor hiperdeportivo de mundo. Producción limitada a 500 unidades.</p>
+            <p class="price">USD 3500000</p>
+            <p class="sold-quantity">Cantidad de vendidos: 0</p>
     </div>
-  </nav>
-  <main class="pb-5 container">
-    <div class="container" id="product-container">
-      
-    </div>
-  </main>
-  <footer class="text-muted">
-    <div class="container">
-      <p class="float-end">
-        <a href="#">Volver arriba</a>
-      </p>
-      <p>Este sitio forma parte de <a href="https://jovenesaprogramar.edu.uy/" target="_blank">Jovenes a Programar</a></p>
-    </div>
-  </footer>
-  <div id="spinner-wrapper">
-    <div class="lds-ring">
-      <div></div>
-      <div></div>
-      <div></div>
-      <div></div>
-    </div>
-  </div>
-  <script src="js/bootstrap.bundle.min.js"></script>
-  <script src="js/init.js"></script>
-  <script src="js/products.js"></script>
+    </main>
+    <script src="js/init.js"></script>
+    <script src="js/products.js"></script>
 </body>
-
 </html>
