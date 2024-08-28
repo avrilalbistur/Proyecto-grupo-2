@@ -338,6 +338,7 @@ hr{
     color: #6D6D6D;
     padding: 0px 10px;
   }
+  
 /*para pantallas grandes*/
   @media (min-width: 1366px) {
     #login {
@@ -374,7 +375,7 @@ hr{
     }
   }
   /*para smartphones pequeños*/
-  @media (max-width: 320px) {
+  @media (max-width: 568px) and (min-width: 320px){
     #login {
       width: 95%;
       height: auto;
