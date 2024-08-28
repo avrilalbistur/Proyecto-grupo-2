@@ -329,3 +329,60 @@ hr{
     color: #6D6D6D;
     padding: 0px 10px;
   }
+
+  @media (max-width: 1366px) {
+    #login {
+      width: 80%;
+      height: auto;
+      margin: auto;
+    }
+  
+    .login-container form {
+      width: 90%;
+    }
+  }
+  
+  @media (max-width: 768px) {
+    #login {
+      width: 90%;
+      height: auto;
+      margin: auto;
+    }
+  
+    .login-container form {
+      width: 100%;
+      height: auto;
+      padding: 20px;
+    }
+  
+    .login-container h5 {
+      font-size: 24px;
+    }
+  
+    .login-container input {
+      height: 30px;
+      font-size: 16px;
+    }
+  }
+
+  @media (max-width: 320px) {
+    #login {
+      width: 95%;
+      height: auto;
+      margin: auto;
+    }
+  
+    .login-container form {
+      width: 100%;
+      padding: 15px;
+    }
+  
+    .login-container h5 {
+      font-size: 20px;
+    }
+  
+    .login-container input {
+      height: 28px;
+      font-size: 14px;
+    }
+  }
