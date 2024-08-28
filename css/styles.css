@@ -190,6 +190,15 @@ a.custom-card:hover {
   color: orange;
 }
 
+#login {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 60%;
+  height: auto;
+  margin: auto;
+}
+
 .login-container  {
   font-family: 'Inter' ;
   padding: 50px;
@@ -329,8 +338,8 @@ hr{
     color: #6D6D6D;
     padding: 0px 10px;
   }
-
-  @media (max-width: 1366px) {
+/*para pantallas grandes*/
+  @media (min-width: 1366px) {
     #login {
       width: 60%;
       height: auto;
@@ -339,9 +348,10 @@ hr{
   
     .login-container form {
       width: 80%;
+      padding: 25px;
     }
   }
-
+/*para tabletas en modo vertical*/
   @media (max-width: 1024px) and (min-width: 768px) {
     #login {
       width: 80%;
@@ -363,29 +373,7 @@ hr{
       font-size: 16px;
     }
   }
-  @media (max-width: 768px) {
-    #login {
-      width: 95%;
-      height: auto;
-      margin: auto;
-    }
-  
-    .login-container form {
-      width: 100%;
-      height: auto;
-      padding: 20px;
-    }
-  
-    .login-container h5 {
-      font-size: 24px;
-    }
-  
-    .login-container input {
-      height: 30px;
-      font-size: 16px;
-    }
-  }
-
+  /*para smartphones pequeños*/
   @media (max-width: 320px) {
     #login {
       width: 95%;
