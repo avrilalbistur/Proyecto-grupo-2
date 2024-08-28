@@ -332,6 +332,18 @@ hr{
 
   @media (max-width: 1366px) {
     #login {
+      width: 60%;
+      height: auto;
+      margin: auto;
+    }
+  
+    .login-container form {
+      width: 80%;
+    }
+  }
+
+  @media (max-width: 1024px) and (min-width: 768px) {
+    #login {
       width: 80%;
       height: auto;
       margin: auto;
@@ -339,12 +351,21 @@ hr{
   
     .login-container form {
       width: 90%;
+      padding: 20px;
+    }
+  
+    .login-container h5 {
+      font-size: 24px;
+    }
+  
+    .login-container input {
+      height: 30px;
+      font-size: 16px;
     }
   }
-  
   @media (max-width: 768px) {
     #login {
-      width: 90%;
+      width: 95%;
       height: auto;
       margin: auto;
     }
