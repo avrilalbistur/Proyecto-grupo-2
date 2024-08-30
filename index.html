@@ -30,6 +30,7 @@
             <a class="nav-link" href="sell.html">Vender</a>
           </li>
           <li class="nav-item">
+            <span id="navbar-usarname" class="navbar-text text-light nav-link"></span> <!--Aquí se mostrará el nombre de usuario-->
           </li>
         </ul>
       </div>
@@ -88,6 +89,19 @@
   <script src="js/bootstrap.bundle.min.js"></script>
   <script src="js/index.js"></script>
   <script src="js/init.js"></script>
+  
+  <script>
+     document.addEventListener('DOMContentLoaded', function() {
+        var username = localStorage.getItem('usuario');
+         if (username){
+              document.getElementById('navbar-username').textContent = username;
+         } else{
+              document.getElementById('navbar-username').textContent = 'Iniciar sesión'
+         }
+     });
+  </script>
+
+  
 </body>
 
 </html>
