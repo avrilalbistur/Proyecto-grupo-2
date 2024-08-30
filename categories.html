@@ -100,6 +100,17 @@
   <script src="js/bootstrap.bundle.min.js"></script>
   <script src="js/init.js"></script>
   <script src="js/categories.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+       var username = localStorage.getItem('usuario');
+        if (username){
+            document.getElementById('navbar-username').textContent = username;
+        } else{
+            document.getElementById('navbar-username').textContent = 'Iniciar sesión'
+        }
+    });
+ </script>
+
 </body>
 
 </html>
