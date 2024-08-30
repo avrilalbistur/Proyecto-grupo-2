@@ -226,13 +226,13 @@
   <script src="js/init.js"></script>
   <script src="js/sell.js"></script>
   <script>
-    document.addEventListener('DOMContentLoaded', function() {
-       var username = localStorage.getItem('usuario');
-        if (username){
-            document.getElementById('navbar-username').textContent = username;
-        } else{
-            document.getElementById('navbar-username').textContent = 'Iniciar sesión'
-        }
+      document.addEventListener('DOMContentLoaded', function() {
+        var username = localStorage.getItem('usuario');
+         if (username){
+              document.getElementById('navbar-username').textContent = username;
+         } else{
+              document.getElementById('navbar-username').textContent = 'Iniciar sesión';
+         }
     });
  </script>
 
