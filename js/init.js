@@ -46,3 +46,13 @@ function checkLogin(){
   }
 }
 checkLogin();
+
+// script para mostrar el nombre de usuario
+document.addEventListener('DOMContentLoaded', function() {
+  var username = localStorage.getItem('usuario');
+  if (username) {
+      document.getElementById('navbar-username').textContent = username;
+  } else {
+      document.getElementById('navbar-username').textContent = 'Iniciar sesión';
+  }
+});
