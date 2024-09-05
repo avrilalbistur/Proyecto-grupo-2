@@ -46,14 +46,3 @@ function checkLogin(){
   }
 }
 checkLogin();
-
-<script>
-document.addEventListener('DOMContentLoaded', function() {
-   var username = localStorage.getItem('usuario');
-    if (username){
-         document.getElementById('navbar-username').textContent = username;
-    } else{
-         document.getElementById('navbar-username').textContent = 'Iniciar sesión';
-    }
-});
-</script>
