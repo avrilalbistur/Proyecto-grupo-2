@@ -5,12 +5,10 @@ let showProducts = (productsArray) =>{
         htmlProductsToAppend += `
             <div class="product">
                 <img src= "${product.image}" alt="${product.name}">
-                <div>
-                    <h2>${product.name}</h2>
-                    <p class="description">${product.description}</p>
-                    <p class="price">${product.currency} ${product.cost}</p>
-                 <p class="sold-quantity">Cantidad de vendidos:${product.soldCount}</p>
-                </div>
+                <h2>${product.name}</h2>
+                <p class="description">${product.description}</p>
+                <p class="price">${product.currency} ${product.cost}</p>
+                <p class="sold-quantity">Cantidad de vendidos:${product.soldCount}</p>
             </div>
         `
     })
