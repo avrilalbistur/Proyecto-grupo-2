@@ -283,19 +283,19 @@ hr{
 }
 
 .product-list{
-  display: flex;
-  justify-content: space-between;
-  margin: 60px;
+    display: grid;
+    grid-template-columns: repeat(5, 1fr); /* 5 columnas iguales */
+    gap: 10px; 
+    width: 100%;
+    margin: auto;
 }
 
   .product{
-    text-align:left;
-    margin: 15px;
     border: 2px solid #E6E6E6;
     border-radius: 20px;
     background-color: #FAFAF5;
-    width: 300px;
-    height: 280px;
+    width: 100%;
+    height: auto;
   }
 
   .product:hover{
@@ -414,7 +414,7 @@ hr{
 
   .product {
     width: 100%;
-    padding: 10px;
+    /* padding: 10px; */
   }
 }
 

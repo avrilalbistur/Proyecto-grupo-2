@@ -16,18 +16,23 @@ let showProducts = (productsArray) =>{
     })
     document.getElementById('product-container').innerHTML = htmlProductsToAppend;
 }
-// Función del buscador (Desafiate entrega 3)
-let searchBar = document.getElementById('search-bar');
-let productContainer = document.getElementById('product-container')
-
+// variable en la que se guardan los productos que vienen del JSON
+let productsArray;
 //Función que se va a ejecutar cuando el contenido HTML esté cargado
 
 document.addEventListener('DOMContentLoaded',(e)=>{
    getJSONData(PRODUCTS_URL+101+EXT_TYPE)
         .then(object =>{
             if(object.status === 'ok'){
-              let productsArray = object.data.products;
+              productsArray = object.data.products;
               showProducts(productsArray); 
+              
             };
-        } );
+    });
+ // BUSCADOR (DESAFIATE ENTREGA 3) BUSCA TANTO EN EL NOMBRE COMO EN LA DESCRIPCION
+    document.getElementById('search-bar').addEventListener('input', (e) => {
+        let searchValue = e.target.value.trim().toLowerCase();
+        let filteredProducts = productsArray.filter(product => product.name.toLowerCase().includes(searchValue) || product.description.toLowerCase().includes(searchValue));
+        showProducts(filteredProducts);
+    });
 });
