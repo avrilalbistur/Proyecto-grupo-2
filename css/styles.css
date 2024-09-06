@@ -480,3 +480,14 @@ hr{
    margin-left: 0px;
   }
  }
+
+ /*Background-color en todas las páginas*/
+ body{
+  background-color: #F1BD96;
+ }
+ .card {
+  background-color: #F1BD96; /* Fondo naranja para las tarjetas */
+  border-radius: 10px; /* Bordes redondeados opcionales */
+  padding: 20px; /* Espacio interno */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Sombra suave */
+}
