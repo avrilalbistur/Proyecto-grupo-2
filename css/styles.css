@@ -339,6 +339,13 @@ hr{
     padding: 0px 10px;
   }
   
+  /* css de input buscador en products.html */
+  .search-input{
+    background-color: #0087F7;
+  }
+  .hidden{
+    display: none;
+  }
 /*para pantallas grandes*/
   @media (min-width: 1366px) {
     #login {
