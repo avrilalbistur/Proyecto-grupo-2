@@ -1,7 +1,16 @@
+let minPrice = undefined;
+let maxPrice = undefined;
+
+
+
 // Function to create product boxes
 let showProducts = (productsArray) =>{
     let htmlProductsToAppend = "";
+    
     productsArray.forEach(product => {
+        
+    if (((minCount == undefined) || (minCount != undefined && parseInt(category.productCount) >= minCount)) &&
+    ((maxCount == undefined) || (maxCount != undefined && parseInt(category.productCount) <= maxCount)))
         htmlProductsToAppend += `
             <div class="product">
                 <img src= "${product.image}" alt="${product.name}">
@@ -28,3 +37,43 @@ document.addEventListener('DOMContentLoaded',(e)=>{
             };
         } );
 });
+
+
+
+document.getElementById("clearRangeFilter").addEventListener("click", function(){
+    document.getElementById("rangeFilterPriceMin").value = "";
+    document.getElementById("rangeFilterPriceMax").value = "";
+
+    minCount = undefined;
+    maxCount = undefined;
+
+    showCategoriesList();
+});
+
+document.getElementById("rangeFilterPrice").addEventListener("click", function(){
+    //Obtengo el mínimo y máximo de los intervalos para filtrar por cantidad
+    //de productos por categoría.
+    minCount = document.getElementById("rangeFilterPriceMin").value;
+    maxCount = document.getElementById("rangeFilterPriceMax").value;
+
+    if ((minCount != undefined) && (minCount != "") && (parseInt(minCount)) >= 0){
+        minCount = parseInt(minCount);
+    }
+    else{
+        minCount = undefined;
+    }
+
+    if ((maxCount != undefined) && (maxCount != "") && (parseInt(maxCount)) >= 0){
+        maxCount = parseInt(maxCount);
+    }
+    else{
+        maxCount = undefined;
+    }
+
+    showCategoriesList();
+});
+
+
+function FilterPrice(productsArray) {
+
+}
