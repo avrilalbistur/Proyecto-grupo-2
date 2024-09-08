@@ -1,7 +1,16 @@
-// Función para crear las cajas de los productos
+let minPrice = undefined;
+let maxPrice = undefined;
+let productsArray;
+
+
+// Function to create product boxes
 let showProducts = (productsArray) =>{
     let htmlProductsToAppend = "";
+    
     productsArray.forEach(product => {
+        
+    if (((minPrice == undefined) || (minPrice != undefined && parseInt(product.cost) >= minPrice)) &&
+    ((maxPrice == undefined) || (maxPrice != undefined && parseInt(product.cost) <= maxPrice)))
         htmlProductsToAppend += `
             <div class="product">
                 <img src= "${product.image}" alt="${product.name}">
@@ -16,8 +25,6 @@ let showProducts = (productsArray) =>{
     })
     document.getElementById('product-container').innerHTML = htmlProductsToAppend;
 }
-// variable en la que se guardan los productos que vienen del JSON
-let productsArray;
 //Función que se va a ejecutar cuando el contenido HTML esté cargado
 
 document.addEventListener('DOMContentLoaded',(e)=>{
@@ -28,11 +35,42 @@ document.addEventListener('DOMContentLoaded',(e)=>{
               showProducts(productsArray); 
               
             };
-    });
- // BUSCADOR (DESAFIATE ENTREGA 3) BUSCA TANTO EN EL NOMBRE COMO EN LA DESCRIPCION
-    document.getElementById('search-bar').addEventListener('input', (e) => {
-        let searchValue = e.target.value.trim().toLowerCase();
-        let filteredProducts = productsArray.filter(product => product.name.toLowerCase().includes(searchValue) || product.description.toLowerCase().includes(searchValue));
-        showProducts(filteredProducts);
-    });
+        } );
 });
+
+
+
+document.getElementById("clearRangeFilter").addEventListener("click", function(){
+    document.getElementById("rangeFilterPriceMin").value = "";
+    document.getElementById("rangeFilterPriceMax").value = "";
+
+    minPrice = undefined;
+    maxPrice = undefined;
+
+    showProducts(productsArray);
+});
+
+document.getElementById("rangeFilterPrice").addEventListener("click", function(){
+    //Obtengo el mínimo y máximo de los intervalos para filtrar por cantidad
+    //de productos por categoría.
+    minPrice = document.getElementById("rangeFilterPriceMin").value;
+    maxPrice = document.getElementById("rangeFilterPriceMax").value;
+
+    if ((minPrice != undefined) && (minPrice != "") && (parseInt(minPrice)) >= 0){
+        minPrice = parseInt(minPrice);
+    }
+    else{
+        minPrice = undefined;
+    }
+
+    if ((maxPrice != undefined) && (maxPrice != "") && (parseInt(maxPrice)) >= 0){
+        maxPrice = parseInt(maxPrice);
+    }
+    else{
+        maxPrice = undefined;
+    }
+
+    showProducts(productsArray);
+});
+
+
