@@ -190,6 +190,7 @@ a.custom-card:hover {
   color: orange;
 }
 
+ /*diseño de login*/
 #login {
   display: flex;
   justify-content: center;
@@ -255,6 +256,7 @@ border: 2px solid #6C1C04;
     background-size: cover;
   }
 
+/*diseño products*/
 h1{
   margin-left: 100px;
   margin-top: 50px;
@@ -403,6 +405,8 @@ hr{
     width: 100%;
     height: auto;
     margin: auto;
+    grid-template-columns: repeat(1, 1fr);
+    grid-auto-rows: minmax(100px, auto);
   }
 
   .product {
