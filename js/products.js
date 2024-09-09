@@ -36,6 +36,13 @@ document.addEventListener('DOMContentLoaded',(e)=>{
               
             };
         } );
+
+        // BUSCADOR (DESAFIATE ENTREGA 3) BUSCA TANTO EN EL NOMBRE COMO EN LA DESCRIPCION
+        document.getElementById('search-bar').addEventListener('input', (e) => {
+        let searchValue = e.target.value.trim().toLowerCase();
+        let filteredProducts = productsArray.filter(product => product.name.toLowerCase().includes(searchValue) || product.description.toLowerCase().includes(searchValue));
+        showProducts(filteredProducts);
+    });
 });
 
 
