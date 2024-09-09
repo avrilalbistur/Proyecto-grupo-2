@@ -442,6 +442,14 @@ hr{
     height: auto;
     margin:auto;
   }
+  h1{
+      margin-bottom: 10px;
+        margin-top: 10px;
+        margin-left: auto;
+        margin-right: auto;
+        font-weight: lighter;
+        text-align: center;
+  }
 }
 
 
@@ -465,6 +473,14 @@ hr{
     margin: auto;
   }
 
+
+  .form-container{
+    width: 70%;
+  }
+  .form-item{
+    width: 30%;
+  }
+
   h1 {
     margin-bottom: 10px;
     margin-top: 10px;
@@ -476,6 +492,8 @@ hr{
   .category-button {
     display: none;
   }
+  
+  
 
   hr {
    margin-top: 10px;
