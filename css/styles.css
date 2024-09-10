@@ -450,8 +450,27 @@ hr{
         font-weight: lighter;
         text-align: center;
   }
-}
+  .form-container {
+    flex-direction: row; 
+    align-items: flex-start; 
+  }
 
+  #rangeFilterPriceMin, 
+  #rangeFilterPriceMax {
+    max-width: 100%; 
+    width: 100%; 
+    box-sizing: border-box; 
+  }
+
+  .btn-group .btn {
+    flex: 1 1 100%;
+  }
+  
+  #search-bar {
+    max-width: 100%; 
+    width: 100%; 
+  }
+}
 
 /* Smartphone Pequeño */
 @media (max-width: 568px) and (min-width: 320px) {
@@ -502,7 +521,6 @@ hr{
    margin-left: 0px;
   }
  }
-
  /*Background-color en todas las páginas*/
  body{
   background-color: #F1BD96;
@@ -512,4 +530,64 @@ hr{
   border-radius: 10px; /* Bordes redondeados opcionales */
   padding: 20px; /* Espacio interno */
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Sombra suave */
+}
+
+/* Estilo para el contenedor del formulario */
+.form-container {
+  display: flex;
+  flex-wrap: wrap; 
+  justify-content: space-between; 
+  margin: 10px 0; 
+}
+
+/* Ajustes para los campos de precio */
+.form-item, 
+#rangeFilterPriceMin, 
+#rangeFilterPriceMax {
+  margin: 5px 0; 
+}
+
+/* Estilo específico para los campos de entrada de precio */
+#rangeFilterPriceMin, 
+#rangeFilterPriceMax {
+  width: 100%; 
+  max-width: 150px; 
+}
+
+/* Estilo para los botones dentro del grupo */
+.btn-group {
+  display: flex;
+  flex-wrap: nowrap;
+  gap: 10px;
+}
+
+.btn-group .btn {
+  flex: 1; 
+  padding: 10px;
+  border-radius: 5px;
+}
+
+.filter-btn {
+  background-color: #4CAF50;
+  color: white;
+}
+
+.clear-btn {
+  background-color: #f44336;
+  color: white;
+}
+
+/* Estilo para el contenedor de la barra de búsqueda */
+.search-form {
+  display: flex;
+  justify-content: flex-end;
+  margin-top: 10px; 
+}
+
+/* Ajustes para la barra de búsqueda */
+#search-bar {
+  width: 100%;
+  max-width: 300px;
+  border-radius: 5px;
+  padding: 5px;
 }
