@@ -34,18 +34,19 @@
         </div>
       </nav> 
     <main>
+      <div class="container col-lg-12 offset-lg-12 col-md-12 mb-1">
         <h1>Autos 101</h1>
         <div class="row">
           <div class="col-lg-6 offset-lg-6 col-md-12 mb-1 container">
-            <div class="row container p-0 m-0">
-              <div class="col">
+            <div class="row container p-0 m-0 form-container">
+              <div class="col form-item">
                 <p class="font-weight-normal text-end my-2">Precio</p>
               </div>
               <div class="col">
-                <input class="form-control" type="number" placeholder="min." id="rangeFilterPriceMin">
+                <input class="form-control form-item" type="number" placeholder="min." id="rangeFilterPriceMin">
               </div>
               <div class="col">
-                <input class="form-control" type="number" placeholder="máx." id="rangeFilterPriceMax">
+                <input class="form-control form-item" type="number" placeholder="máx." id="rangeFilterPriceMax">
               </div>
               <div class="col-3 p-0">
                 <div class="btn-group" role="group">
@@ -55,7 +56,14 @@
               </div>
             </div>
           </div>
+          <div class="col-lg-6 offset-lg-6 col-md-12 mb-1">
+            <form class="search-form w-100">
+              <input id="search-bar" class="form-control me-2" type="search" placeholder="Buscar producto" aria-label="Search">
+            </form>
+          </div>
         </div>
+      </div>
+        
         <hr>
         <div class="product-list" id="product-container">
             

@@ -1,6 +1,6 @@
 let minPrice = undefined;
 let maxPrice = undefined;
-let productsArray = []
+let productsArray;
 
 
 // Function to create product boxes
@@ -25,17 +25,24 @@ let showProducts = (productsArray) =>{
     })
     document.getElementById('product-container').innerHTML = htmlProductsToAppend;
 }
-
-//function that will be executed when the document completely is fully loaded 
+//Función que se va a ejecutar cuando el contenido HTML esté cargado
 
 document.addEventListener('DOMContentLoaded',(e)=>{
    getJSONData(PRODUCTS_URL+101+EXT_TYPE)
         .then(object =>{
             if(object.status === 'ok'){
-               productsArray = object.data.products;
-            showProducts(productsArray);  
+              productsArray = object.data.products;
+              showProducts(productsArray); 
+              
             };
         } );
+
+        // BUSCADOR (DESAFIATE ENTREGA 3) BUSCA TANTO EN EL NOMBRE COMO EN LA DESCRIPCION
+        document.getElementById('search-bar').addEventListener('input', (e) => {
+        let searchValue = e.target.value.trim().toLowerCase();
+        let filteredProducts = productsArray.filter(product => product.name.toLowerCase().includes(searchValue) || product.description.toLowerCase().includes(searchValue));
+        showProducts(filteredProducts);
+    });
 });
 
 
