@@ -12,8 +12,8 @@ function sortProducts(criteria, array){
     let result = [];
     if (criteria === ORDER_BY_PROD_COUNT){
         result = array.sort(function(a, b) {
-            let aCount = parseInt(a.productCount);
-            let bCount = parseInt(b.productCount);
+            let aCount = parseInt(a.soldCount);
+            let bCount = parseInt(b.soldCount);
 
             if ( aCount > bCount ){ return -1; }
             if ( aCount < bCount ){ return 1; }
@@ -33,7 +33,7 @@ function sortProducts(criteria, array){
             let aPrice = parseInt(a.cost);
             let bPrice = parseInt(b.cost);
 
-            if ( aPrice < aPrice ){ return -1; }
+            if ( aPrice < bPrice ){ return -1; }
             if ( aPrice > bPrice ){ return 1; }
             return 0;
         });
