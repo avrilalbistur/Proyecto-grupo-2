@@ -7,7 +7,6 @@ let productsArray = []
 let currentSortCriteria = undefined;
 let currentProductsArray = [];
 
-
 function sortProducts(criteria, array){
     let result = [];
     if (criteria === ORDER_BY_PROD_COUNT){
@@ -43,26 +42,36 @@ function sortProducts(criteria, array){
 }
 
 // Function to create product boxes
-let showProducts = (productsArray) =>{
+let showProducts = (productsArray) => {
     let htmlProductsToAppend = "";
     
-    productsArray.forEach(product => {
-        
-    if (((minPrice == undefined) || (minPrice != undefined && parseInt(product.cost) >= minPrice)) &&
-    ((maxPrice == undefined) || (maxPrice != undefined && parseInt(product.cost) <= maxPrice)))
-        htmlProductsToAppend += `
-            <div class="product">
-                <img src= "${product.image}" alt="${product.name}">
-                <div>
-                    <h2>${product.name}</h2>
-                    <p class="description">${product.description}</p>
-                    <p class="price">${product.currency} ${product.cost}</p>
-                 <p class="sold-quantity">Cantidad de vendidos:${product.soldCount}</p>
+    productsArray.forEach((product, index) => {
+        if (((minPrice == undefined) || (minPrice != undefined && parseInt(product.cost) >= minPrice)) &&
+            ((maxPrice == undefined) || (maxPrice != undefined && parseInt(product.cost) <= maxPrice))) {
+
+            htmlProductsToAppend += `
+                <div class="product" id="product-${index}" style="cursor: pointer;">
+                    <img src="${product.image}" alt="${product.name}">
+                    <div>
+                        <h2>${product.name}</h2>
+                        <p class="description">${product.description}</p>
+                        <p class="price">${product.currency} ${product.cost}</p>
+                        <p class="sold-quantity">Cantidad de vendidos: ${product.soldCount}</p>
+                    </div>
                 </div>
-            </div>
-        `
-    })
+            `;
+        }
+    });
+    
     document.getElementById('product-container').innerHTML = htmlProductsToAppend;
+
+    // Añadir eventos click a los contenedores de productos para redirigir
+    productsArray.forEach((product, index) => {
+        document.getElementById(`product-${index}`).addEventListener('click', function() {
+            // Redirigir a la página de información del producto
+            window.location.href = "product-info.html"; // Cambia esta URL si es necesario
+        });
+    });
 }
 
 function sortAndShowProducts(sortCriteria, productsArray){
@@ -118,22 +127,19 @@ document.getElementById("clearRangeFilter").addEventListener("click", function()
 });
 
 document.getElementById("rangeFilterPrice").addEventListener("click", function(){
-    //Obtengo el mínimo y máximo de los intervalos para filtrar por cantidad
-    //de productos por categoría.
+    // Obtengo el mínimo y máximo de los intervalos para filtrar por cantidad de productos por categoría
     minPrice = document.getElementById("rangeFilterPriceMin").value;
     maxPrice = document.getElementById("rangeFilterPriceMax").value;
 
-    if ((minPrice != undefined) && (minPrice != "") && (parseInt(minPrice)) >= 0){
+    if ((minPrice != undefined) && (minPrice != "") && (parseInt(minPrice)) >= 0) {
         minPrice = parseInt(minPrice);
-    }
-    else{
+    } else {
         minPrice = undefined;
     }
 
-    if ((maxPrice != undefined) && (maxPrice != "") && (parseInt(maxPrice)) >= 0){
+    if ((maxPrice != undefined) && (maxPrice != "") && (parseInt(maxPrice)) >= 0) {
         maxPrice = parseInt(maxPrice);
-    }
-    else{
+    } else {
         maxPrice = undefined;
     }
 
