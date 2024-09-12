@@ -1,4 +1,6 @@
 let productInfo;
+let productID = localStorage.getItem('productID');
+
 let showProductInfo = (product) =>{
   let htmlProductsToAppend = `
     <div class="product-gallery">
@@ -21,7 +23,7 @@ let showProductInfo = (product) =>{
 
 }
 document.addEventListener('DOMContentLoaded', (e) => {
-      getJSONData(PRODUCT_INFO_URL +50741+ EXT_TYPE)
+      getJSONData(PRODUCT_INFO_URL +productID+ EXT_TYPE)
           .then(object => {
               if (object.status === 'ok') {
                   productInfo = object.data;

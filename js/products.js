@@ -23,7 +23,6 @@ let showProducts = (productsArray) => {
             `;
         }
     });
-    
     document.getElementById('product-container').innerHTML = htmlProductsToAppend;
     
     console.log(productsArray);
@@ -31,7 +30,7 @@ let showProducts = (productsArray) => {
     productsArray.forEach((product, index) => {
         document.getElementById(`product-${index}`).addEventListener('click', function() {
             // Redirigir a la página de información del producto
-            localStorage.setItem('productID', product[index][id]); // NO ESTA FUNCIONANDO
+            localStorage.setItem('productID', product.id); // NO ESTA FUNCIONANDO
             window.location.href = "product-info.html"; // Cambia esta URL si es necesario
         });
     });
