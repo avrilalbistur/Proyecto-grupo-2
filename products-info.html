@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <title>eMercado - Todo lo que busques está aquí</title>
+
+  <link href="https://fonts.googleapis.com/css?family=Raleway:300,300i,400,400i,700,700i,900,900i" rel="stylesheet">
+  <link href="css/font-awesome.min.css" rel="stylesheet">
+  <link href="css/bootstrap.min.css" rel="stylesheet">
+  <link href="css/styles.css" rel="stylesheet">
+
+  <style>
+   .product-container {
+  display: flex;
+  align-items: center; /* Alinea los elementos verticalmente al centro */
+  border: 2px solid #e74c3c; /* Agrega un borde negro */
+  padding: 10px; /* Opcional: agrega un poco de espacio interior */
+  border-radius: 10px; /* Opcional: redondea las esquinas */
+  background-color: transparent; /* Fondo transparente */
+}
+
+
+.product-gallery {
+      display: flex;
+      flex-direction: column;
+      margin-right: 20px;
+      border-color: none;
+    }
+
+    .product-thumb {
+      width: 2px;
+      height: auto;
+      margin-bottom: 10px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+    }
+
+    .product-main-image {
+      width: 550px;
+      height: auto;
+      border: 1px solid #ccc;
+      border-radius: 10px;
+    }
+
+    .product-details {
+      margin-left: 20px;
+      max-width: 400px;
+    }
+
+    .product-title {
+      font-size: 24px;
+      font-weight: bold;
+    }
+    .header-category {
+    border-bottom: 1px solid black; /* Agrega una línea negra */
+    padding-bottom: 10px; /* Añade un poco de espacio entre el texto y la línea */
+}
+
+
+    .product-description {
+      font-size: 16px;
+      margin: 10px 0;
+    }
+
+    .product-price {
+      font-size: 20px;
+      font-weight: bold;
+      color: #e74c3c;
+    }
+
+    .product-sold {
+      font-size: 14px;
+      color: #050000;
+    }
+
+  </style>
+</head>
+
+<body>
+  <nav class="navbar navbar-expand-lg navbar-dark bg-dark p-1">
+    <div class="container">
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+        aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav w-100 justify-content-between">
+          <li class="nav-item">
+            <a class="nav-link" href="index.html">Inicio</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="categories.html">Categorías</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="sell.html">Vender</a>
+          </li>
+          <li class="nav-item">
+            <a id="navbar-username" class="nav-link" href="my-profile.html"></a> <!-- Aquí se mostrará el nombre de usuario -->
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <main class="container mt-4">
+    <h3 class="header-category">Juguetes</h3>
+
+    <div class="product-container">
+      <div class="product-gallery">
+        <img src="img/prod50741_2.jpg" alt="Imagen 1" id="thumb1" class="product-thumb">
+        <img src="img/prod50741_3.jpg" alt="Imagen 2" id="thumb2" class="product-thumb">
+        <img src="img/prod50741_4.jpg" alt="Imagen 3" id="thumb3" class="product-thumb">
+      </div>
+
+      <div>
+        <img id="main-image" src="img/prod50741_1.jpg" alt="Producto" class="product-main-image">
+      </div>
+
+      <div class="product-details">
+        <p class="product-sold" id="sold-count" style="text-align: right; color: black;">97 vendidos</p>
+        <h2 class="product-title" id="product-title">Oso de peluche</h2>
+        <p class="product-description" id="product-description">Oso de peluche gigante, con el bebé. Resistente y lavable. Tus hijos lo amarán</p>
+        <p class="product-price" id="product-price">UYU 2400</p>
+      </div>
+    </div>
+  </main>
+
+  <footer class="text-muted">
+    <div class="container">
+      <p class="float-end">
+        <a href="#">Volver arriba</a>
+      </p>
+      <p>Este sitio forma parte de <a href="https://jovenesaprogramar.edu.uy/" target="_blank">Jovenes a Programar</a></p>
+    </div>
+  </footer>
+
+  <div id="spinner-wrapper">
+    <div class="lds-ring">
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+    </div>
+  </div>
+
+  <script src="js/bootstrap.bundle.min.js"></script>
+  <script src="js/init.js"></script>
+  <script src="js/product-info.js"></script>
+</body>
+
+</html>
