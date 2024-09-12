@@ -62,14 +62,13 @@ let showProducts = (productsArray) => {
             `;
         }
     });
-    
     document.getElementById('product-container').innerHTML = htmlProductsToAppend;
-
     // Añadir eventos click a los contenedores de productos para redirigir
     productsArray.forEach((product, index) => {
         document.getElementById(`product-${index}`).addEventListener('click', function() {
-            // Redirigir a la página de información del producto
-            window.location.href = "product-info.html"; // Cambia esta URL si es necesario
+            // Redirigir a la página de información del producto y guardar la info de ID del producto en el local storage
+            localStorage.setItem('productID', product.id); 
+            window.location.href = "product-info.html";
         });
     });
 }
@@ -102,6 +101,12 @@ document.addEventListener('DOMContentLoaded', (e) => {
                 }
             });
     }
+    // BUSCADOR (DESAFIATE ENTREGA 3) BUSCA TANTO EN EL NOMBRE COMO EN LA DESCRIPCION
+    document.getElementById('search-bar').addEventListener('input', (e) => {
+        let searchValue = e.target.value.trim().toLowerCase();
+        let filteredProducts = productsArray.filter(product => product.name.toLowerCase().includes(searchValue) || product.description.toLowerCase().includes(searchValue));
+        showProducts(filteredProducts);
+    });
 });
 
 document.getElementById("sortPriceAsc").addEventListener("click", function(){
