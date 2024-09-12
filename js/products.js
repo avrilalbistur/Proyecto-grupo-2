@@ -1,6 +1,45 @@
+const ORDER_ASC_BY_PRICE = "0";
+const ORDER_DESC_BY_PRICE = "9";
+const ORDER_BY_PROD_COUNT = "Cant.";
 let minPrice = undefined;
 let maxPrice = undefined;
-let productsArray = [];
+let productsArray = []
+let currentSortCriteria = undefined;
+let currentProductsArray = [];
+
+function sortProducts(criteria, array){
+    let result = [];
+    if (criteria === ORDER_BY_PROD_COUNT){
+        result = array.sort(function(a, b) {
+            let aCount = parseInt(a.soldCount);
+            let bCount = parseInt(b.soldCount);
+
+            if ( aCount > bCount ){ return -1; }
+            if ( aCount < bCount ){ return 1; }
+            return 0;
+        });
+    }else if (criteria === ORDER_ASC_BY_PRICE){
+        result = array.sort(function(a, b) {
+            let aPrice = parseInt(a.cost);
+            let bPrice = parseInt(b.cost);
+
+            if ( aPrice > bPrice ){ return -1; }
+            if ( aPrice < bPrice ){ return 1; }
+            return 0;
+        });
+    }else if (criteria === ORDER_DESC_BY_PRICE){
+        result = array.sort(function(a, b) {
+            let aPrice = parseInt(a.cost);
+            let bPrice = parseInt(b.cost);
+
+            if ( aPrice < bPrice ){ return -1; }
+            if ( aPrice > bPrice ){ return 1; }
+            return 0;
+        });
+    }
+
+    return result;
+}
 
 // Function to create product boxes
 let showProducts = (productsArray) => {
@@ -34,7 +73,20 @@ let showProducts = (productsArray) => {
     });
 }
 
-// Function that will be executed when the document is fully loaded
+function sortAndShowProducts(sortCriteria, productsArray){
+    currentSortCriteria = sortCriteria;
+
+    if(productsArray != undefined){
+        currentProductsArray = productsArray;
+    }
+
+    currentProductsArray = sortProducts(currentSortCriteria, currentProductsArray);
+
+    showProducts(currentProductsArray);
+}
+
+//function that will be executed when the document completely is fully loaded 
+
 document.addEventListener('DOMContentLoaded', (e) => {
     let catID = localStorage.getItem("catID");
     if (catID) {
@@ -55,6 +107,18 @@ document.addEventListener('DOMContentLoaded', (e) => {
         let filteredProducts = productsArray.filter(product => product.name.toLowerCase().includes(searchValue) || product.description.toLowerCase().includes(searchValue));
         showProducts(filteredProducts);
     });
+});
+
+document.getElementById("sortPriceAsc").addEventListener("click", function(){
+    sortAndShowProducts(ORDER_ASC_BY_PRICE,productsArray);
+});
+
+document.getElementById("sortPriceDesc").addEventListener("click", function(){
+    sortAndShowProducts(ORDER_DESC_BY_PRICE,productsArray);
+});
+
+document.getElementById("sortByCount").addEventListener("click", function(){
+    sortAndShowProducts(ORDER_BY_PROD_COUNT, productsArray);
 });
 
 document.getElementById("clearRangeFilter").addEventListener("click", function(){
@@ -86,4 +150,3 @@ document.getElementById("rangeFilterPrice").addEventListener("click", function()
 
     showProducts(productsArray);
 });
-

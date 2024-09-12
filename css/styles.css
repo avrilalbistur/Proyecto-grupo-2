@@ -461,10 +461,6 @@ hr{
     width: 100%; 
     box-sizing: border-box; 
   }
-
-  .btn-group .btn {
-    flex: 1 1 100%;
-  }
   
   #search-bar {
     max-width: 100%; 
@@ -552,19 +548,6 @@ hr{
 #rangeFilterPriceMax {
   width: 100%; 
   max-width: 150px; 
-}
-
-/* Estilo para los botones dentro del grupo */
-.btn-group {
-  display: flex;
-  flex-wrap: nowrap;
-  gap: 10px;
-}
-
-.btn-group .btn {
-  flex: 1; 
-  padding: 10px;
-  border-radius: 5px;
 }
 
 .filter-btn {
