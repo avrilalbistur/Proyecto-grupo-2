@@ -1,6 +1,8 @@
 const ORDER_ASC_BY_NAME = "AZ";
 const ORDER_DESC_BY_NAME = "ZA";
 const ORDER_BY_PROD_COUNT = "Cant.";
+const ORDER_ASC_BY_PRICE = "0";
+const ORDER_DESC_BY_PRICE = "9";
 let currentCategoriesArray = [];
 let currentSortCriteria = undefined;
 let minCount = undefined;
@@ -30,8 +32,25 @@ function sortCategories(criteria, array){
             if ( aCount < bCount ){ return 1; }
             return 0;
         });
-    }
+    }else if (criteria === ORDER_ASC_BY_PRICE){
+        result = array.sort(function(a, b) {
+            let aCount = parseInt(a.price);
+            let bCount = parseInt(b.price);
 
+            if ( aCount < bCount ){ return -1; }
+            if ( aCount > bCount ){ return 1; }
+            return 0;
+        });
+    }else if (criteria === ORDER_DESC_BY_PRICE){
+        result = array.sort(function(a, b) {
+            let aCount = parseInt(a.price);
+            let bCount = parseInt(b.price);
+
+            if ( aCount > bCount ){ return -1; }
+            if ( aCount < bCount ){ return 1; }
+            return 0;
+        });
+    }
     return result;
 }
 
