@@ -25,11 +25,13 @@ let showProducts = (productsArray) => {
     });
     
     document.getElementById('product-container').innerHTML = htmlProductsToAppend;
-
+    
+    console.log(productsArray);
     // Añadir eventos click a los contenedores de productos para redirigir
     productsArray.forEach((product, index) => {
         document.getElementById(`product-${index}`).addEventListener('click', function() {
             // Redirigir a la página de información del producto
+            localStorage.setItem('productID', product[index][id]); // NO ESTA FUNCIONANDO
             window.location.href = "product-info.html"; // Cambia esta URL si es necesario
         });
     });
