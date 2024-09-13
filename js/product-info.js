@@ -12,7 +12,7 @@ let showProductInfo = (product) =>{
       <div class="product-details">
         <img id="main-image" src="${product.images[0]}" alt="Producto" class="product-main-image">
         <div>
-          <p class="product-sold" id="sold-count">${product.soldCount}</p>
+          <p class="product-sold" id="sold-count">Cantidad de vendidos: ${product.soldCount}</p>
           <h2 class="product-title" id="product-title">${product.name}</h2>
           <p class="product-description" id="product-description">${product.description}</p>
           <p class="product-price" id="product-price">$${product.cost}</p>
