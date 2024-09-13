@@ -587,18 +587,6 @@ hr{
   max-width: 1200px;
 }
 
-/* Contenedor principal */
-.product-container {
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
-  align-items: flex-start;
-  padding: 20px;
-  background-color: #fff;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-  margin: 20px auto;
-  max-width: 1200px;
-}
 
 /* Galería de imágenes del producto */
 .product-gallery {
