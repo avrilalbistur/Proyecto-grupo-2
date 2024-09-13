@@ -15,7 +15,7 @@ let showProductInfo = (product) =>{
           <p class="product-sold" id="sold-count">${product.soldCount}</p>
           <h2 class="product-title" id="product-title">${product.name}</h2>
           <p class="product-description" id="product-description">${product.description}</p>
-          <p class="product-price" id="product-price">${product.cost}</p>
+          <p class="product-price" id="product-price">$${product.cost}</p>
         </div>
       </div>
   `;
