@@ -30,13 +30,45 @@ let showProductInfo = (product) => {
   document.getElementById('product-container').innerHTML = htmlProductsToAppend;
 }
 
+//Productos Relacionados//
+
+let showRelatedProducts = (relatedProducts) => {
+  let htmlRelatedProducts = '<h3>Productos Relacionados</h3><div class="related-products">';
+ 
+  relatedProducts.forEach(product => {
+    htmlRelatedProducts += `
+      <div class="related-product" onclick="loadProduct(${product.id})">
+        <img src="${product.image}" alt="${product.name}">
+        <p>${product.name}</p>
+      </div>
+    `;
+  });
+ 
+  htmlRelatedProducts += '</div>';
+  document.getElementById('related-products-container').innerHTML = htmlRelatedProducts;
+};
+
+
+let loadProduct = (productId) => {
+  localStorage.setItem('productID', productId);
+  location.reload();
+};
+
+
 document.addEventListener('DOMContentLoaded', (e) => {
-      getJSONData(PRODUCT_INFO_URL +productID+ EXT_TYPE)
-          .then(object => {
-              if (object.status === 'ok') {
-                  productInfo = object.data;
-                  showProductInfo(productInfo);
-              }
-          });
-          
+  if (productID) {
+    getJSONData(PRODUCT_INFO_URL + productID + EXT_TYPE)
+      .then(object => {
+        if (object.status === 'ok') {
+          productInfo = object.data;
+          showProductInfo(productInfo);
+          showRelatedProducts(productInfo.relatedProducts);
+        }
+      })
+      .catch(error => {
+        console.error('Error fetching product data:', error);
+      });
+  } else {
+    console.error('No product ID found in localStorage');
+  }
 });
