@@ -643,3 +643,37 @@ hr{
   color: #999;
   margin-top: 5px;
 }
+
+/* Productos relacionados - product-info.html */
+
+.related-products {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  padding: 20px;
+}
+
+.related-product {
+  background-color: #f9f9f9;
+  border-radius: 12px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  text-align: center;
+  width: 20rem;
+  padding: 10px;
+  transition: transform 0.2s;
+}
+
+.related-product:hover {
+  transform: scale(1.05);
+}
+
+.related-product img {
+  width: 100%;
+  border-radius: 10px;
+}
+
+.related-product p {
+  margin: 15px 0 0 0;
+  font-size: 1rem;
+  font-weight: bold;
+}
