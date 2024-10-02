@@ -1,5 +1,6 @@
 let productInfo;
 let productID = localStorage.getItem('productID');
+const today = new Date();
 
 let showProductInfo = (product) => {
   // Crear la galería de imágenes dinámicamente
@@ -72,3 +73,21 @@ document.addEventListener('DOMContentLoaded', (e) => {
     console.error('No product ID found in localStorage');
   }
 });
+
+
+// sección de comentarios
+
+document.addEventListener('DOMContentLoaded', function() {
+  var username = localStorage.getItem('usuario');
+  if (username) {
+      document.getElementById('comment-username').textContent = username;
+  } })
+
+
+// Formatear la fecha (día, mes, año)
+const day = today.getDate();
+const month = today.getMonth() + 1; // Los meses empiezan desde 0
+const year = today.getFullYear();
+
+// Mostrar la fecha en el elemento con id "current-date"
+document.getElementById("current-date").textContent = `${day}/${month}/${year}`;

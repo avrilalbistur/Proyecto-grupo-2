@@ -644,11 +644,17 @@ hr{
   margin-top: 5px;
 }
 
+/* Contenedor padre de productos relacionados y comentarios - product-info.html */
+
+.related-info {
+  display: flex;
+  justify-content: space-between;
+}
+
 /* Productos relacionados - product-info.html */
 
 .related-products {
   display: flex;
-  justify-content: center;
   gap: 20px;
   padding: 20px;
 }
@@ -677,3 +683,24 @@ hr{
   font-size: 1rem;
   font-weight: bold;
 }
+
+/* Comentarios - product-info.html */
+
+.comments {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  padding: 20px;
+}
+
+.new-comment {
+  background-color: white;
+  padding: 10%;
+  border-radius: 3%;
+}
+
+#comment-info-user {
+  display: flex;
+  justify-content: space-between;
+}
+
