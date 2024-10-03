@@ -657,8 +657,12 @@ hr{
   display: flex;
   gap: 20px;
   padding: 20px;
+ 
 }
 
+#related-products-container {
+  width: 50%;
+}
 .related-product {
   background-color: #f9f9f9;
   border-radius: 12px;
@@ -691,6 +695,7 @@ hr{
   flex-direction: column;
   gap: 20px;
   padding: 20px;
+  width: 50%;
 }
 
 .new-comment {
@@ -704,3 +709,43 @@ hr{
   justify-content: space-between;
 }
 
+
+.star-rating span {
+  color: #D9D9D9;
+ font-size: 2em;
+ cursor: pointer;
+
+}
+
+.star-rating span:hover {
+color: gold;
+
+ }
+
+ #Título-comentarios {
+  border: none;
+ 
+ }
+
+ #campo-comentarios {
+  color: black;
+  background-color: #D9D9D9;
+  ;
+  margin-top: 5%;
+  margin-bottom: 5%;
+  width: 20em;
+  height: 4em;
+ }
+
+ #comentarios-section {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+ }
+
+ #boton-enviar {
+  background-color:  #F1BD96;
+  border-radius: 5%;
+  display: block;
+  margin: 10% auto;
+ }
