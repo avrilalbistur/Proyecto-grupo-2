@@ -34,7 +34,7 @@ let showProductInfo = (product) => {
 //Productos Relacionados//
 
 let showRelatedProducts = (relatedProducts) => {
-  let htmlRelatedProducts = '<h3>Productos Relacionados</h3><div class="related-products">';
+  let htmlRelatedProducts = '<h3 class="title">Productos Relacionados</h3><div class="related-products">';
  
   relatedProducts.forEach(product => {
     htmlRelatedProducts += `

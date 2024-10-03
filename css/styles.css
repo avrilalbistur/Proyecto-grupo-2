@@ -649,10 +649,13 @@ hr{
 .related-info {
   display: flex;
   justify-content: space-between;
+  padding: 20px;
 }
-
+.title{
+  font-size: 2rem;
+  font-weight: 200;
+}
 /* Productos relacionados - product-info.html */
-
 .related-products {
   display: flex;
   gap: 20px;
@@ -694,7 +697,6 @@ hr{
   display: flex;
   flex-direction: column;
   gap: 20px;
-  padding: 20px;
   width: 50%;
 }
 
