@@ -63,13 +63,15 @@ function mostrarComentarios() {
   comentarios.forEach(comentario => {
     const comentarioDiv = document.createElement('div');
     comentarioDiv.classList.add('comentario');
-
+  // Construir estrellas llenas y vacías
+    let estrellasLlenas = '<i class="fa-star estrella fas seleccionada" data-valor="1"></i>'.repeat(comentario.calificacion);
+    let estrellasVacias = '<i class="far fa-star estrella" data-valor="1"></i>'.repeat(5 - comentario.calificacion);
     // Creamos el contenido del comentario con todos los datos solicitados
     comentarioDiv.innerHTML = `
       <div class="comentario-header">
         <strong>${comentario.usuario}</strong> - ${comentario.fecha} - 
         <div class="star-rating">
-          ${'<i class="fa-star estrella fas seleccionada" data-valor="1"></i>'.repeat(comentario.calificacion)}${'<i class="far fa-star estrella" data-valor="1"></i>'.repeat(5 - comentario.calificacion)}
+          ${estrellasLlenas}${estrellasVacias}
         </div>
       </div>
       <h5>${comentario.titulo}</h5>
@@ -77,7 +79,7 @@ function mostrarComentarios() {
     `;
     
     comentariosSection.appendChild(comentarioDiv);
-  });
+    });
 }
 
 document.addEventListener('DOMContentLoaded', (e) => {
@@ -144,32 +146,32 @@ document.addEventListener('DOMContentLoaded', function() {
     const tituloComentario = document.getElementById('Titulo-comentarios').value;
     const comentarioTexto = document.getElementById('campo-comentarios').value;
     const estrellasSeleccionadas = document.querySelectorAll('.seleccionada');
-    console.log(estrellasSeleccionadas);
     
     const usuario = localStorage.getItem('usuario'); // Obtener el nombre del usuario
-
+  
     if (tituloComentario && comentarioTexto && estrellasSeleccionadas.length > 0 && usuario) {
-      const calificacion = estrellasSeleccionadas.length; // Obtener calificación de las estrellas seleccionadas
-      
-      // Obtener la fecha actual para el comentario
-      const fechaComentario = `${day}/${month}/${year}`;
-      
       const nuevoComentario = {
         usuario: usuario, // Añadir el nombre de usuario
         titulo: tituloComentario,
         comentario: comentarioTexto,
-        calificacion: calificacion, // Añadir calificación al comentario
-        fecha: fechaComentario, // Añadir la fecha al comentario
+        fecha: `${day}/${month}/${year}`, // Añadir la fecha al comentario
       };
+      
+      nuevoComentario.calificacion = estrellasSeleccionadas.length; // Asignar la calificación directamente al objeto comentario
       
       comentarios.push(nuevoComentario); // Añadimos el comentario al arreglo
       mostrarComentarios(); // Actualizamos la visualización de comentarios
-      // Limpiamos los campos de entrada
-      document.getElementById('Titulo-comentarios').value = '';
-      document.getElementById('campo-comentarios').value = '';
-      estrellas.forEach(e => e.classList.remove('seleccionada')); // Reiniciar la selección de estrellas
-    } else {
-      alert("Por favor, completa todos los campos.");
-    }
+      // Actualizar la variable estrellas
+    const estrellas = document.querySelectorAll('.estrella');
+    
+    // Limpiar la selección de estrellas
+    estrellas.forEach(e => e.classList.remove('seleccionada'));
+    
+    // Limpiar los campos de entrada
+    document.getElementById('Titulo-comentarios').value = '';
+    document.getElementById('campo-comentarios').value = '';
+  } else {
+    alert("Por favor, completa todos los campos.");
+  }
   });
 });
