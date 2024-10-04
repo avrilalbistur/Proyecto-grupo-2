@@ -1,6 +1,9 @@
 let productInfo;
 let productID = localStorage.getItem('productID');
 const today = new Date();
+const Comments_Data="https://japceibal.github.io/emercado-api/products_comments/50741.json";
+let commentsList=[];
+let htmlProductComments = "";
 
 let showProductInfo = (product) => {
   // Crear la galería de imágenes dinámicamente
@@ -72,6 +75,11 @@ document.addEventListener('DOMContentLoaded', (e) => {
   } else {
     console.error('No product ID found in localStorage');
   }
+  getJSONData(Comments_Data)
+    .then(object=>{
+      commentsList=object.data;
+      showProductComments(commentsList);
+    })
 });
 
 
@@ -83,6 +91,24 @@ document.addEventListener('DOMContentLoaded', function() {
       document.getElementById('comment-username').textContent = username;
   } })
 
+
+let showProductComments = (productsComments) => {
+  htmlProductComments = '<h3 class="title">Otros comentarios:</h3><div class="products-comments">';
+ 
+  productsComments.forEach(comment => {
+    htmlProductComments += `
+      <div class="products-comments" onclick="loadProduct(${comment.product})">
+        <p>${comment.user}</p>
+        <p>${comment.dateTime}</p>
+        <p>${'<i class="fa-star estrella fas seleccionada" data-valor="1"></i>'.repeat(comment.score)}</p>
+        <p>${comment.description}</p>
+      </div>
+    `;
+  });
+ 
+  htmlProductComments += '</div>';
+  document.getElementById('comments-products-container').innerHTML = htmlProductComments;
+};
 
 // Formatear la fecha (día, mes, año)
 const day = today.getDate();
