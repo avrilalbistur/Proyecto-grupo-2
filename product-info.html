@@ -39,42 +39,38 @@
   </nav>
 
   <main class="container mt-4">
-    <h3 class="header-category"> </h3>
+    <h3 class="header-category"></h3>
     
-    <div class="product-container" id="product-container">
-      
-    </div>
+    <div class="product-container" id="product-container"></div>
     
     <div class="related-info"> 
-    <div class="comments"> 
-    <h3 class="title">Comentarios</h3>
-    <div class="new-comment">
-     <div id="comment-info-user"> 
-      <p id="comment-username"></p>
-      <p id="current-date"></p>
+      <div class="comments"> 
+        <h3 class="title">Comentarios</h3>
+        <div class="new-comment">
+          <div id="comment-info-user"> 
+            <p id="comment-username"></p>
+            <p id="current-date"></p>
+          </div>
+          <div class="star-rating" id="estrellas">
+            <span class="estrella" data-valor="1">★</span>
+            <span class="estrella" data-valor="2">★</span>
+            <span class="estrella" data-valor="3">★</span>
+            <span class="estrella" data-valor="4">★</span>
+            <span class="estrella" data-valor="5">★</span>
+          </div>
+          <input type="text" id="Título-comentarios" placeholder="Título">
+          <input type="text" id="campo-comentarios" placeholder="Comentarios">
+          <input type="button" id="boton-enviar" class="btn mt-3 rounded-pill" value="ENVIAR">
+        </div>
+        
+        <div id="comentarios-lista">
+            <h3></h3>
+            <div id="comentarios-section"></div> <!-- Aquí se mostrarán los comentarios -->
+        </div>
+        
+      </div>
+      <div id="related-products-container"></div>
     </div>
-    <div class="star-rating">
-      <span>★</span>
-      <span>★</span>
-      <span>★</span>
-      <span>★</span>
-      <span>★</span>
-    </div>
-    <div id="comentarios-section">
-    <input type="text" id="Título-comentarios" placeholder="Título">
-    <input type="text" id="campo-comentarios" placeholder="Comentarios">
-    <input type="button" id="boton-enviar" class="btn mt-3 rounded-pill " value="ENVIAR">
-    </div>
-
-    </div>
-
-    <!--otros Comentarios-->
-
-    </div>
-
-    <div id="related-products-container"></div>
-  </div>
-    
   </main>
   
   <footer class="text-muted">
@@ -100,3 +96,4 @@
   <script src="js/product-info.js"></script>
 </body>
 </html>
+
