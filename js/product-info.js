@@ -38,7 +38,7 @@ let showProductInfo = (product) => {
 //Productos Relacionados//
 
 let showRelatedProducts = (relatedProducts) => {
-  let htmlRelatedProducts = '<h3 class="title">Productos Relacionados</h3><div class="related-products">';
+  let htmlRelatedProducts = '<h3 class="products-title">Productos Relacionados</h3><div class="related-products">';
  
   relatedProducts.forEach(product => {
     htmlRelatedProducts += `
@@ -61,8 +61,8 @@ let loadProduct = (productId) => {
 
 // Función para mostrar los comentarios del usuario
 function showUserComment() {
-  const comentariosSection = document.getElementById('comentario-usuario');
-  comentariosSection.innerHTML = ''; // Limpiar los comentarios anteriores
+  const comentariosSection = document.getElementById('comments-products-container');
+  // comentariosSection.innerHTML = ''; // Limpiar los comentarios anteriores
 
   comentarios.forEach(comentario => {
     const comentarioDiv = document.createElement('div');
@@ -72,14 +72,18 @@ function showUserComment() {
     let estrellasVacias = '<i class="far fa-star estrella" data-valor="1"></i>'.repeat(5 - comentario.calificacion);
     // Creamos el contenido del comentario con todos los datos solicitados
     comentarioDiv.innerHTML = `
-      <div class="comentario-header">
-        <strong>${comentario.usuario}</strong> - ${comentario.fecha} - 
-        <div class="star-rating">
-          ${estrellasLlenas}${estrellasVacias}
+      <div class="products-comments review-card p-2 shadow-lg rounded ">
+        <div class="card-body">
+          <div class="user-info mb-2">
+            <p>${comentario.usuario}</p>
+            <span class="text-muted d-block">${comentario.fecha}</span>
+          </div>
+          <p class="comment">${comentario.comentario}</p>
+          <p class="rating">${estrellasLlenas}${estrellasVacias}</p>
+          
         </div>
+          
       </div>
-      <h5>${comentario.titulo}</h5>
-      <p>${comentario.comentario}</p>
     `;
     
     comentariosSection.appendChild(comentarioDiv);
@@ -87,15 +91,21 @@ function showUserComment() {
 }
 // Función para mostrar los comentarios de los productos
 let showProductComments = (productsComments) => {
-  htmlProductComments = '<h3 class="title">Otros comentarios:</h3><div class="products-comments">';
+  htmlProductComments = '<h3 class="products-title">Otros comentarios:</h3><div class="products-comments">';
  
   productsComments.forEach(comment => {
     htmlProductComments += `
-      <div class="products-comments" onclick="loadProduct(${comment.product})">
-        <p>${comment.user}</p>
-        <p>${comment.dateTime}</p>
-        <p>${'<i class="fa-star estrella fas" data-valor="1"></i>'.repeat(comment.score)}</p>
-        <p>${comment.description}</p>
+      <div class="products-comments review-card p-2 shadow-lg rounded " onclick="loadProduct(${comment.product})">
+        <div class="card-body">
+          <div class="user-info mb-2">
+            <p>${comment.user}</p>
+            <span class="text-muted d-block">${comment.dateTime}</span>
+          </div>
+          <p class="comment">${comment.description}</p>
+          <p class="rating">${'<i class="fa-star estrella fas "></i>'.repeat(comment.score)}</p>
+          
+        </div>
+          
       </div>
     `;
   });
