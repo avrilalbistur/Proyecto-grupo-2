@@ -1,6 +1,9 @@
 let productInfo;
 let productID = localStorage.getItem('productID');
 const today = new Date();
+const Comments_Data="https://japceibal.github.io/emercado-api/products_comments/50741.json";
+let commentsList=[];
+let htmlProductComments = "";
 const comentarios = []; // Arreglo para almacenar los comentarios
 
 let showProductInfo = (product) => {
@@ -55,7 +58,8 @@ let loadProduct = (productId) => {
   localStorage.setItem('productID', productId);
   location.reload();
 };
-// Función para mostrar los comentarios
+
+// Función para mostrar los comentarios del usuario
 function mostrarComentarios() {
   const comentariosSection = document.getElementById('comentario-usuario');
   comentariosSection.innerHTML = ''; // Limpiar los comentarios anteriores
@@ -81,7 +85,26 @@ function mostrarComentarios() {
     comentariosSection.appendChild(comentarioDiv);
     });
 }
+// Función para mostrar los comentarios de los productos
+let showProductComments = (productsComments) => {
+  htmlProductComments = '<h3 class="title">Otros comentarios:</h3><div class="products-comments">';
+ 
+  productsComments.forEach(comment => {
+    htmlProductComments += `
+      <div class="products-comments" onclick="loadProduct(${comment.product})">
+        <p>${comment.user}</p>
+        <p>${comment.dateTime}</p>
+        <p>${'<i class="fa-star estrella fas seleccionada" data-valor="1"></i>'.repeat(comment.score)}</p>
+        <p>${comment.description}</p>
+      </div>
+    `;
+  });
+ 
+  htmlProductComments += '</div>';
+  document.getElementById('comments-products-container').innerHTML = htmlProductComments;
+};
 
+// EVENTO DEL DOCUMENTO//////////////////////////////////////////////////////////////////////////////////////////
 document.addEventListener('DOMContentLoaded', (e) => {
   if (productID) {
     getJSONData(PRODUCT_INFO_URL + productID + EXT_TYPE)
@@ -98,15 +121,16 @@ document.addEventListener('DOMContentLoaded', (e) => {
   } else {
     console.error('No product ID found in localStorage');
   }
-});
-
-
-// sección de comentarios
-
-document.addEventListener('DOMContentLoaded', function() {
-  var username = localStorage.getItem('usuario');
+  // Traer los comentarios de los productos
+  getJSONData(Comments_Data)
+    .then(object=>{
+      commentsList=object.data;
+      showProductComments(commentsList);
+    });
+  //  Establecer el nombre del usuario
+  let username = localStorage.getItem('usuario');
   if (username) {
-      document.getElementById('comment-username').textContent = username;
+    document.getElementById('comment-username').textContent = username;
   };
 
 
@@ -162,7 +186,7 @@ document.addEventListener('DOMContentLoaded', function() {
       comentarios.push(nuevoComentario); // Añadimos el comentario al arreglo
       mostrarComentarios(); // Actualizamos la visualización de comentarios
       // Actualizar la variable estrellas
-    const estrellas = document.querySelectorAll('.estrella');
+      const estrellas = document.querySelectorAll('.estrella');
     
     // Limpiar la selección de estrellas
     estrellas.forEach(e => e.classList.remove('seleccionada'));
