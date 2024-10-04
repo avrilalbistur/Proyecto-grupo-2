@@ -4,7 +4,7 @@ const today = new Date();
 const Comments_Data="https://japceibal.github.io/emercado-api/products_comments/50741.json";
 let commentsList=[];
 let htmlProductComments = "";
-const comentarios = []; // Arreglo para almacenar los comentarios
+const comentarios = []; // Arreglo para almacenar los comentarios del usuario
 
 let showProductInfo = (product) => {
   // Crear la galería de imágenes dinámicamente
@@ -60,7 +60,7 @@ let loadProduct = (productId) => {
 };
 
 // Función para mostrar los comentarios del usuario
-function mostrarComentarios() {
+function showUserComment() {
   const comentariosSection = document.getElementById('comentario-usuario');
   comentariosSection.innerHTML = ''; // Limpiar los comentarios anteriores
 
@@ -94,7 +94,7 @@ let showProductComments = (productsComments) => {
       <div class="products-comments" onclick="loadProduct(${comment.product})">
         <p>${comment.user}</p>
         <p>${comment.dateTime}</p>
-        <p>${'<i class="fa-star estrella fas seleccionada" data-valor="1"></i>'.repeat(comment.score)}</p>
+        <p>${'<i class="fa-star estrella fas" data-valor="1"></i>'.repeat(comment.score)}</p>
         <p>${comment.description}</p>
       </div>
     `;
@@ -184,7 +184,7 @@ document.addEventListener('DOMContentLoaded', (e) => {
       nuevoComentario.calificacion = estrellasSeleccionadas.length; // Asignar la calificación directamente al objeto comentario
       
       comentarios.push(nuevoComentario); // Añadimos el comentario al arreglo
-      mostrarComentarios(); // Actualizamos la visualización de comentarios
+      showUserComment(); // Actualizamos la visualización de comentarios
       // Actualizar la variable estrellas
       const estrellas = document.querySelectorAll('.estrella');
     
