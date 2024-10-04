@@ -55,7 +55,30 @@ let loadProduct = (productId) => {
   localStorage.setItem('productID', productId);
   location.reload();
 };
+// Función para mostrar los comentarios
+function mostrarComentarios() {
+  const comentariosSection = document.getElementById('comentario-usuario');
+  comentariosSection.innerHTML = ''; // Limpiar los comentarios anteriores
 
+  comentarios.forEach(comentario => {
+    const comentarioDiv = document.createElement('div');
+    comentarioDiv.classList.add('comentario');
+
+    // Creamos el contenido del comentario con todos los datos solicitados
+    comentarioDiv.innerHTML = `
+      <div class="comentario-header">
+        <strong>${comentario.usuario}</strong> - ${comentario.fecha} - 
+        <div class="star-rating">
+          ${'<i class="fa-star estrella fas seleccionada" data-valor="1"></i>'.repeat(comentario.calificacion)}${'<i class="far fa-star estrella" data-valor="1"></i>'.repeat(5 - comentario.calificacion)}
+        </div>
+      </div>
+      <h5>${comentario.titulo}</h5>
+      <p>${comentario.comentario}</p>
+    `;
+    
+    comentariosSection.appendChild(comentarioDiv);
+  });
+}
 
 document.addEventListener('DOMContentLoaded', (e) => {
   if (productID) {
@@ -95,22 +118,22 @@ document.addEventListener('DOMContentLoaded', function() {
 
   // Seleccionamos todas las estrellas
   const estrellas = document.querySelectorAll('.estrella');
-  console.log(estrellas);
   
   // Añadimos un evento de clic a cada estrella
   estrellas.forEach(estrella => {
     estrella.addEventListener('click', function() {
       const valor = this.getAttribute('data-valor');
-      console.log(valor);
       
       // Recorrer todas las estrellas y marcar/desmarcar según el valor
       estrellas.forEach(e => {
         if (e.getAttribute('data-valor') <= valor) {
           e.classList.remove('far'); // quitar clase antigua
           e.classList.add('fas')// Agregar clase para colorear
+          e.classList.add('seleccionada')
         } else {
           e.classList.remove('fas'); // Quitar clase
           e.classList.add('far'); // Agregar clase antigua
+          e.classList.remove('seleccionada')
         }
       });
     });
@@ -118,9 +141,11 @@ document.addEventListener('DOMContentLoaded', function() {
 
   // Manejo del envío del formulario de comentarios
   document.getElementById('boton-enviar').addEventListener('click', function() {
-    const tituloComentario = document.getElementById('titulo-comentarios').value;
+    const tituloComentario = document.getElementById('Titulo-comentarios').value;
     const comentarioTexto = document.getElementById('campo-comentarios').value;
-    const estrellasSeleccionadas = document.querySelectorAll('.estrella.seleccionada');
+    const estrellasSeleccionadas = document.querySelectorAll('.seleccionada');
+    console.log(estrellasSeleccionadas);
+    
     const usuario = localStorage.getItem('usuario'); // Obtener el nombre del usuario
 
     if (tituloComentario && comentarioTexto && estrellasSeleccionadas.length > 0 && usuario) {
@@ -139,9 +164,8 @@ document.addEventListener('DOMContentLoaded', function() {
       
       comentarios.push(nuevoComentario); // Añadimos el comentario al arreglo
       mostrarComentarios(); // Actualizamos la visualización de comentarios
-
       // Limpiamos los campos de entrada
-      document.getElementById('Título-comentarios').value = '';
+      document.getElementById('Titulo-comentarios').value = '';
       document.getElementById('campo-comentarios').value = '';
       estrellas.forEach(e => e.classList.remove('seleccionada')); // Reiniciar la selección de estrellas
     } else {

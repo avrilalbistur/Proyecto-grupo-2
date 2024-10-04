@@ -751,3 +751,10 @@ color: gold;
   display: block;
   margin: 10% auto;
  }
+/* Estilo base para las estrellas */
+.estrella {
+  cursor: pointer;
+  font-size: 24px; /* Tamaño de la estrella */
+  color: yellow; /* Color por defecto */
+}
+
