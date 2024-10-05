@@ -1,7 +1,6 @@
 let productInfo;
 let productID = localStorage.getItem('productID');
 const today = new Date();
-const Comments_Data="https://japceibal.github.io/emercado-api/products_comments/50741.json";
 let commentsList=[];
 let htmlProductComments = "";
 const comentarios = []; // Arreglo para almacenar los comentarios del usuario
@@ -132,7 +131,7 @@ document.addEventListener('DOMContentLoaded', (e) => {
     console.error('No product ID found in localStorage');
   }
   // Traer los comentarios de los productos
-  getJSONData(Comments_Data)
+  getJSONData(PRODUCT_INFO_COMMENTS_URL + productID + EXT_TYPE)
     .then(object=>{
       commentsList=object.data;
       showProductComments(commentsList);
