@@ -903,7 +903,7 @@ h1 {
   margin: 0 5px; 
 }
 
-/* Efecto hover */
+/* Efecto hover de los botones */
 .custom-file-upload:hover,
 .remove-file-upload:hover {
   background-color: #F1BD96; 
