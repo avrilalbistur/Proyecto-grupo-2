@@ -51,13 +51,26 @@
       </div>
     </div>
   </nav>
-  <main>
-    <div class="container">
-      <div class="alert alert-danger text-center" role="alert">
-        <h4 class="alert-heading">Funcionalidad en desarrollo</h4>
-      </div>
+
+  <div class="profile-container">
+    <h1>Mi perfil</h1>
+    <!-- Contenedor con la imagen y la información -->
+    <div class="profile-header">
+      <!-- Imagen de perfil -->
+      <div class="profile-picture">
+        <!-- La imagen de perfil se mostrará aquí después de subirla -->
+        <img id="profileImage" alt="Profile Image" style="display: none;">
     </div>
-  </main>
+</div>
+
+    <!-- Botones para cambiar la imagen o eliminarla -->
+    <input type="file" id="imageUpload" accept="image/*">
+    <div class="button-container">
+    <label for="imageUpload" class="custom-file-upload">Seleccione una imagen</label>
+    <button id="removeImageButton" class="remove-file-upload">Elimine la imagen</button>
+</div>
+  </div>
+
   <footer class="text-muted">
     <div class="container">
       <p class="float-end">

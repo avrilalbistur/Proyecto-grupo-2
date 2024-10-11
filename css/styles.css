@@ -841,3 +841,57 @@ color: gold;
 .shadow-lg {
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
 } 
+/*Foto de perfil*/
+.profile-container {
+  text-align: center;
+  margin: 50px auto;
+  width: 300px;
+}
+
+.profile-picture {
+  margin-bottom: 20px;
+}
+
+.profile-picture img {
+  width: 150px;
+  height: 150px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 3px solid #f9a383;
+  margin: 0 auto;
+}
+
+/* Ocultar el input file original */
+#imageUpload {
+  display: none;
+}
+
+/* Estilos para el contenedor de botones */
+.button-container {
+  display: flex; 
+  justify-content: center; 
+  margin-top: 10px; 
+}
+
+/* Estilos para el botón personalizado */
+.custom-file-upload,
+.remove-file-upload {
+  display: inline-block;
+  padding: 10px;
+  background-color: #f9a383; 
+  color: #000000;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 16px;
+  box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2);
+  transition: background-color 0.3s ease;
+  width: 120px; 
+  margin: 0 5px; 
+}
+
+/* Efecto hover */
+.custom-file-upload:hover,
+.remove-file-upload:hover {
+  background-color: #F1BD96; 
+}
