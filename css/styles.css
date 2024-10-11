@@ -841,6 +841,7 @@ color: gold;
 .shadow-lg {
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
 } 
+
 /*Foto de perfil*/
 .profile-container {
   text-align: center;
@@ -850,15 +851,27 @@ color: gold;
 
 .profile-picture {
   margin-bottom: 20px;
+  margin-top: 20px; 
 }
 
+/* Estilos para el texto "Mi perfil" */
+h1 {
+  text-align: center;
+  margin-bottom: 30px;
+  font-size: 30
+  px; 
+  color: #000000; 
+  margin-left: -5px;
+}
 .profile-picture img {
   width: 150px;
   height: 150px;
   border-radius: 50%;
   object-fit: cover;
   border: 3px solid #f9a383;
+  display: block;
   margin: 0 auto;
+  margin-top: 40px; 
 }
 
 /* Ocultar el input file original */
@@ -870,7 +883,8 @@ color: gold;
 .button-container {
   display: flex; 
   justify-content: center; 
-  margin-top: 10px; 
+  margin-top: 40px; 
+  align-items: center; 
 }
 
 /* Estilos para el botón personalizado */
