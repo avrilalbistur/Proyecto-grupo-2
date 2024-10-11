@@ -886,7 +886,7 @@ h1 {
   align-items: center; 
 }
 
-/* Estilos para el botón personalizado */
+/* Estilos para los botones de agregar e eliminar foto */
 .custom-file-upload,
 .remove-file-upload {
   display: inline-block;
@@ -903,7 +903,7 @@ h1 {
   margin: 0 5px; 
 }
 
-/* Efecto hover */
+/* Efecto hover de los botones */
 .custom-file-upload:hover,
 .remove-file-upload:hover {
   background-color: #F1BD96; 
