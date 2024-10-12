@@ -52,9 +52,17 @@
       </div>
     </div>
   </nav>
+  <div class="profile-container">
+    <h1>Mi perfil</h1>
+    <!-- Contenedor con la imagen y la información -->
+    <div class="profile-header">
+      <!-- Imagen de perfil -->
+      <div class="profile-picture">
+        <!-- La imagen de perfil se mostrará aquí después de subirla -->
+        <img id="profileImage" alt="Profile Image" style="display: none;">
   <main>
+    
     <div class="container">
-      <!-- FORMULARIO  -->
       <form action="" class="needs-validation row" id="needs-validation" novalidate>
         <div class="required_fields col-6">
           <label for="name" class="form-label">Nombre*</label>
@@ -95,10 +103,17 @@
           </div>
         </div>
       </form>
-
-
     </div>
-  </main>
+</div>
+
+    <!-- Botones para cambiar la imagen o eliminarla -->
+    <input type="file" id="imageUpload" accept="image/*">
+    <div class="button-container">
+    <label for="imageUpload" class="custom-file-upload">Seleccione una imagen</label>
+    <button id="removeImageButton" class="remove-file-upload">Elimine la imagen</button>
+</div>
+  </div>
+
   <footer class="text-muted">
     <div class="container">
       <p class="float-end">

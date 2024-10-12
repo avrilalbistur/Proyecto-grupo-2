@@ -192,7 +192,7 @@ a.custom-card:hover {
   color: orange;
 }
 
- /diseño de login/
+ /*diseño de login*/
 #login {
   display: flex;
   justify-content: center;
@@ -258,7 +258,7 @@ border: 2px solid #6C1C04;
     background-size: cover;
   }
 
-/diseño products/
+/*diseño products*/
 h1{
   margin-left: 100px;
   margin-top: 50px;
@@ -351,7 +351,7 @@ hr{
     display: none;
   }
 
-/para pantallas grandes/
+/*para pantallas grandes*/
   @media (min-width: 1366px) {
     #login {
       width: 60%;
@@ -387,7 +387,7 @@ hr{
     }
   }
 
-  /para smartphones pequeños/
+  /*para smartphones pequeños*/
   @media (max-width: 568px) and (min-width: 320px){
     #login {
       width: 95%;
@@ -841,3 +841,70 @@ color: gold;
 .shadow-lg {
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
 } 
+
+/*Foto de perfil*/
+.profile-container {
+  text-align: center;
+  margin: 50px auto;
+  width: 300px;
+}
+
+.profile-picture {
+  margin-bottom: 20px;
+  margin-top: 20px; 
+}
+
+/* Estilos para el texto "Mi perfil" */
+h1 {
+  text-align: center;
+  margin-bottom: 30px;
+  font-size: 30px; 
+  color: #000000; 
+  margin-left: -5px;
+}
+.profile-picture img {
+  width: 150px;
+  height: 150px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 3px solid #f9a383;
+  display: block;
+  margin: 0 auto;
+  margin-top: 40px; 
+}
+
+/* Ocultar el input file original */
+#imageUpload {
+  display: none;
+}
+
+/* Estilos para el contenedor de botones */
+.button-container {
+  display: flex; 
+  justify-content: center; 
+  margin-top: 40px; 
+  align-items: center; 
+}
+
+/* Estilos para los botones de agregar e eliminar foto */
+.custom-file-upload,
+.remove-file-upload {
+  display: inline-block;
+  padding: 10px;
+  background-color: #f9a383; 
+  color: #000000;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 16px;
+  box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2);
+  transition: background-color 0.3s ease;
+  width: 120px; 
+  margin: 0 5px; 
+}
+
+/* Efecto hover de los botones */
+.custom-file-upload:hover,
+.remove-file-upload:hover {
+  background-color: #F1BD96; 
+}
