@@ -1,13 +1,25 @@
 // Funcion para validar los campos obligatorios
+
 let form = document.getElementById('needs-validation');
 form.addEventListener('submit', e =>{
     if(!form.checkValidity()){
         e.preventDefault();
         e.stopPropagation();
+        form.classList.add('was-validated')
     }else{
         form.classList.add('was-validated')
+        let userData = {
+            nombre: document.getElementById('name').value,
+            apellido: document.getElementById('lastName').value,
+            email: document.getElementById('userEmail').value,
+            segundoNombre: document.getElementById('userMiddleName').value || '',
+            segundoApellido: document.getElementById('userSecondLastName').value || '',
+            telefonoDeContacto: document.getElementById('userPhoneNumber').value || ''
+        }
+        localStorage.setItem('userData', JSON.stringify(userData));
     }
 },false )
+
 
 document.addEventListener("DOMContentLoaded", function () {
     const profileImage = document.getElementById("profileImage");
