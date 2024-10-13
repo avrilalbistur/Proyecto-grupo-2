@@ -7,7 +7,7 @@ function validarFormulario() {
     }
     localStorage.setItem('usuario', username);
     return true;
-}
+}     
 
 
 let btn = document.getElementById('ingresar-button');
