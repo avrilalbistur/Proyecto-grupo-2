@@ -908,3 +908,27 @@ h1 {
 .remove-file-upload:hover {
   background-color: #F1BD96; 
 }
+
+/* Campos para rellenar la información del usuario */
+
+.profile-info {
+  display: flex;
+  margin: 10%;
+  justify-content: center;
+  gap: 10rem;
+}
+
+
+.form-group {
+  display: flex;
+  margin-bottom: 2rem;
+  align-items: center;
+}
+.form-group label {
+ margin-right: 1rem;
+ width: 20rem;
+}
+
+#boton-cambios{
+  align-items: center;
+}

@@ -58,3 +58,13 @@ document.addEventListener("DOMContentLoaded", function () {
         imageUpload.value = ''; // Limpiar el input de archivo
     });
 });
+
+
+// Mostrar el email en my profile desde la primera vez que se loguea
+document.addEventListener('DOMContentLoaded', function(){
+    const email = localStorage.getItem("usuario");
+    const emailInput = document.getElementById("email");
+    if (email) {
+        emailInput.value = email
+    }
+}) 
