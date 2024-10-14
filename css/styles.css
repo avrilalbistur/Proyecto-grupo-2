@@ -321,12 +321,14 @@ hr{
     font-weight: bold;
     margin-bottom: 1px;
     padding: 0px 10px;
+    color: #000000;
   }
 
   .product .description{
     margin-bottom: 1px;
     font-size: 12px;
     padding: 0px 10px;
+    color: #000000;
   }
 
   .product .price{

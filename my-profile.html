@@ -52,6 +52,7 @@
       </div>
     </div>
   </nav>
+  
   <div class="profile-container">
     <h1>Mi perfil</h1>
     <!-- Contenedor con la imagen y la información -->
@@ -61,8 +62,14 @@
         <!-- La imagen de perfil se mostrará aquí después de subirla -->
         <img id="profileImage" alt="Profile Image" style="display: none;">
       </div>
+      <div class="button-container">
+        <label for="imageUpload" class="custom-file-upload">Agregar foto</label>
+        <button id="removeImageButton" class="remove-file-upload" style="display: none;">Eliminar foto</button>
+      </div>
+      <input id="imageUpload" type="file" accept="image/*" style="display: none;">
     </div>
-  </div>
+</div>
+
   <main>
     <div class="container col-12">
       <form action="" class="needs-validation row" id="needs-validation" novalidate>
