@@ -936,63 +936,63 @@ h1 {
 }
 
 body {
-  background-color: #F1BD96; /* Color claro */
-  color: black; /* Texto en negro */
+  background-color: #F1BD96; 
+  color: black; 
   transition: background-color 0.3s;
 }
 
 .navbar {
-  background-color: #343a40; /* Fondo oscuro para la navbar */
+  background-color: #343a40; 
   padding: 10px;
 }
 /* Estilo base para el botón */
 .btn {
-  color: #0a0a0a; /* Color inicial del texto */
-  background-color: rgb(255, 254, 254); /* Fondo del botón */
+  color: #0a0a0a; 
+  background-color: rgb(255, 254, 254); 
   padding: 10px; /* Espaciado interno */
-  cursor: pointer; /* Cambia el cursor al pasar el mouse */
+  cursor: pointer; 
 }
 
 /* Cambiar el color al pasar el mouse */
 .btn:hover {
-  color: #F1BD96; /* Cambia el color del texto al azul */
-  background-color: gray; /* Puedes también cambiar el fondo si quieres */
+  color: #F1BD96; 
+  background-color: gray; 
 }
 
 #toggle-theme-btn {
-  background-color: transparent; /* Fondo claro para que se vea */
+  background-color: transparent; 
   color: white; 
-  padding: 10px; /* Espaciado interno */
-  cursor: pointer; /* Cambia el cursor al pasar por encima */
+  padding: 10px;
+  cursor: pointer; 
   margin-left: 30px; 
-  margin-left: auto; /* Lo coloca al final de la barra de navegación */
+  margin-left: auto; 
   font-size: 24px;
 }
 
 #toggle-mode:hover {
-  background-color: transparent; /* Fondo transparente */
-  border: none; /* Sin borde */
-  color: #fff; /* Color del ícono */
-  font-size: 24px; /* Tamaño del ícono */
-  cursor: pointer; /* Cambia el cursor al pasar el mouse */
+  background-color: transparent; 
+  border: none;
+  color: #fff; 
+  font-size: 24px;
+  cursor: pointer; 
 }
 
 #toggle-mode:hover {
-  color: #ffc107; /* Color del ícono al pasar el mouse */
+  color: #ffc107; 
 }
 
 body.dark-mode {
-  background-color: #121212; /* Color de fondo oscuro */
-  color: #ffffff; /* Color de texto claro */
+  background-color: #121212; 
+  color: #ffffff; 
 }
 
 .navbar.dark-mode {
-  background-color: #1f1f1f; /* Color de fondo oscuro para la barra de navegación */
+  background-color: #1f1f1f; 
 }
 
 .product-container.dark-mode {
-  background-color: #1f1f1f; /* Color de fondo oscuro para la sección de productos */
-  color: white; /* color de texto */
+  background-color: #1f1f1f; 
+  color: white;
 }
 
 
