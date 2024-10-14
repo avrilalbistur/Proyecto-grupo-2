@@ -56,3 +56,30 @@ document.addEventListener('DOMContentLoaded', function() {
       document.getElementById('navbar-username').textContent = 'Iniciar sesión';
   }
 });
+document.addEventListener('DOMContentLoaded', () => {
+  const body = document.body;
+  const toggleThemeBtn = document.getElementById('toggle-theme-btn');
+  
+  // Comprobar el tema guardado en localStorage
+  if (localStorage.getItem('darkMode') === 'true') {
+    body.classList.add('dark-mode');
+  }
+
+  // Solo agregar el listener si el botón existe
+  if (toggleThemeBtn) {
+    toggleThemeBtn.addEventListener('click', () => {
+      body.classList.toggle('dark-mode');
+      const isDarkMode = body.classList.contains('dark-mode');
+      
+      // Guardar la preferencia en localStorage
+      localStorage.setItem('darkMode', isDarkMode);
+      
+      // Cambiar el icono de luna
+      const moonIcon = document.querySelector('.moon-icon');
+      if (moonIcon) {
+        moonIcon.innerHTML = isDarkMode ? '&#9728;' : '&#9790;'; // Cambiar entre luna y sol
+      }
+    });
+  }
+});
+
