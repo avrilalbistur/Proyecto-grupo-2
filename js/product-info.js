@@ -208,3 +208,31 @@ document.addEventListener('DOMContentLoaded', (e) => {
   }
   });
 });
+
+// Declarar las variables necesarias
+const body = document.querySelector('body');
+const toggleButton = document.getElementById('toggle-theme-btn'); 
+
+// Este bloque se ejecuta al cargar la página
+document.addEventListener('DOMContentLoaded', () => {
+  const theme = localStorage.getItem('theme');  // Leer el tema guardado
+
+  if (theme === 'oscuro') {
+    body.classList.add('modo-oscuro');
+  } else {
+    body.classList.add('modo-claro');
+  }
+});
+
+// Este bloque se ejecuta cuando el usuario hace clic en el botón
+toggleButton.addEventListener("click", () => {
+  if (body.classList.contains("modo-claro")) {
+    body.classList.remove("modo-claro");
+    body.classList.add("modo-oscuro");
+    localStorage.setItem('theme', 'oscuro'); // Guardar modo oscuro
+  } else {
+    body.classList.remove("modo-oscuro");
+    body.classList.add("modo-claro");
+    localStorage.setItem('theme', 'claro');  // Guardar modo claro
+  }
+});
