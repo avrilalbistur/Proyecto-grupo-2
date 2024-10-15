@@ -837,6 +837,11 @@ color: gold;
   .user-info {
     font-size: 1rem; /* Ajusta el tamaño de fuente */
   }
+
+  .buttons{
+    padding-right: 1% !important;
+    padding-left: 7.4% !important;
+  }
 }
 
 /* Sombras suaves para un mejor efecto visual */
@@ -995,5 +1000,7 @@ body.dark-mode {
   color: white;
 }
 
-
- 
+.buttons{
+  text-align: center;
+  justify-content: center;
+}
