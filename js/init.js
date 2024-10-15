@@ -47,15 +47,7 @@ function checkLogin(){
 }
 checkLogin();
 
-// script para mostrar el nombre de usuario
-document.addEventListener('DOMContentLoaded', function() {
-  var username = localStorage.getItem('usuario');
-  if (username) {
-      document.getElementById('navbar-username').textContent = username;
-  } else {
-      document.getElementById('navbar-username').textContent = 'Iniciar sesión';
-  }
-});
+
 document.addEventListener('DOMContentLoaded', () => {
   const body = document.body;
   const toggleThemeBtn = document.getElementById('toggle-theme-btn');
@@ -81,5 +73,14 @@ document.addEventListener('DOMContentLoaded', () => {
       }
     });
   }
-});
+  
 
+  // script para mostrar el nombre de usuario
+  var username = localStorage.getItem('usuario');
+  if (username) {
+      document.getElementById('navbar-username').textContent = username;
+  } else {
+      document.getElementById('navbar-username').textContent = 'Iniciar sesión';
+  }
+
+});
