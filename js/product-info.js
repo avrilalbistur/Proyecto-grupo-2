@@ -112,9 +112,8 @@ let showProductComments = (productsComments) => {
   htmlProductComments += '</div>';
   document.getElementById('comments-products-container').innerHTML = htmlProductComments;
 };
-
-// EVENTO DEL DOCUMENTO//////////////////////////////////////////////////////////////////////////////////////////
-document.addEventListener('DOMContentLoaded', (e) => {
+// Función para buscar la info de los productos 
+let fetchProductsInfo = () =>{
   if (productID) {
     getJSONData(PRODUCT_INFO_URL + productID + EXT_TYPE)
       .then(object => {
@@ -130,7 +129,10 @@ document.addEventListener('DOMContentLoaded', (e) => {
   } else {
     console.error('No product ID found in localStorage');
   }
-  // Traer los comentarios de los productos
+};
+
+// Función para traer los comentarios de los productos
+let fetchProductsInfoComments = () =>{
   getJSONData(PRODUCT_INFO_COMMENTS_URL + productID + EXT_TYPE)
     .then(object=>{
       commentsList=object.data;
@@ -141,15 +143,24 @@ document.addEventListener('DOMContentLoaded', (e) => {
   if (username) {
     document.getElementById('comment-username').textContent = username;
   };
+};
 
-
-  // Formatear la fecha (día, mes, año)
+//  Funcion para formatear fecha
+let setCurrentDate = () =>{
   const day = today.getDate();
   const month = today.getMonth() + 1; // Los meses empiezan desde 0
   const year = today.getFullYear();
+  return `${day}/${month}/${year}`
+}
+// EVENTO DEL DOCUMENTO//////////////////////////////////////////////////////////////////////////////////////////
+document.addEventListener('DOMContentLoaded', (e) => {
+  // Traer los comentarios de los productos
+  fetchProductsInfo();
+  // Traer los comentarios de los productos
+  fetchProductsInfoComments();
 
   // Mostrar la fecha en el elemento con id "current-date"
-  document.getElementById("current-date").textContent = `${day}/${month}/${year}`;
+  document.getElementById("current-date").textContent = setCurrentDate();
 
   // Seleccionamos todas las estrellas
   const estrellas = document.querySelectorAll('.estrella');
@@ -187,7 +198,7 @@ document.addEventListener('DOMContentLoaded', (e) => {
         usuario: usuario, // Añadir el nombre de usuario
         titulo: tituloComentario,
         comentario: comentarioTexto,
-        fecha: `${day}/${month}/${year}`, // Añadir la fecha al comentario
+        fecha: setCurrentDate(), // Añadir la fecha al comentario
       };
       
       nuevoComentario.calificacion = estrellasSeleccionadas.length; // Asignar la calificación directamente al objeto comentario
