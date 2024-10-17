@@ -32,6 +32,7 @@ document.addEventListener("DOMContentLoaded", function () {
   const profileImage = document.getElementById("profileImage");
   const imageUpload = document.getElementById("imageUpload");
   const removeImageButton = document.getElementById("removeImageButton");
+  mostrarEmail();
 
   // Cargar la imagen guardada en localStorage si existe
   const savedImage = localStorage.getItem("profileImage");
@@ -43,14 +44,14 @@ document.addEventListener("DOMContentLoaded", function () {
 
   // Cambiar la imagen de perfil cuando se selecciona un nuevo archivo
   imageUpload.addEventListener("change", function () {
-    const file = imageUpload.files[0]; // Obtener el archivo
+    const file = imageUpload.files[0]; 
     if (file) {
       const reader = new FileReader();
       reader.onload = function (e) {
-        profileImage.src = e.target.result; // Establecer la imagen cargada
-        profileImage.style.display = "block"; // Mostrar la imagen
+        profileImage.src = e.target.result; 
+        profileImage.style.display = "block"; 
         localStorage.setItem("profileImage", e.target.result); // Guardar en localStorage
-        removeImageButton.style.display = "block"; // Mostrar el botón de eliminar
+        removeImageButton.style.display = "block"; 
       };
       reader.readAsDataURL(file); // Leer el archivo como URL de datos
     }
@@ -58,22 +59,23 @@ document.addEventListener("DOMContentLoaded", function () {
 
   // Evento para eliminar la imagen
   removeImageButton.addEventListener("click", function () {
-    profileImage.src = ""; // Limpiar la fuente de la imagen
-    profileImage.style.display = "none"; // Ocultar la imagen
+    profileImage.src = ""; 
+    profileImage.style.display = "none"; 
     localStorage.removeItem("profileImage"); // Eliminar del localStorage
     removeImageButton.style.display = "none"; // Ocultar el botón de eliminar
-    imageUpload.value = ""; // Limpiar el input de archivo
+    imageUpload.value = ""; 
   });
 });
 
-// Mostrar el email en my profile desde la primera vez que se loguea
-document.addEventListener("DOMContentLoaded", function () {
+// Función para mostrar el email en my profile desde la primera vez que se loguea
+
+ function mostrarEmail() {
   const email = localStorage.getItem("usuario");
   const emailInput = document.getElementById("userEmail");
   if (email) {
     emailInput.value = email;
-  }
-
+ }
+  
   const userData = localStorage.getItem('userData');
   if (userData) {
     const {nombre,apellido,email,segundoNombre,segundoApellido,telefonoDeContacto} = JSON.parse(userData);
@@ -86,4 +88,4 @@ document.addEventListener("DOMContentLoaded", function () {
   }else(
     formValidation()
   )
-});
+ };
