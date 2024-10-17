@@ -47,6 +47,12 @@ function checkLogin(){
 }
 checkLogin();
 
+//borrar usuario al cerrar sesion
+function cerrarSesionMenu(){
+  localStorage.removeItem("usuario");
+  localStorage.removeItem("userData")
+  localStorage.getItem("profileImage") && localStorage.removeItem("profileImage");
+}
 
 document.addEventListener('DOMContentLoaded', () => {
   const body = document.body;
@@ -76,7 +82,7 @@ document.addEventListener('DOMContentLoaded', () => {
   
 
   // script para mostrar el nombre de usuario
-  var username = localStorage.getItem('usuario');
+  let username = localStorage.getItem('usuario');
   if (username) {
       document.getElementById('navbar-username').textContent = username;
   } else {
@@ -85,8 +91,4 @@ document.addEventListener('DOMContentLoaded', () => {
 
 });
 
-//borrar usuario al cerrar sesion
-function cerrarSesionMenu(){
-  localStorage.removeItem("usuario");
-  localStorage.removeItem("userData")
-}
+

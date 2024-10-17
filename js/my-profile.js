@@ -20,7 +20,7 @@ let formValidation = () => {
             document.getElementById("userSecondLastName").value || "",
           telefonoDeContacto:
             document.getElementById("userPhoneNumber").value || "",
-          imagenUsuario:localStorage.getItem("profileImage") ||""
+          imagenUsuario:localStorage.getItem("profileImage") || ""
         };
         localStorage.setItem("userData", JSON.stringify(userData));
       }
@@ -79,14 +79,17 @@ document.addEventListener("DOMContentLoaded", function () {
   
   const userData = localStorage.getItem('userData');
   if (userData) {
-    const {nombre,apellido,email,segundoNombre,segundoApellido,telefonoDeContacto} = JSON.parse(userData);
+    const {nombre,apellido,email,segundoNombre,segundoApellido,telefonoDeContacto,imagenUsuario} = JSON.parse(userData);
     document.getElementById("name").value = nombre;
     document.getElementById("lastName").value = apellido;
+    document.getElementById("userEmail").value = email;
     document.getElementById("userMiddleName").value = segundoNombre;
     document.getElementById("userSecondLastName").value = segundoApellido;
     document.getElementById("userPhoneNumber").value = telefonoDeContacto
-    formValidation()
-  }else(
-    formValidation()
-  )
+    imagenUsuario ? document.getElementById('profileImage').src = imagenUsuario : '';
+    formValidation();
+  }else{
+    formValidation();
+  }
  };
+
