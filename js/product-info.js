@@ -187,16 +187,14 @@ document.addEventListener('DOMContentLoaded', (e) => {
 
   // Manejo del envío del formulario de comentarios
   document.getElementById('boton-enviar').addEventListener('click', function() {
-    const tituloComentario = document.getElementById('Titulo-comentarios').value;
     const comentarioTexto = document.getElementById('campo-comentarios').value;
     const estrellasSeleccionadas = document.querySelectorAll('.seleccionada');
     
     const usuario = localStorage.getItem('usuario'); // Obtener el nombre del usuario
   
-    if (tituloComentario && comentarioTexto && estrellasSeleccionadas.length > 0 && usuario) {
+    if (comentarioTexto && estrellasSeleccionadas.length > 0 && usuario) {
       const nuevoComentario = {
         usuario: usuario, // Añadir el nombre de usuario
-        titulo: tituloComentario,
         comentario: comentarioTexto,
         fecha: setCurrentDate(), // Añadir la fecha al comentario
       };
@@ -212,7 +210,6 @@ document.addEventListener('DOMContentLoaded', (e) => {
     estrellas.forEach(e => e.classList.remove('seleccionada'));
     
     // Limpiar los campos de entrada
-    document.getElementById('Titulo-comentarios').value = '';
     document.getElementById('campo-comentarios').value = '';
   } else {
     alert("Por favor, completa todos los campos.");
