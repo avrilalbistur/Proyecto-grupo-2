@@ -84,3 +84,8 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
 });
+
+//borrar usuario al cerrar sesion
+function cerrarSesionMenu(){
+  localStorage.removeItem("usuario");
+}
