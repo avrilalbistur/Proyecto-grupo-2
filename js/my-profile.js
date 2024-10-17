@@ -32,6 +32,7 @@ document.addEventListener("DOMContentLoaded", function () {
   const profileImage = document.getElementById("profileImage");
   const imageUpload = document.getElementById("imageUpload");
   const removeImageButton = document.getElementById("removeImageButton");
+  mostrarEmail();
 
   // Cargar la imagen guardada en localStorage si existe
   const savedImage = localStorage.getItem("profileImage");
@@ -66,14 +67,15 @@ document.addEventListener("DOMContentLoaded", function () {
   });
 });
 
-// Mostrar el email en my profile desde la primera vez que se loguea
-document.addEventListener("DOMContentLoaded", function () {
+// Función para mostrar el email en my profile desde la primera vez que se loguea
+
+ function mostrarEmail() {
   const email = localStorage.getItem("usuario");
   const emailInput = document.getElementById("userEmail");
   if (email) {
     emailInput.value = email;
-  }
-
+ }
+  
   const userData = localStorage.getItem('userData');
   if (userData) {
     const {nombre,apellido,email,segundoNombre,segundoApellido,telefonoDeContacto} = JSON.parse(userData);
@@ -86,4 +88,4 @@ document.addEventListener("DOMContentLoaded", function () {
   }else(
     formValidation()
   )
-});
+ };
