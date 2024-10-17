@@ -20,6 +20,7 @@ let formValidation = () => {
             document.getElementById("userSecondLastName").value || "",
           telefonoDeContacto:
             document.getElementById("userPhoneNumber").value || "",
+          imagenUsuario:localStorage.getItem("profileImage") ||""
         };
         localStorage.setItem("userData", JSON.stringify(userData));
       }
