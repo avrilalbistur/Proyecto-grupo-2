@@ -971,7 +971,6 @@ body {
   cursor: pointer; 
   margin-left: 30px; 
   margin-left: auto; 
-  font-size: 24px;
 }
 
 #toggle-mode:hover {
@@ -1003,4 +1002,8 @@ body.dark-mode {
 .buttons{
   text-align: center;
   justify-content: center;
+}
+
+.btn-light{
+  font-size: 15px;
 }

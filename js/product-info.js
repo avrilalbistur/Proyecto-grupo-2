@@ -247,3 +247,4 @@ toggleButton.addEventListener("click", () => {
     localStorage.setItem('theme', 'claro');  // Guardar modo claro
   }
 });
+
