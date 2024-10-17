@@ -29,6 +29,33 @@ let formValidation = () => {
   );
 };
 
+// Función para mostrar el email en my profile desde la primera vez que se loguea
+
+function mostrarEmail() {
+  const email = localStorage.getItem("usuario");
+  const emailInput = document.getElementById("userEmail");
+  if (email) {
+    emailInput.value = email;
+ }
+  
+  const userData = localStorage.getItem('userData');
+  if (userData) {
+    const {nombre,apellido,email,segundoNombre,segundoApellido,telefonoDeContacto,imagenUsuario} = JSON.parse(userData);
+    document.getElementById("name").value = nombre;
+    document.getElementById("lastName").value = apellido;
+    document.getElementById("userEmail").value = email;
+    document.getElementById("userMiddleName").value = segundoNombre;
+    document.getElementById("userSecondLastName").value = segundoApellido;
+    document.getElementById("userPhoneNumber").value = telefonoDeContacto
+    imagenUsuario ? document.getElementById('profileImage').src = imagenUsuario : '';
+    formValidation();
+  }else{
+    formValidation();
+  }
+ };
+
+// EVENTO DEL DOCUMENTO
+
 document.addEventListener("DOMContentLoaded", function () {
   const profileImage = document.getElementById("profileImage");
   const imageUpload = document.getElementById("imageUpload");
@@ -68,28 +95,4 @@ document.addEventListener("DOMContentLoaded", function () {
   });
 });
 
-// Función para mostrar el email en my profile desde la primera vez que se loguea
-
- function mostrarEmail() {
-  const email = localStorage.getItem("usuario");
-  const emailInput = document.getElementById("userEmail");
-  if (email) {
-    emailInput.value = email;
- }
-  
-  const userData = localStorage.getItem('userData');
-  if (userData) {
-    const {nombre,apellido,email,segundoNombre,segundoApellido,telefonoDeContacto,imagenUsuario} = JSON.parse(userData);
-    document.getElementById("name").value = nombre;
-    document.getElementById("lastName").value = apellido;
-    document.getElementById("userEmail").value = email;
-    document.getElementById("userMiddleName").value = segundoNombre;
-    document.getElementById("userSecondLastName").value = segundoApellido;
-    document.getElementById("userPhoneNumber").value = telefonoDeContacto
-    imagenUsuario ? document.getElementById('profileImage').src = imagenUsuario : '';
-    formValidation();
-  }else{
-    formValidation();
-  }
- };
 
