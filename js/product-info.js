@@ -30,6 +30,7 @@ let showProductInfo = (product) => {
         <h2 class="product-title" id="product-title">${product.name}</h2>
         <p class="product-description" id="product-description">${product.description}</p>
         <p class="product-price" id="product-price">$${product.cost}</p>
+        <button class="btn bg-dark text-light" onclick="agregarAlCarrito()">Agregar al carrito</button> 
       </div>
     </div>
   `;
@@ -173,7 +174,7 @@ let setCurrentDate = () => {
 };
 // EVENTO DEL DOCUMENTO//////////////////////////////////////////////////////////////////////////////////////////
 document.addEventListener("DOMContentLoaded", (e) => {
-  // Traer los comentarios de los productos
+  // Traer la info de los productos
   fetchProductsInfo();
   // Traer los comentarios de los productos
   fetchProductsInfoComments();
@@ -259,3 +260,20 @@ document.addEventListener("DOMContentLoaded", (e) => {
     }
   });
 });
+
+
+//función que se ejecuta al dar click en el botón "agregar al carrito"
+function agregarAlCarrito() {
+  console.log(productInfo) 
+  let productoAgregado = { 
+                          nombre: productInfo.name,
+                          costo: productInfo.cost,
+                          moneda: productInfo.currency,
+                          cantidad: 1,
+                          imagen: productInfo.images[0]
+    };
+    productoAgregado.subtotal = productoAgregado.costo * productoAgregado.cantidad;
+   localStorage.setItem("productoAgregado", JSON.stringify(productoAgregado));
+window.location.href = "cart.html";
+
+}
