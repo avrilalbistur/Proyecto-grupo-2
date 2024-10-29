@@ -1,17 +1,20 @@
 let btn = document.getElementById('ingresar-button');
 
 function validarFormulario() {
-    let username = document.getElementById("username").value;
-    let password = document.getElementById("password").value;
+  let username = document.getElementById("username").value;
+  let password = document.getElementById("password").value;
 
-    if (username.trim() === "" || password.trim() === "") {
-        return false;
-    }
-    localStorage.setItem('usuario', username);
-    return true;
-}     
+  if (username.trim() === "" || password.trim() === "") {
+    return false;
+  }
+  localStorage.setItem("usuario", username);
+  return true;
+}
+
+let btn = document.getElementById("ingresar-button");
 
 
+<<<<<<< Updated upstream
 let validateUserExistance = () =>{
     let lastUserData = localStorage.getItem("userData") || "";
     if (lastUserData){
@@ -41,3 +44,14 @@ document.addEventListener("DOMContentLoaded", () =>{
     
 })
 
+=======
+
+btn.addEventListener("click", () => {
+  let validacionOk = validarFormulario();
+  if (!validacionOk) {
+    alert("Los campos no pueden quedar vacíos.");
+  } else {
+    window.location.href = "index.html";
+  }
+});
+>>>>>>> Stashed changes
