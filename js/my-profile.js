@@ -31,22 +31,8 @@ let formValidation = () => {
 
 // Función para mostrar el email en my profile desde la primera vez que se loguea
 
-<<<<<<< Updated upstream
-function mostrarEmail() {
-  const email = localStorage.getItem("usuario");
-  const emailInput = document.getElementById("userEmail");
-  if (email) {
-    emailInput.value = email;
-  }
-}
-//FUNCION PARA RELLENAR LOS CAMPOS DEL FORMULARIO CON DATOS DEL USUARIO, EN CASO DE EXISTIR
-
-let uploadUserData = () => {
-  const userData = localStorage.getItem("userData");
-=======
 let uploadUserData = () =>{
   const userData = localStorage.getItem('userData');
->>>>>>> Stashed changes
   if (userData) {
     const {nombre,apellido,email,segundoNombre,segundoApellido,telefonoDeContacto,imagenUsuario,} = JSON.parse(userData);
     document.getElementById("name").value = nombre;
@@ -60,10 +46,7 @@ let uploadUserData = () =>{
   } else {
     formValidation();
   }
-<<<<<<< Updated upstream
 };
-=======
-}
 
 function mostrarEmail() {
   const email = localStorage.getItem("usuario");
@@ -71,8 +54,7 @@ function mostrarEmail() {
   if (email) {
     emailInput.value = email;
  }
- };
->>>>>>> Stashed changes
+};
 
 // EVENTO DEL DOCUMENTO------------------------------------------------------------------------------------------
 
