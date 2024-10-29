@@ -50,7 +50,6 @@ checkLogin();
 //borrar usuario al cerrar sesion
 function cerrarSesionMenu(){
   localStorage.removeItem("usuario");
-  localStorage.removeItem("userData")
   localStorage.getItem("profileImage") && localStorage.removeItem("profileImage");
 }
 

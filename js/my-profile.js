@@ -20,7 +20,7 @@ let formValidation = () => {
             document.getElementById("userSecondLastName").value || "",
           telefonoDeContacto:
             document.getElementById("userPhoneNumber").value || "",
-          imagenUsuario:localStorage.getItem("profileImage") || ""
+          imagenUsuario: localStorage.getItem("profileImage") || "",
         };
         localStorage.setItem("userData", JSON.stringify(userData));
       }
@@ -36,23 +36,26 @@ function mostrarEmail() {
   const emailInput = document.getElementById("userEmail");
   if (email) {
     emailInput.value = email;
- }
-  
-  const userData = localStorage.getItem('userData');
+  }
+}
+//FUNCION PARA RELLENAR LOS CAMPOS DEL FORMULARIO CON DATOS DEL USUARIO, EN CASO DE EXISTIR
+
+let uploadUserData = () => {
+  const userData = localStorage.getItem("userData");
   if (userData) {
-    const {nombre,apellido,email,segundoNombre,segundoApellido,telefonoDeContacto,imagenUsuario} = JSON.parse(userData);
+    const {nombre,apellido,email,segundoNombre,segundoApellido,telefonoDeContacto,imagenUsuario,} = JSON.parse(userData);
     document.getElementById("name").value = nombre;
     document.getElementById("lastName").value = apellido;
     document.getElementById("userEmail").value = email;
     document.getElementById("userMiddleName").value = segundoNombre;
     document.getElementById("userSecondLastName").value = segundoApellido;
-    document.getElementById("userPhoneNumber").value = telefonoDeContacto
-    imagenUsuario ? document.getElementById('profileImage').src = imagenUsuario : '';
+    document.getElementById("userPhoneNumber").value = telefonoDeContacto;
+    imagenUsuario ? (document.getElementById("profileImage").src = imagenUsuario): "";
     formValidation();
-  }else{
+  } else {
     formValidation();
   }
- };
+};
 
 // EVENTO DEL DOCUMENTO
 
@@ -61,6 +64,7 @@ document.addEventListener("DOMContentLoaded", function () {
   const imageUpload = document.getElementById("imageUpload");
   const removeImageButton = document.getElementById("removeImageButton");
   mostrarEmail();
+  uploadUserData();
 
   // Cargar la imagen guardada en localStorage si existe
   const savedImage = localStorage.getItem("profileImage");
@@ -72,14 +76,14 @@ document.addEventListener("DOMContentLoaded", function () {
 
   // Cambiar la imagen de perfil cuando se selecciona un nuevo archivo
   imageUpload.addEventListener("change", function () {
-    const file = imageUpload.files[0]; 
+    const file = imageUpload.files[0];
     if (file) {
       const reader = new FileReader();
       reader.onload = function (e) {
-        profileImage.src = e.target.result; 
-        profileImage.style.display = "block"; 
+        profileImage.src = e.target.result;
+        profileImage.style.display = "block";
         localStorage.setItem("profileImage", e.target.result); // Guardar en localStorage
-        removeImageButton.style.display = "block"; 
+        removeImageButton.style.display = "block";
       };
       reader.readAsDataURL(file); // Leer el archivo como URL de datos
     }
@@ -87,12 +91,10 @@ document.addEventListener("DOMContentLoaded", function () {
 
   // Evento para eliminar la imagen
   removeImageButton.addEventListener("click", function () {
-    profileImage.src = ""; 
-    profileImage.style.display = "none"; 
+    profileImage.src = "";
+    profileImage.style.display = "none";
     localStorage.removeItem("profileImage"); // Eliminar del localStorage
     removeImageButton.style.display = "none"; // Ocultar el botón de eliminar
-    imageUpload.value = ""; 
+    imageUpload.value = "";
   });
 });
-
-
