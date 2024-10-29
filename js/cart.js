@@ -45,3 +45,42 @@ document.addEventListener("DOMContentLoaded", function () {
         });
     }
 });
+
+
+
+
+// Función para actualizar el carrito en usuario
+
+function actualizarCarrito() {
+    const cartContainer = document.getElementById('cart-container');
+    const productosEnCarrito = JSON.parse(localStorage.getItem('cart')) || [];
+
+
+    productosEnCarrito.forEach(product => {
+        const productDiv = document.createElement('div');
+        productDiv.className = 'producto';
+        productDiv.innerHTML = `
+                    <h2${product.name}</h2>
+                  <p>Costo: ${product.cost}</p>
+                    <p>Moneda: ${product.currency}</p>
+                    <img src="${product.image}" alt="${product.name}">
+                    <p>Subtotal: ${product.unitCost}</p>
+                   id="${product.id}
+        `;
+        cartContainer.appendChild(productoDiv);
+    });
+}
+
+//muestra los productos
+
+function cartContainer() {
+    const cart = document.getElementById('cart');
+    productos.forEach(product => {
+        const productDiv = document.createElement("div");
+        productDiv.className = "producto";
+        productDiv.innerHTML = `
+            ${product.name} - $${product.cost} - $${product.currency}
+        `;
+        productList.appendChild(productDiv);
+    })
+};
