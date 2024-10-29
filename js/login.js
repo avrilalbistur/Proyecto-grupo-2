@@ -1,43 +1,35 @@
-let btn = document.getElementById('ingresar-button');
+let form = document.getElementById('needs-validation');
 
-function validarFormulario() {
-  let username = document.getElementById("username").value;
-  let password = document.getElementById("password").value;
-
-  if (username.trim() === "" || password.trim() === "") {
-    return false;
-  }
-  localStorage.setItem("usuario", username);
-  return true;
-}
-
-
+// funcion para validar si el email guardado en el userData(localstorage) concuerda con el nuevo email ingrsado para restaurar los datos
 let validateUserExistance = () =>{
     let lastUserData = localStorage.getItem("userData") || "";
     if (lastUserData){
         const {email} = JSON.parse(lastUserData);
-            let currentUserEmail = document.getElementById("username").value;
-            console.log(email);
-            console.log(currentUserEmail);
-            if(email !== currentUserEmail){
-                console.log("entra");
-                localStorage.removeItem("userData")
-            }
+        let currentUserEmail = document.getElementById("username").value;
+        if(email !== currentUserEmail){
+            localStorage.removeItem("userData")
+        }
     }
-    
 }
+// funcion para verificar el formulario.
+let verifyUser = () =>{
+form.addEventListener('submit', (e) =>{
+    if (!form.checkValidity()){
+        e.preventDefault();
+        e.stopPropagation();
+        form.classList.add('was-validated');
 
+    }else{
+        e.preventDefault()
+        let username = document.getElementById('username').value;
+        localStorage.setItem('usuario', username);
+        validateUserExistance();
+        window.location.href = 'index.html';
+    }
+},false);
+}
+// evento del documento//////////////////////////////////////////////////////////////////////////////////////////////////////////
 document.addEventListener("DOMContentLoaded", () =>{
-    btn.addEventListener('click',()=>{
-        let validacionOk = validarFormulario();
-        if(!validacionOk){
-            alert("Los campos no pueden quedar vacíos.");
-        }
-        else{
-            validateUserExistance();
-            window.location.href = 'index.html';
-        }
-    })
-    
+    verifyUser();
 })
 
