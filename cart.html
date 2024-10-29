@@ -29,12 +29,20 @@
           <li class="nav-item">
             <a class="nav-link" href="sell.html">Vender</a>
           </li>
+          
           <li class="nav-item dropdown">
             <a class="btn btn-secondary dropdown-toggle bg-dark nav-link border-0" href="#" role="button" id="navbar-username" data-bs-toggle="dropdown" aria-expanded="false">
-            </a>
+              <span id="username">Usuario@correo.com</span>
+              <span id="notification-badge" class="badge rounded-pill bg-danger" style="display: none;">1</span>
+          </a>
           
             <ul class="dropdown-menu dropdown-menu-dark" aria-labelledby="dropdownMenuLink">
-              <li><a class="dropdown-item" href="cart.html">Mi Carrito</a></li>
+              <li><a class="dropdown-item" href="cart.html">
+                Mi Carrito 
+                <span id="cart-count" class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
+                    0 <!-- Este valor se actualizará dinámicamente -->
+                </span>
+              </a></li>
               <li><a class="dropdown-item" href="my-profile.html">Mi Perfil</a></li>
               <li><a class="dropdown-item" href="login.html" onclick="cerrarSesionMenu()">Cerrar Sesión</a></li>
             </ul>
@@ -43,13 +51,7 @@
       </div>
     </div>
   </nav>
-  <main>
-    <div class="container">
-      <div class="alert alert-danger text-center" role="alert">
-        <h4 class="alert-heading">Funcionalidad en desarrollo</h4>
-      </div>
-    </div>
-  </main>
+ 
   <footer class="text-muted">
     <div class="container">
       <p class="float-end">
