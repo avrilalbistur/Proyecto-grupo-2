@@ -272,8 +272,24 @@ function agregarAlCarrito() {
                           cantidad: 1,
                           imagen: productInfo.images[0]
     };
-    productoAgregado.subtotal = productoAgregado.costo * productoAgregado.cantidad;
-   localStorage.setItem("productoAgregado", JSON.stringify(productoAgregado));
-window.location.href = "cart.html";
+    
+ // Obtener el carrito actual del localStorage, o inicializarlo como un array vacío si no existe
+ let carrito = JSON.parse(localStorage.getItem("carrito")) || [];
 
+ // Verificar si el producto ya está en el carrito
+ let productoExistente = carrito.find(producto => producto.nombre === productoAgregado.nombre);
+
+ if (productoExistente) {
+   // Si el producto ya existe, incrementar la cantidad
+   productoExistente.cantidad += 1;
+ } else {
+   // Si el producto no existe, agregarlo al carrito
+   carrito.push(productoAgregado);
+ }
+
+ // Guardar el carrito actualizado en el localStorage
+ localStorage.setItem("carrito", JSON.stringify(carrito));
+
+ // Redireccionar al carrito después de agregar el producto
+ window.location.href = "cart.html";
 }
