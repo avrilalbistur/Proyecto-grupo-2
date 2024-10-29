@@ -1,24 +1,35 @@
-function validarFormulario() {
-    let username = document.getElementById("username").value;
-    let password = document.getElementById("password").value;
+let form = document.getElementById('needs-validation');
 
-    if (username.trim() === "" || password.trim() === "") {
-        return false;
+// funcion para validar si el email guardado en el userData(localstorage) concuerda con el nuevo email ingrsado para restaurar los datos
+let validateUserExistance = () =>{
+    let lastUserData = localStorage.getItem("userData") || "";
+    if (lastUserData){
+        const {email} = JSON.parse(lastUserData);
+        let currentUserEmail = document.getElementById("username").value;
+        if(email !== currentUserEmail){
+            localStorage.removeItem("userData")
+        }
     }
-    localStorage.setItem('usuario', username);
-    return true;
-}     
+}
+// funcion para verificar el formulario.
+let verifyUser = () =>{
+form.addEventListener('submit', (e) =>{
+    if (!form.checkValidity()){
+        e.preventDefault();
+        e.stopPropagation();
+        form.classList.add('was-validated');
 
-
-let btn = document.getElementById('ingresar-button');
-
-btn.addEventListener('click',()=>{
-    let validacionOk = validarFormulario();
-    if(!validacionOk){
-        alert("Los campos no pueden quedar vacíos.");
-    }
-    else{
+    }else{
+        e.preventDefault()
+        let username = document.getElementById('username').value;
+        localStorage.setItem('usuario', username);
+        validateUserExistance();
         window.location.href = 'index.html';
     }
-    
+},false);
+}
+// evento del documento//////////////////////////////////////////////////////////////////////////////////////////////////////////
+document.addEventListener("DOMContentLoaded", () =>{
+    verifyUser();
 })
+
