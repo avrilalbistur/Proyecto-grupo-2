@@ -51,13 +51,10 @@ document.addEventListener("DOMContentLoaded", function () {
 
 
 
-// Función para actualizar el carrito en usuario
-
+// Función para actualizar el carrito en usuario// Función para actualizar el carrito en usuario
 function actualizarCarrito() {
     const cartContainer = document.getElementById('cart-container');
-    const productosEnCarrito = JSON.parse(localStorage.getItem('cart')) || [];
-
-
+    const productosEnCarrito = JSON.parse(localStorage.getItem('carrito')) || [];
     productosEnCarrito.forEach(product => {
         const productDiv = document.createElement('div');
         productDiv.className = 'producto';
@@ -72,11 +69,9 @@ function actualizarCarrito() {
         cartContainer.appendChild(productoDiv);
     });
 }
-
 //muestra los productos
-
 function cartContainer() {
-    const cart = document.getElementById('cart');
+    const cart = document.getElementById('carrito');
     productos.forEach(product => {
         const productDiv = document.createElement("div");
         productDiv.className = "producto";
