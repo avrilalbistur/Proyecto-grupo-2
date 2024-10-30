@@ -986,3 +986,55 @@ body.dark-mode {
 .btn-light {
   font-size: 15px;
 }
+
+/*carrito*/
+
+
+.producto {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr); /* columnas iguales */
+  grid-auto-rows: minmax(100px, auto); 
+  gap: 10px;
+  width: 100%;
+  margin: auto;
+  width: 99%;
+  height: auto;
+ 
+}
+.producto {
+  border: 2px solid #e6e6e6;
+  border-radius: 5px;
+  background-color: #fafaf5;
+  width: 100%;
+  height: auto;
+}
+
+.producto:hover {
+  background-color: #e6e6e6;
+}
+
+.producto img {
+  margin-bottom: 10px;
+  width: 100%;
+  border-top-left-radius: 20px;
+  border-top-right-radius: 20px;
+  display: block;
+  padding: 0px;
+  padding-bottom: 10px;
+}
+
+  .producto {
+    width: 99%;
+    height: auto;
+    margin: auto;
+    grid-template-columns: repeat(4, 1fr);
+    grid-auto-rows: minmax(100px, auto);
+  }
+
+  .producto#carrito {
+    border: 1px solid #e6e6e6;
+    border-radius: 10px;
+    background-color: #fafaf5;
+    width: 100%;
+    height: auto;
+  }

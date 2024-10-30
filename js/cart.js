@@ -49,33 +49,46 @@ document.addEventListener("DOMContentLoaded", function () {
 
 
 
-// Función para actualizar el carrito en usuario// Función para actualizar el carrito en usuario
+
+
+// Función para actualizar el carrito en usuario
 function actualizarCarrito() {
     const cartContainer = document.getElementById('cart-container');
     const productosEnCarrito = JSON.parse(localStorage.getItem('carrito')) || [];
+
+    cartContainer.innerHTML = ''; // Limpiar el contenedor del carrito
+
     productosEnCarrito.forEach(product => {
         const productDiv = document.createElement('div');
         productDiv.className = 'producto';
         productDiv.innerHTML = `
-                    <h2${product.name}</h2>
-                  <p>Costo: ${product.cost}</p>
-                    <p>Moneda: ${product.currency}</p>
-                    <img src="${product.image}" alt="${product.name}">
-                    <p>Subtotal: ${product.unitCost}</p>
-                   id="${product.id}
+            <img src="${product.imagen}" alt="${product.nombre}">
+            <h2>${product.nombre}</h2>
+            <p>Costo: ${product.costo}</p>
+            <p>Moneda: ${product.moneda}</p>
+            
         `;
-        cartContainer.appendChild(productoDiv);
+        cartContainer.appendChild(productDiv);
     });
 }
-//muestra los productos
-function cartContainer() {
+
+// Función para mostrar los productos
+function mostrarProductos() {
     const cart = document.getElementById('carrito');
+    const productos = JSON.parse(localStorage.getItem('carrito')) || [];
+
     productos.forEach(product => {
-        const productDiv = document.createElement("div");
-        productDiv.className = "producto";
+        const productDiv = document.createElement('div');
+        productDiv.className = 'productos';
         productDiv.innerHTML = `
-            ${product.name} - $${product.cost} - $${product.currency}
+            ${product.nombre} - $${product.costo} - ${product.moneda}
         `;
-        productList.appendChild(productDiv);
-    })
-};
+        cart.appendChild(productDiv);
+    });
+}
+
+// Llamar a la función actualizarCarrito cuando se cargue la página
+document.addEventListener('DOMContentLoaded', function() {
+    actualizarCarrito();
+    mostrarProductos();
+});
