@@ -56,29 +56,8 @@ function actualizarCarrito() {
      });
 }
 
-// Función para mostrar los productos
-function mostrarProductos() {
-    const cart = document.getElementById('productos');
-    if (!cart) {
-        return;
-    }
-
-    const products = JSON.parse(localStorage.getItem('carrito')) || [];
-    cart.innerHTML = '';
-
-    products.forEach(product => {
-        const productDiv = document.createElement('div');
-        productDiv.className = 'productos';
-        productDiv.innerHTML = `
-            ${product.nombre} - $${product.costo} - ${product.moneda}
-        `;
-        cart.appendChild(productDiv);
-    });
-
-};
-
 // Llama a esta función cuando se carga la página para inicializar el badge
 document.addEventListener("DOMContentLoaded", function () {
     actualizarBadge(); 
-    mostrarProductos(); 
+    actualizarCarrito();
 })
