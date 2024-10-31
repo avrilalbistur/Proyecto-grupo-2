@@ -1,64 +1,48 @@
 // Inicializa el carrito
-let cart = JSON.parse(localStorage.getItem('cart')) || [];
+let carrito = JSON.parse(localStorage.getItem('carrito')) || [];
 
 // Función para agregar un producto al carrito
-function agregarProducto(id, nombre) {
-    const producto = { id, nombre };
-    cart.push(producto);
-    localStorage.setItem('cart', JSON.stringify(cart));
+function agregarProducto(id, nombre, costo, moneda, imagen) {
+    const producto = { id, nombre, costo, moneda, imagen };
+    carrito.push(producto);
+    localStorage.setItem('carrito', JSON.stringify(carrito));
     actualizarBadge();
+    calcularTotal();
+}
+
+// Función para calcular el total de productos en el carrito
+function calcularTotal() {
+    const productosEnCarrito = JSON.parse(localStorage.getItem('carrito')) || [];
+    let total = 0;
+    productosEnCarrito.forEach(product => {
+        total += product.costo; // Asumiendo que 'costo' es un número
+    });
+    const totalContainer = document.querySelector('#carrito h3');
+    if (totalContainer) {
+        totalContainer.textContent = `Total: $${total}`;
+    }
 }
 
 // Función para actualizar el badge del carrito
 function actualizarBadge() {
-    const cartCount = document.getElementById('cartCount');
-    if (cartCount){
-    cartCount.textContent = cart.length; // Actualiza la cantidad de productos en el badge
+    const carritoCount = document.getElementById('carritoCount');  
+    if (carritoCount) {
+        carritoCount.textContent = carrito.length; // Actualiza la cantidad en el badge
+    } else {
+        console.error("Element 'carritoCount' no encontrado en el DOM.");
+    }
 }
-}
-
-// Llama a esta función cuando se carga la página para inicializar el badge
-document.addEventListener("DOMContentLoaded", function () {
-    // Inicializa el badge
-    actualizarBadge();
-
-    // Event listeners para agregar productos al carrito
-    const autos = document.getElementById('autos');
-    const juguetes = document.getElementById('juguetes');
-    const muebles = document.getElementById('muebles');
-
-    if (autos) {
-        autos.addEventListener('click', function () {
-            agregarProducto('autos', 'Autos');
-        });
-    }
-
-    if (juguetes) {
-        juguetes.addEventListener('click', function () {
-            agregarProducto('juguetes', 'Juguetes');
-        });
-    }
-
-    if (muebles) {
-        muebles.addEventListener('click', function () {
-            agregarProducto('muebles', 'Muebles');
-        });
-    }
-});
-
-
-
-
 
 
 // Función para actualizar el carrito en usuario
 function actualizarCarrito() {
     const cartContainer = document.getElementById('cart-container');
-    const productosEnCarrito = JSON.parse(localStorage.getItem('carrito')) || [];
+    if(!cartContainer) return;
 
+    const productosEnCarrito = JSON.parse(localStorage.getItem('carrito')) || [];
     cartContainer.innerHTML = ''; // Limpiar el contenedor del carrito
 
-    productosEnCarrito.forEach(product => {
+     productosEnCarrito.forEach(product => {
         const productDiv = document.createElement('div');
         productDiv.className = 'producto';
         productDiv.innerHTML = `
@@ -69,15 +53,20 @@ function actualizarCarrito() {
             
         `;
         cartContainer.appendChild(productDiv);
-    });
+     });
 }
 
 // Función para mostrar los productos
 function mostrarProductos() {
-    const cart = document.getElementById('carrito');
-    const productos = JSON.parse(localStorage.getItem('carrito')) || [];
+    const cart = document.getElementById('productos');
+    if (!cart) {
+        return;
+    }
 
-    productos.forEach(product => {
+    const products = JSON.parse(localStorage.getItem('carrito')) || [];
+    cart.innerHTML = '';
+
+    products.forEach(product => {
         const productDiv = document.createElement('div');
         productDiv.className = 'productos';
         productDiv.innerHTML = `
@@ -85,10 +74,11 @@ function mostrarProductos() {
         `;
         cart.appendChild(productDiv);
     });
-}
 
-// Llamar a la función actualizarCarrito cuando se cargue la página
-document.addEventListener('DOMContentLoaded', function() {
-    actualizarCarrito();
-    mostrarProductos();
-});
+};
+
+// Llama a esta función cuando se carga la página para inicializar el badge
+document.addEventListener("DOMContentLoaded", function () {
+    actualizarBadge(); 
+    mostrarProductos(); 
+})
