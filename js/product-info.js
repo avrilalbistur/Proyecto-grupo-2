@@ -262,18 +262,38 @@ document.addEventListener("DOMContentLoaded", (e) => {
 });
 
 
-//función que se ejecuta al dar click en el botón "agregar al carrito"
+// Función que se ejecuta al dar clic en el botón "Agregar al carrito"
 function agregarAlCarrito() {
-  console.log(productInfo) 
-  let productoAgregado = { 
-                          nombre: productInfo.name,
-                          costo: productInfo.cost,
-                          moneda: productInfo.currency,
-                          cantidad: 1,
-                          imagen: productInfo.images[0]
-    };
-    productoAgregado.subtotal = productoAgregado.costo * productoAgregado.cantidad;
-   localStorage.setItem("productoAgregado", JSON.stringify(productoAgregado));
-window.location.href = "cart.html";
+  console.log(productInfo);
 
+  // Recuperar el carrito del localStorage, o inicializarlo como un arreglo vacío
+  let carrito = JSON.parse(localStorage.getItem("carrito")) || [];
+
+  // Crear un objeto de producto con la información actual
+  let productoAgregado = {
+    nombre: productInfo.name,
+    costo: productInfo.cost,
+    moneda: productInfo.currency,
+    cantidad: 1,
+    imagen: productInfo.images[0],
+    subtotal: productInfo.cost // El subtotal inicial (costo * cantidad)
+  };
+
+  // Verificar si el producto ya existe en el carrito
+  const productoExistente = carrito.find(item => item.nombre === productoAgregado.nombre);
+
+  if (productoExistente) {
+    // Si el producto ya está en el carrito, aumentar la cantidad y el subtotal
+    productoExistente.cantidad += 1;
+    productoExistente.subtotal = productoExistente.costo * productoExistente.cantidad;
+  } else {
+    // Si el producto no está en el carrito, añadirlo como nuevo
+    carrito.push(productoAgregado);
+  }
+
+  // Guardar el carrito actualizado en localStorage
+  localStorage.setItem("carrito", JSON.stringify(carrito));
+
+  // Redireccionar a cart.html
+  window.location.href = "cart.html";
 }
