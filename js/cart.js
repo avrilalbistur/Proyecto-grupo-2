@@ -60,6 +60,7 @@ function actualizarCarrito() {
 document.addEventListener("DOMContentLoaded", function () {
     actualizarBadge(); 
     actualizarCarrito();
+    mostrarCarrito();
 })
 
 // Función para mostrar los productos en el carrito en cart.html
@@ -139,7 +140,3 @@ function actualizarCantidad(event) {
       alert("La cantidad debe ser al menos 1");
   }
 }
-
-
-// Inicializar la vista del carrito cuando se carga la página
-document.addEventListener("DOMContentLoaded", mostrarCarrito);
