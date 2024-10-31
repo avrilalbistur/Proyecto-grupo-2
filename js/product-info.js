@@ -262,34 +262,38 @@ document.addEventListener("DOMContentLoaded", (e) => {
 });
 
 
-//función que se ejecuta al dar click en el botón "agregar al carrito"
+// Función que se ejecuta al dar clic en el botón "Agregar al carrito"
 function agregarAlCarrito() {
-  console.log(productInfo) 
-  let productoAgregado = { 
-                          nombre: productInfo.name,
-                          costo: productInfo.cost,
-                          moneda: productInfo.currency,
-                          cantidad: 1,
-                          imagen: productInfo.images[0]
-    };
-    
- // Obtener el carrito actual del localStorage, o inicializarlo como un array vacío si no existe
- let carrito = JSON.parse(localStorage.getItem("carrito")) || [];
+  console.log(productInfo);
 
- // Verificar si el producto ya está en el carrito
- let productoExistente = carrito.find(producto => producto.nombre === productoAgregado.nombre);
+  // Recuperar el carrito del localStorage, o inicializarlo como un arreglo vacío
+  let carrito = JSON.parse(localStorage.getItem("carrito")) || [];
 
- if (productoExistente) {
-   // Si el producto ya existe, incrementar la cantidad
-   productoExistente.cantidad += 1;
- } else {
-   // Si el producto no existe, agregarlo al carrito
-   carrito.push(productoAgregado);
- }
+  // Crear un objeto de producto con la información actual
+  let productoAgregado = {
+    nombre: productInfo.name,
+    costo: productInfo.cost,
+    moneda: productInfo.currency,
+    cantidad: 1,
+    imagen: productInfo.images[0],
+    subtotal: productInfo.cost // El subtotal inicial (costo * cantidad)
+  };
 
- // Guardar el carrito actualizado en el localStorage
- localStorage.setItem("carrito", JSON.stringify(carrito));
+  // Verificar si el producto ya existe en el carrito
+  const productoExistente = carrito.find(item => item.nombre === productoAgregado.nombre);
 
- // Redireccionar al carrito después de agregar el producto
- window.location.href = "cart.html";
+  if (productoExistente) {
+    // Si el producto ya está en el carrito, aumentar la cantidad y el subtotal
+    productoExistente.cantidad += 1;
+    productoExistente.subtotal = productoExistente.costo * productoExistente.cantidad;
+  } else {
+    // Si el producto no está en el carrito, añadirlo como nuevo
+    carrito.push(productoAgregado);
+  }
+
+  // Guardar el carrito actualizado en localStorage
+  localStorage.setItem("carrito", JSON.stringify(carrito));
+
+  // Redireccionar a cart.html
+  window.location.href = "cart.html";
 }
