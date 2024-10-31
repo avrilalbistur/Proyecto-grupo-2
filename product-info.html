@@ -20,37 +20,37 @@
       </button>
       
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
-        aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-      </button>
-      <div class="collapse navbar-collapse" id="navbarNav">
-        <ul class="navbar-nav w-100 justify-content-between">
-          <li class="nav-item">
-            <a class="nav-link" href="index.html">Inicio</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="categories.html">Categorías</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="sell.html">Vender</a>
-          </li>
-
-          <li class="nav-item dropdown">
-            <a class="btn btn-secondary dropdown-toggle bg-dark nav-link border-0" href="#" role="button" id="navbar-username" data-bs-toggle="dropdown" aria-expanded="false">
-                <span id="username">Usuario@correo.com</span>
-                <span id="notification-badge" class="badge rounded-pill bg-danger" style="display: none;">1</span>
-            </a>
-            <ul class="dropdown-menu dropdown-menu-dark" aria-labelledby="dropdownMenuLink">
-                <li><a class="dropdown-item" href="cart.html">
-                    Mi Carrito 
-                    <span id="cart-count" class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
-                        0 <!-- Este valor se actualizará dinámicamente -->
-                    </span>
-                </a></li>
-                <li><a class="dropdown-item" href="my-profile.html">Mi Perfil</a></li>
-                <li><a class="dropdown-item" href="login.html" onclick="cerrarSesionMenu()">Cerrar Sesión</a></li>
-            </ul>
+      aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNav">
+      <ul class="navbar-nav w-100 justify-content-between">
+        <li class="nav-item">
+          <a class="nav-link" href="index.html">Inicio</a>
         </li>
+        <li class="nav-item">
+          <a class="nav-link" href="categories.html">Categorías</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="sell.html">Vender</a>
+        </li>
+
+        <li class="nav-item dropdown">
+          <a class="btn btn-secondary dropdown-toggle bg-dark nav-link border-0" href="#" role="button" id="navbar-username" data-bs-toggle="dropdown" aria-expanded="false">
+            <span id="username">Usuario@correo.com</span>
+          </a>
+          <ul class="dropdown-menu dropdown-menu-dark" aria-labelledby="dropdownMenuLink">
+            <li><a class="dropdown-item" href="cart.html">
+              Mi Carrito 
+              <span id="carritoCount" class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
+                  0 <!-- Este valor se actualizará dinámicamente -->
+              </span>
+            </a></li>
+            <li><a class="dropdown-item" href="my-profile.html">Mi Perfil</a></li>
+            <li><a class="dropdown-item" href="login.html" onclick="cerrarSesionMenu()">Cerrar Sesión</a></li>
+          </ul>
+        </li>
+        
         
         </ul>
       </div>
