@@ -90,12 +90,12 @@ function mostrarCarrito() {
       productoDiv.innerHTML = `
         <img src="${producto.imagen}" alt="${producto.nombre}" class="imagen-producto">
         <div class="detalles-producto">
-          <h4>${producto.nombre}</h4>
-          <p>MONEDA ${producto.moneda}</p>
-          <p>PRECIO ${producto.costo.toFixed(2)}</p>
-          <label for="cantidad-${index}">CANTIDAD</label>
+          <h4 class="dark-mode-title">${producto.nombre}</h4>
+          <p class="dark-mode-title">MONEDA ${producto.moneda}</p>
+          <p class="dark-mode-title">PRECIO ${producto.costo.toFixed(2)}</p>
+          <label for="cantidad-${index}" class="dark-mode-title">CANTIDAD</label>
           <input type="number" id="cantidad-${index}" min="1" value="${producto.cantidad}" data-index="${index}" class="cantidad-input">
-          <p>SUBTOTAL ${(producto.costo * producto.cantidad).toFixed(2)}</p>
+          <p class="dark-mode-title">SUBTOTAL ${(producto.costo * producto.cantidad).toFixed(2)}</p>
         </div>
       `;
 
