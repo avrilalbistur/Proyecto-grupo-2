@@ -6,6 +6,8 @@ const PRODUCT_INFO_COMMENTS_URL = "https://japceibal.github.io/emercado-api/prod
 const CART_INFO_URL = "https://japceibal.github.io/emercado-api/user_cart/";
 const CART_BUY_URL = "https://japceibal.github.io/emercado-api/cart/buy.json";
 const EXT_TYPE = ".json";
+// Inicializa el carrito
+let carrito = JSON.parse(localStorage.getItem('carrito')) || [];
 
 let showSpinner = function(){
   document.getElementById("spinner-wrapper").style.display = "block";
@@ -89,3 +91,13 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
 });
+
+// Función para actualizar el badge del carrito
+function actualizarBadge() {
+  const carritoCount = document.getElementById('carritoCount');  
+  if (carritoCount) {
+      carritoCount.textContent = carrito.length; // Actualiza la cantidad en el badge
+  } else {
+      console.error("Element 'carritoCount' no encontrado en el DOM.");
+  }
+}
