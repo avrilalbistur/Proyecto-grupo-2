@@ -1116,3 +1116,7 @@ body.dark-mode {
 .boton-comprar:hover {
   background-color: #b2b3b4;
 }
+
+.dark-mode-title{
+  color: #000000 !important;
+}

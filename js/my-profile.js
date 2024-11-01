@@ -21,6 +21,7 @@ let formValidation = () => {
           telefonoDeContacto:
             document.getElementById("userPhoneNumber").value || "",
           imagenUsuario: localStorage.getItem("profileImage") || "",
+          carritoUsuario: localStorage.getItem("carrito") || "",
         };
         localStorage.setItem("userData", JSON.stringify(userData));
       }
