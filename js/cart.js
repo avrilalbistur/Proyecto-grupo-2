@@ -38,7 +38,7 @@ function actualizarBadge() {
 function actualizarCarrito() {
     const cartContainer = document.getElementById('cart-container');
     if(!cartContainer) return;
-
+    
     const productosEnCarrito = JSON.parse(localStorage.getItem('carrito')) || [];
     cartContainer.innerHTML = ''; // Limpiar el contenedor del carrito
 

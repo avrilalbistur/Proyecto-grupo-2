@@ -8,6 +8,7 @@ let validateUserExistance = () =>{
         let currentUserEmail = document.getElementById("username").value;
         if(email !== currentUserEmail){
             localStorage.removeItem("userData")
+            localStorage.removeItem("carrito")
         }
     }
 }
