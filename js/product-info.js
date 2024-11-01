@@ -179,6 +179,8 @@ document.addEventListener("DOMContentLoaded", (e) => {
   // Traer los comentarios de los productos
   fetchProductsInfoComments();
 
+  //funcion del badge
+  actualizarBadge(); 
   // Mostrar la fecha en el elemento con id "current-date"
   document.getElementById("current-date").textContent = setCurrentDate();
 

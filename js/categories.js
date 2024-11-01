@@ -96,6 +96,8 @@ document.addEventListener("DOMContentLoaded", function(e){
         }
     });
 
+    actualizarBadge();
+
     document.getElementById("sortAsc").addEventListener("click", function(){
         sortAndShowCategories(ORDER_ASC_BY_NAME);
     });

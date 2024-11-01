@@ -85,6 +85,9 @@ document.addEventListener('DOMContentLoaded', (e) => {
             });
     }
 
+    //funcion del badge
+     actualizarBadge(); 
+
     // BUSCADOR
     document.getElementById('search-bar').addEventListener('input', (e) => {
         let searchValue = e.target.value.trim().toLowerCase();
