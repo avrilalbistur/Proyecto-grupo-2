@@ -128,3 +128,17 @@ function actualizarCantidad(event) {
       alert("La cantidad debe ser al menos 1");
   }
 }
+
+
+
+//Nav para comprar
+
+let navComprar = document.querySelectorAll(".nav-item .comprar")
+navComprar.forEach(link => {
+    link.addEventListener("click", () => {
+        link.classList.add("active")
+    })
+    
+});
+   
+
