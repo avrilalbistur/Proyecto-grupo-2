@@ -136,7 +136,11 @@ function actualizarCantidad(event) {
 let navComprar = document.querySelectorAll(".nav-item .comprar")
 navComprar.forEach(link => {
     link.addEventListener("click", () => {
+        navComprar.forEach(item => {
+            item.classList.remove("active")
+        })
         link.classList.add("active")
+
     })
     
 });

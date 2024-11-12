@@ -1137,9 +1137,27 @@ body.dark-mode {
   color: #000000;
   font-weight: 600 ;
   text-decoration: none;
+  position: relative;
 }
 
 .nav .nav-link.active {
   border-bottom-color: #000000 ; 
   text-decoration: none;
 }
+
+/*
+.nav-link.comprar::before {
+  content: attr(data-step);
+  position: absolute;
+  left: 0;
+  top: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  color: white;
+  font-weight: bold;
+} 
+  */
