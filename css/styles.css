@@ -998,12 +998,15 @@ body.dark-mode {
   font-style: italic;
   font-weight: bold; /* Aplica negrita */
 }
+#lista-productos {
+  width: 50%;
+}
 .fila {
   display: flex;
   gap: 10px; /* Aumenta el espacio entre contenedores */
   justify-content: center;
-  width: 500%;
-  max-width: 1200px;
+  width: 100%;
+  max-width: 100%;
   margin: 0 auto;
 }
 
@@ -1012,24 +1015,32 @@ body.dark-mode {
 .producto-item {
   display: flex;
   align-items: center;
-  gap: 16px;
-  margin-bottom: 16px;
+  gap: 10%;
+  margin-bottom: 10%;
 }
 
 
 .imagen-producto {
-  width: 300px;
+  width: 30%;
   height: auto;
   border-radius: 8px;
+  margin-right: 10px;
+  
 }
 
+/*#cart-container {
+  width: 80%;
+} */
 
 .detalles-producto {
   display: flex;
   flex-direction: row;
-  gap: 20px;
+  gap: 10%;
   align-items: flex-start;
   font-family: 'Roboto', sans-serif;
+  max-width: 100%;
+  width: 100%;
+  font-size: 80%;
 }
 
 
@@ -1039,9 +1050,13 @@ body.dark-mode {
   margin: 5;
 }
 
+.detalles-producto h4 {
+  font-size: small;
+}
+
 
 .cantidad-input {
-  width: 60px;
+  width: 3rem;
 }
 
 
@@ -1061,12 +1076,6 @@ body.dark-mode {
 }
 
 
-.image-container {
-  width: 100px;
-  height: 100px;
-  background-color: #eaeaea;
-  margin-right: 10px;
-}
 
 
 /*CONTENEDOR TOTAL*/
@@ -1099,8 +1108,8 @@ body.dark-mode {
 
 
 .producto-container {
-  max-width: 500px;
-  width: 200%;
+  max-width: 100%;
+  width: 100%;
 }
 
 .boton-comprar {
@@ -1120,3 +1129,35 @@ body.dark-mode {
 .dark-mode-title{
   color: #000000 !important;
 }
+
+
+
+ .nav .nav-link {
+  border-bottom: 2px solid transparent;
+  color: #000000;
+  font-weight: 600 ;
+  text-decoration: none;
+  position: relative;
+}
+
+.nav .nav-link.active {
+  border-bottom-color: #000000 ; 
+  text-decoration: none;
+}
+
+/*
+.nav-link.comprar::before {
+  content: attr(data-step);
+  position: absolute;
+  left: 0;
+  top: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  color: white;
+  font-weight: bold;
+} 
+  */

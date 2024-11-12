@@ -54,7 +54,7 @@
 
   <main>
     
-    <div class="container">
+    <div class="container col-xl" >
       <h2 class="titulo-carrito">CARRITO</h2>
       <div class="fila">
         <div class="carrito-container">
@@ -77,9 +77,24 @@
           <h3 class="destacado dark-mode-title">TOTAL</h3>
           <h4 class="importante dark-mode-title">PRODUCTOS TOTALES</h4>        
           <p id="total-precio" class="dark-mode-title">TOTAL $0.00</p>
-          <button class="boton-comprar">COMPRAR</button>
+          <button class="boton-comprar btn" href="#nav-comprar" >COMPRAR</button>
         </div>
       </div>
+      <br>
+   <div id="nav-comprar">
+    <ul class="nav justify-content-center">
+      <li class="nav-item">
+        <a class="nav-link comprar" aria-current="page" href="#" data-step="1">Facturación</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link comprar" href="#" data-step="2" >Envío</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link comprar" href="#" data-step="3" >Pago</a>
+      </li>
+    </ul>
+   </div>
+
     </div>
   </main>
 
