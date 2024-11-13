@@ -1,56 +1,96 @@
 <!DOCTYPE html>
 <html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, shrink-to-fit=no"
+    />
+    <title>eMercado - Todo lo que busques está aquí</title>
+    <link
+      href="https://fonts.googleapis.com/css?family=Raleway:300,300i,400,400i,700,700i,900,900i"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&family=Roboto+Mono:wght@400&display=swap"
+      rel="stylesheet"
+    />
+    <link href="css/bootstrap.min.css" rel="stylesheet" />
+    <link href="css/font-awesome.min.css" rel="stylesheet" />
+    <link href="css/styles.css" rel="stylesheet" />
+    <!-- Asegúrate de que este archivo contenga los estilos que vamos a mover -->
+  </head>
 
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <title>eMercado - Todo lo que busques está aquí</title>
-  <link href="https://fonts.googleapis.com/css?family=Raleway:300,300i,400,400i,700,700i,900,900i" rel="stylesheet">
-  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&family=Roboto+Mono:wght@400&display=swap" rel="stylesheet">
-  <link href="css/bootstrap.min.css" rel="stylesheet">
-  <link href="css/font-awesome.min.css" rel="stylesheet">
-  <link href="css/styles.css" rel="stylesheet"> <!-- Asegúrate de que este archivo contenga los estilos que vamos a mover -->
-</head>
+  <body>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark p-1">
+      <div class="container">
+        <button
+          class="navbar-toggler"
+          type="button"
+          data-bs-toggle="collapse"
+          data-bs-target="#navbarNav"
+          aria-controls="navbarNav"
+          aria-expanded="false"
+          aria-label="Toggle navigation"
+        >
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+          <ul class="navbar-nav w-100 justify-content-between">
+            <li class="nav-item">
+              <a class="nav-link" href="index.html">Inicio</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="categories.html">Categorías</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="sell.html">Vender</a>
+            </li>
 
-<body>
-  <nav class="navbar navbar-expand-lg navbar-dark bg-dark p-1">
-    <div class="container">
-      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
-        aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-      </button>
-      <div class="collapse navbar-collapse" id="navbarNav">
-        <ul class="navbar-nav w-100 justify-content-between">
-          <li class="nav-item">
-            <a class="nav-link" href="index.html">Inicio</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="categories.html">Categorías</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="sell.html">Vender</a>
-          </li>
-          
-          <li class="nav-item dropdown">
-            <a class="btn btn-secondary dropdown-toggle bg-dark nav-link border-0" href="#" role="button" id="navbar-username" data-bs-toggle="dropdown" aria-expanded="false">
-              <span id="username">Usuario@correo.com</span>
-            </a>
-            <ul class="dropdown-menu dropdown-menu-dark" aria-labelledby="dropdownMenuLink">
-              <li><a class="dropdown-item" href="cart.html">
-                Mi Carrito 
-                <span id="carritoCount" class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
-                    0 <!-- Este valor se actualizará dinámicamente -->
-                </span>
-              </a></li>
-              <li><a class="dropdown-item" href="my-profile.html">Mi Perfil</a></li>
-              <li><a class="dropdown-item" href="login.html" onclick="cerrarSesionMenu()">Cerrar Sesión</a></li>
-            </ul>
-          </li>
-          
-        </ul>
+            <li class="nav-item dropdown">
+              <a
+                class="btn btn-secondary dropdown-toggle bg-dark nav-link border-0"
+                href="#"
+                role="button"
+                id="navbar-username"
+                data-bs-toggle="dropdown"
+                aria-expanded="false"
+              >
+                <span id="username">Usuario@correo.com</span>
+              </a>
+              <ul
+                class="dropdown-menu dropdown-menu-dark"
+                aria-labelledby="dropdownMenuLink"
+              >
+                <li>
+                  <a class="dropdown-item" href="cart.html">
+                    Mi Carrito
+                    <span
+                      id="carritoCount"
+                      class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger"
+                    >
+                      0
+                      <!-- Este valor se actualizará dinámicamente -->
+                    </span>
+                  </a>
+                </li>
+                <li>
+                  <a class="dropdown-item" href="my-profile.html">Mi Perfil</a>
+                </li>
+                <li>
+                  <a
+                    class="dropdown-item"
+                    href="login.html"
+                    onclick="cerrarSesionMenu()"
+                    >Cerrar Sesión</a
+                  >
+                </li>
+              </ul>
+            </li>
+          </ul>
+        </div>
       </div>
-    </div>
-  </nav>
+    </nav>
 
   <main>
     
@@ -69,8 +109,23 @@
                   <span>Precio: $XX.XX</span>
                 </div>
               </div>
+              <!-- Añade más product-container según sea necesario -->
             </div>
-            <!-- Añade más product-container según sea necesario -->
+          </div>
+          <div class="resumen-container container col-sm">
+            <h3 class="destacado dark-mode-title">TOTAL</h3>
+            <h4 class="importante dark-mode-title">PRODUCTOS TOTALES</h4>
+            <div class="row m-1">
+              <input type="radio" class="btn-check" name="moneda" id="USD" autocomplete="off" onclick="actualizarCostos('USD')" checked>
+              <label class="btn btn-secondary col-lg-6" for="USD">USD</label>
+
+              <input type="radio" class="btn-check" name="moneda" id="UYU" autocomplete="off" onclick="actualizarCostos('UYU')">
+              <label class="btn btn-secondary col-lg-6" for="UYU">UYU</label>
+            </div>
+            <p id="total-precio" class="dark-mode-title">TOTAL $0.00</p>
+            <button class="boton-comprar btn" href="#nav-comprar">
+              COMPRAR
+            </button>
           </div>
         </div>
         <div class="resumen-container  col-12 col-md-4">
@@ -80,31 +135,54 @@
           <button class="boton-comprar btn" href="#nav-comprar" >COMPRAR</button>
         </div>
       </div>
+        <br />
+        <div id="nav-comprar">
+          <ul class="nav justify-content-center">
+            <li class="nav-item">
+              <a
+                class="nav-link comprar"
+                aria-current="page"
+                href="#"
+                data-step="1"
+                >Facturación</a
+              >
+            </li>
+            <li class="nav-item">
+              <a class="nav-link comprar" href="#" data-step="2">Envío</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link comprar" href="#" data-step="3">Pago</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </main>
+
+    <footer class="text-muted">
+      <div class="container">
+        <p class="float-end">
+          <a href="#">Volver arriba</a>
+        </p>
+        <p>
+          Este sitio forma parte de
+          <a href="https://jovenesaprogramar.edu.uy/" target="_blank"
+            >Jovenes a Programar</a
+          >
+        </p>
+      </div>
+    </footer>
+
+    <div id="spinner-wrapper">
+      <div class="lds-ring">
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+      </div>
     </div>
-  </main>
 
-  <footer class="text-muted">
-    <div class="container">
-      <p class="float-end">
-        <a href="#">Volver arriba</a>
-      </p>
-      <p>Este sitio forma parte de <a href="https://jovenesaprogramar.edu.uy/" target="_blank">Jovenes a Programar</a></p>
-    </div>
-  </footer>
-
-  <div id="spinner-wrapper">
-    <div class="lds-ring">
-      <div></div>
-      <div></div>
-      <div></div>
-      <div></div>
-    </div>
-  </div>
-
-  <script src="js/bootstrap.bundle.min.js"></script>
-  <script src="js/init.js"></script>
-  <script src="js/cart.js"></script>
-</body>
-
+    <script src="js/bootstrap.bundle.min.js"></script>
+    <script src="js/init.js"></script>
+    <script src="js/cart.js"></script>
+  </body>
 </html>
-
