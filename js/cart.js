@@ -43,30 +43,38 @@ function actualizarCarrito() {
         cartContainer.appendChild(productDiv);
      });
 }
+// función para actualizar la sección de costos
+function actualizarCostos(){
+    const carrito = JSON.parse(localStorage.getItem('carrito')) || [];
+    const totalPrecio = document.getElementById("total-precio");
+    const totalProductosElement = document.querySelector(".resumen-container h4");
+    let total = 0;
+    let totalProductos = 0; 
 
-// Llama a esta función cuando se carga la página para inicializar el badge
-document.addEventListener("DOMContentLoaded", function () {
-    actualizarBadge(); 
-    actualizarCarrito();
-    mostrarCarrito();
-})
+    // Obtener la moneda del primer producto (asumiendo que todos tienen la misma moneda)
+    const moneda = carrito.length > 0 ? carrito[0].moneda : "UYU"; // Cambia "UYU" a "USD" si es necesario
 
+    // para sumar el total y la cantidad de productos
+    carrito.forEach(producto => {
+        total += producto.costo * producto.cantidad;
+        totalProductos += producto.cantidad;
+    });
+    // Mostrar el precio total con la moneda
+    totalPrecio.textContent = `TOTAL ${moneda} ${total.toFixed(2)}`;
+ 
+    // Mostrar el total de productos
+    totalProductosElement.textContent = `PRODUCTOS TOTALES ${totalProductos}`;
+}
+function cambiarPesosADolares (){
+let totalEnDolares = 0;
+}
 // Función para mostrar los productos en el carrito en cart.html
 function mostrarCarrito() {
   const carrito = JSON.parse(localStorage.getItem("carrito")) || [];
   const listaProductos = document.getElementById("lista-productos");
-  const totalPrecio = document.getElementById("total-precio");
-  const totalProductosElement = document.querySelector(".resumen-container h4");
 
 
   listaProductos.innerHTML = ""; // Limpiar la lista de productos
-  let total = 0;
-  let totalProductos = 0;
-
-
-  // Obtener la moneda del primer producto (asumiendo que todos tienen la misma moneda)
-  const moneda = carrito.length > 0 ? carrito[0].moneda : "UYU"; // Cambia "UYU" a "USD" si es necesario
-
 
   carrito.forEach((producto, index) => {
       // Crear el contenedor para cada producto
@@ -90,27 +98,14 @@ function mostrarCarrito() {
 
       // Añadir el producto al contenedor de la lista de productos
       listaProductos.appendChild(productoDiv);
-
-
-      // Actualizar el total de la compra
-      total += producto.costo * producto.cantidad;
-      totalProductos += producto.cantidad; // Sumar la cantidad de cada producto
   });
-
-
-  // Mostrar el precio total con la moneda
-  totalPrecio.textContent = `TOTAL ${moneda} ${total.toFixed(2)}`;
- 
-  // Mostrar el total de productos
-  totalProductosElement.textContent = `PRODUCTOS TOTALES ${totalProductos}`;
-
+  actualizarCostos();
 
   // Añadir event listeners a cada input de cantidad
   document.querySelectorAll(".cantidad-input").forEach(input => {
       input.addEventListener("change", actualizarCantidad);
   });
 }
-
 
 // Función para actualizar la cantidad de un producto en el carrito
 function actualizarCantidad(event) {
@@ -132,7 +127,6 @@ function actualizarCantidad(event) {
 
 
 //Nav para comprar
-
 let navComprar = document.querySelectorAll(".nav-item .comprar")
 navComprar.forEach(link => {
     link.addEventListener("click", () => {
@@ -146,3 +140,9 @@ navComprar.forEach(link => {
 });
    
 
+// Llama a esta función cuando se carga la página para inicializar el badge
+document.addEventListener("DOMContentLoaded", function () {
+    actualizarBadge(); 
+    actualizarCarrito();
+    mostrarCarrito();
+})
