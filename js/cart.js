@@ -44,29 +44,52 @@ function actualizarCarrito() {
      });
 }
 // función para actualizar la sección de costos
-function actualizarCostos(){
+// function actualizarCostos(){
+//     const carrito = JSON.parse(localStorage.getItem('carrito')) || [];
+//     const totalPrecio = document.getElementById("total-precio");
+//     const totalProductosElement = document.querySelector(".resumen-container h4");
+//     let total = 0;
+//     let totalProductos = 0; 
+
+//     // Obtener la moneda del primer producto (asumiendo que todos tienen la misma moneda)
+//     const moneda = carrito.length > 0 ? carrito[0].moneda : "UYU"; // Cambia "UYU" a "USD" si es necesario
+
+//     // para sumar el total y la cantidad de productos
+//     carrito.forEach(producto => {
+//         total += producto.costo * producto.cantidad;
+//         totalProductos += producto.cantidad;
+//     });
+//     // Mostrar el precio total con la moneda
+//     totalPrecio.textContent = `TOTAL ${moneda} ${total.toFixed(2)}`;
+ 
+//     // Mostrar el total de productos
+//     totalProductosElement.textContent = `PRODUCTOS TOTALES ${totalProductos}`;
+// }
+function actualizarCostos(moneda){
     const carrito = JSON.parse(localStorage.getItem('carrito')) || [];
+    let productosEnUYU = carrito.filter(producto => producto.moneda === "UYU");
+    let productosEnUSD = carrito.filter(producto => producto.moneda === "USD");
     const totalPrecio = document.getElementById("total-precio");
     const totalProductosElement = document.querySelector(".resumen-container h4");
     let total = 0;
-    let totalProductos = 0; 
-
-    // Obtener la moneda del primer producto (asumiendo que todos tienen la misma moneda)
-    const moneda = carrito.length > 0 ? carrito[0].moneda : "UYU"; // Cambia "UYU" a "USD" si es necesario
-
-    // para sumar el total y la cantidad de productos
+    let totalProductos = 0;
+    
+    totalPrecio.innerHTML = "";
+    // para sumar la cantidad de productos
     carrito.forEach(producto => {
-        total += producto.costo * producto.cantidad;
         totalProductos += producto.cantidad;
     });
-    // Mostrar el precio total con la moneda
-    totalPrecio.textContent = `TOTAL ${moneda} ${total.toFixed(2)}`;
- 
-    // Mostrar el total de productos
+    if(moneda === "USD"){
+        productosEnUYU.forEach(product => total += (product.costo / 42.16) * product.cantidad); // para convertir los pesos uruguayos en dólares
+        productosEnUSD.forEach(product =>total += product.costo * product.cantidad); //para sumar a lo que ya teniamos convertido los otros elementos en dolares
+    }else{
+        productosEnUSD.forEach(product => total += (product.costo * 42.48) * product.cantidad); // para convertir los dólares en pesos uruguayos
+        productosEnUYU.forEach(product => total += product.costo * product.cantidad); //para sumar a lo que ya teniamos convertido.
+    }
+      // Mostrar el precio total con la moneda
+      totalPrecio.textContent = `TOTAL ${moneda} ${total.toFixed(2)}`;
+      // Mostrar el total de productos
     totalProductosElement.textContent = `PRODUCTOS TOTALES ${totalProductos}`;
-}
-function cambiarPesosADolares (){
-let totalEnDolares = 0;
 }
 // Función para mostrar los productos en el carrito en cart.html
 function mostrarCarrito() {
@@ -99,7 +122,7 @@ function mostrarCarrito() {
       // Añadir el producto al contenedor de la lista de productos
       listaProductos.appendChild(productoDiv);
   });
-  actualizarCostos();
+  actualizarCostos("USD");
 
   // Añadir event listeners a cada input de cantidad
   document.querySelectorAll(".cantidad-input").forEach(input => {

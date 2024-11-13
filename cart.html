@@ -116,11 +116,11 @@
             <h3 class="destacado dark-mode-title">TOTAL</h3>
             <h4 class="importante dark-mode-title">PRODUCTOS TOTALES</h4>
             <div class="row m-1">
-              <input type="radio" class="btn-check" name="moneda" id="usd_option" autocomplete="off" checked>
-              <label class="btn btn-secondary col-lg-6" for="usd_option">USD</label>
+              <input type="radio" class="btn-check" name="moneda" id="USD" autocomplete="off" onclick="actualizarCostos('USD')" checked>
+              <label class="btn btn-secondary col-lg-6" for="USD">USD</label>
 
-              <input type="radio" class="btn-check" name="moneda" id="uyu_option" autocomplete="off">
-              <label class="btn btn-secondary col-lg-6" for="uyu_option">UYU</label>
+              <input type="radio" class="btn-check" name="moneda" id="UYU" autocomplete="off" onclick="actualizarCostos('UYU')">
+              <label class="btn btn-secondary col-lg-6" for="UYU">UYU</label>
             </div>
             <p id="total-precio" class="dark-mode-title">TOTAL $0.00</p>
             <button class="boton-comprar btn" href="#nav-comprar">
