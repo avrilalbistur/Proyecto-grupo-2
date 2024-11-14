@@ -44,7 +44,7 @@ function actualizarCarrito() {
 }
 
 function actualizarCostos(moneda){
-    const TASA_CAMBIO_USD_UYU = 42.16;
+    const TASA_CAMBIO_USD_UYU = 0.024;
     const TASA_CAMBIO_UYU_USD = 42.48;
     const totalPrecio = document.getElementById("total-precio");
     const totalProductosElement = document.querySelector(".resumen-container h4");
@@ -57,7 +57,7 @@ function actualizarCostos(moneda){
     // calcular el total en base a la moneda seleccionada
     if(moneda === "USD"){
         carrito.forEach(product =>{
-            let totalEnUSD = product.moneda ==="UYU" ? (product.costo / TASA_CAMBIO_USD_UYU) : product.costo;
+            let totalEnUSD = product.moneda ==="UYU" ? (product.costo * TASA_CAMBIO_USD_UYU) : product.costo;
             total += totalEnUSD * product.cantidad;
         })
     }else if(moneda === "UYU"){
@@ -70,10 +70,8 @@ function actualizarCostos(moneda){
     totalPrecio.textContent = `TOTAL ${moneda} ${total.toFixed(2)}`;
     // mostrar el total de productos
     totalProductosElement.textContent = `PRODUCTOS TOTALES ${totalProductos}`;
+};
 
-
-
-}
 // Función para mostrar los productos en el carrito en cart.html
 function mostrarCarrito() {
   const listaProductos = document.getElementById("lista-productos");
