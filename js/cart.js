@@ -115,7 +115,7 @@ function mostrarCarrito() {
           <label for="cantidad-${index}" class="dark-mode-title">CANTIDAD</label>
           <input type="number" id="cantidad-${index}" min="1" value="${producto.cantidad}" data-index="${index}" class="cantidad-input">
           <p class="dark-mode-title">SUBTOTAL ${(producto.costo * producto.cantidad).toFixed(2)}</p>
-          <button onclick="eliminarProducto()" id="${producto.id}">Eliminar</button>
+          <button onclick="eliminarProducto(${producto.id})" id="${producto.id}">Eliminar</button>
         </div>
       `;
 
@@ -165,26 +165,26 @@ navComprar.forEach(link => {
    
 
 
-//eliminar productos
+// Función para remover un producto
+
 function eliminarProducto(id) {
     const carrito = JSON.parse(localStorage.getItem('carrito')) || [];
+    console.log(carrito);
+    console.log(id);
     const nuevoCarrito = carrito.filter(producto => producto.id !== id);
+    console.log('Nuevo Carrito:', nuevoCarrito);
     localStorage.setItem('carrito', JSON.stringify(nuevoCarrito));
     actualizarBadge();
+    calcularTotal();
+    actualizarCarrito();
     mostrarCarrito();
     actualizarCostos("USD");
 }
+
+
 // Llama a esta función cuando se carga la página para inicializar el badge
 document.addEventListener("DOMContentLoaded", function () {
     actualizarCarrito();
     actualizarBadge();
-    mostrarCarrito();
-})
-
-
-// Llama a esta función cuando se carga la página para inicializar el badge
-document.addEventListener("DOMContentLoaded", function () {
-    actualizarBadge(); 
-    actualizarCarrito();
     mostrarCarrito();
 })
