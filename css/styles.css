@@ -1178,4 +1178,12 @@ body.dark-mode {
     
   }
   
-  
+  .envioypago {
+    background-color: white;
+    display: flex;
+    justify-content: space-around;
+  }
+
+  .envioypago ul {
+    list-style-type: none;
+  }

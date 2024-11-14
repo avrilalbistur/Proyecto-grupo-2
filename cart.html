@@ -1,100 +1,70 @@
 <!DOCTYPE html>
 <html lang="es">
-  <head>
-    <meta charset="UTF-8" />
-    <meta
-      name="viewport"
-      content="width=device-width, initial-scale=1, shrink-to-fit=no"
-    />
-    <title>eMercado - Todo lo que busques está aquí</title>
-    <link
-      href="https://fonts.googleapis.com/css?family=Raleway:300,300i,400,400i,700,700i,900,900i"
-      rel="stylesheet"
-    />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&family=Roboto+Mono:wght@400&display=swap"
-      rel="stylesheet"
-    />
-    <link href="css/bootstrap.min.css" rel="stylesheet" />
-    <link href="css/font-awesome.min.css" rel="stylesheet" />
-    <link href="css/styles.css" rel="stylesheet" />
-    <!-- Asegúrate de que este archivo contenga los estilos que vamos a mover -->
-  </head>
 
-  <body>
-    <nav class="navbar navbar-expand-lg navbar-dark bg-dark p-1">
-      <div class="container">
-        <button
-          class="navbar-toggler"
-          type="button"
-          data-bs-toggle="collapse"
-          data-bs-target="#navbarNav"
-          aria-controls="navbarNav"
-          aria-expanded="false"
-          aria-label="Toggle navigation"
-        >
-          <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarNav">
-          <ul class="navbar-nav w-100 justify-content-between">
-            <li class="nav-item">
-              <a class="nav-link" href="index.html">Inicio</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="categories.html">Categorías</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="sell.html">Vender</a>
-            </li>
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+  <title>eMercado - Todo lo que busques está aquí</title>
+  <link href="https://fonts.googleapis.com/css?family=Raleway:300,300i,400,400i,700,700i,900,900i" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&family=Roboto+Mono:wght@400&display=swap"
+    rel="stylesheet" />
+  <link href="css/bootstrap.min.css" rel="stylesheet" />
+  <link href="css/font-awesome.min.css" rel="stylesheet" />
+  <link href="css/styles.css" rel="stylesheet" />
+  <!-- Asegúrate de que este archivo contenga los estilos que vamos a mover -->
+</head>
 
-            <li class="nav-item dropdown">
-              <a
-                class="btn btn-secondary dropdown-toggle bg-dark nav-link border-0"
-                href="#"
-                role="button"
-                id="navbar-username"
-                data-bs-toggle="dropdown"
-                aria-expanded="false"
-              >
-                <span id="username">Usuario@correo.com</span>
-              </a>
-              <ul
-                class="dropdown-menu dropdown-menu-dark"
-                aria-labelledby="dropdownMenuLink"
-              >
-                <li>
-                  <a class="dropdown-item" href="cart.html">
-                    Mi Carrito
-                    <span
-                      id="carritoCount"
-                      class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger"
-                    >
-                      0
-                      <!-- Este valor se actualizará dinámicamente -->
-                    </span>
-                  </a>
-                </li>
-                <li>
-                  <a class="dropdown-item" href="my-profile.html">Mi Perfil</a>
-                </li>
-                <li>
-                  <a
-                    class="dropdown-item"
-                    href="login.html"
-                    onclick="cerrarSesionMenu()"
-                    >Cerrar Sesión</a
-                  >
-                </li>
-              </ul>
-            </li>
-          </ul>
-        </div>
+<body>
+  <nav class="navbar navbar-expand-lg navbar-dark bg-dark p-1">
+    <div class="container">
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+        aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav w-100 justify-content-between">
+          <li class="nav-item">
+            <a class="nav-link" href="index.html">Inicio</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="categories.html">Categorías</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="sell.html">Vender</a>
+          </li>
+
+          <li class="nav-item dropdown">
+            <a class="btn btn-secondary dropdown-toggle bg-dark nav-link border-0" href="#" role="button"
+              id="navbar-username" data-bs-toggle="dropdown" aria-expanded="false">
+              <span id="username">Usuario@correo.com</span>
+            </a>
+            <ul class="dropdown-menu dropdown-menu-dark" aria-labelledby="dropdownMenuLink">
+              <li>
+                <a class="dropdown-item" href="cart.html">
+                  Mi Carrito
+                  <span id="carritoCount"
+                    class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
+                    0
+                    <!-- Este valor se actualizará dinámicamente -->
+                  </span>
+                </a>
+              </li>
+              <li>
+                <a class="dropdown-item" href="my-profile.html">Mi Perfil</a>
+              </li>
+              <li>
+                <a class="dropdown-item" href="login.html" onclick="cerrarSesionMenu()">Cerrar Sesión</a>
+              </li>
+            </ul>
+          </li>
+        </ul>
       </div>
-    </nav>
+    </div>
+  </nav>
 
   <main>
-    
-    <div class="container" >
+
+    <div class="container">
       <h2 class="titulo-carrito">CARRITO</h2>
       <div class="fila ">
         <div class="carrito-container  ">
@@ -117,10 +87,12 @@
             <h3 class="destacado dark-mode-title">TOTAL</h3>
             <h4 class="importante dark-mode-title">PRODUCTOS TOTALES</h4>
             <div class="row m-1" id="cambiar-moneda">
-              <input type="radio" class="btn-check" name="moneda" id="USD" autocomplete="off" onclick="actualizarCostos('USD')" checked>
+              <input type="radio" class="btn-check" name="moneda" id="USD" autocomplete="off"
+                onclick="actualizarCostos('USD')" checked>
               <label class="btn btn-secondary col-lg-6" for="USD">USD</label>
 
-              <input type="radio" class="btn-check" name="moneda" id="UYU" autocomplete="off" onclick="actualizarCostos('UYU')">
+              <input type="radio" class="btn-check" name="moneda" id="UYU" autocomplete="off"
+                onclick="actualizarCostos('UYU')">
               <label class="btn btn-secondary col-lg-6" for="UYU">UYU</label>
             </div>
             <p id="total-precio" class="dark-mode-title">TOTAL $0.00</p>
@@ -130,169 +102,177 @@
           </div>
         </div>
 
-      <div>
-          <form>
-            <ul>
-              <li>
-                <h3>Formas de envio: </h3>
-                <div>
+        <form>
+          <div class="envioypago">
+            <div class="envio">
+              <ul>
+                <li>
+                  <h3>Formas de envio: </h3>
+                  <div>
                     <legend>Tipo de envio: </legend>
-                    <div class="col-sm-10 form-check">
-                      <div>
-                        <input type="radio" name="tipo" class="form-check-input" id="premium" required> 
-                        <label for="premium">Premium</label>
+                    <div class="col-sm-10">
+                      <div class="form-check">
+                        <input type="radio" name="tipo" class="form-check-input" id="premium" required>
+                        <label for="premium" class="form-check-label">Premium</label>
                       </div>
-                      <div>
-                        <input type="radio" name="tipo" class="form-check-input" id="Express" required> 
-                        <label for="express">Express</label>
+                      <div class="form-check">
+                        <input type="radio" name="tipo" class="form-check-input" id="Express" required>
+                        <label for="express" class="form-check-label">Express</label>
                       </div>
-                      <div>
-                        <input type="radio" name="tipo" class="form-check-input" id="Standard" required> 
-                        <label for="standard">Standard</label>
+                      <div class="form-check">
+                        <input type="radio" name="tipo" class="form-check-input" id="Standard" required>
+                        <label for="standard" class="form-check-label">Standard</label>
                       </div>
                     </div>
-                </div>
-              </li>
-              <li>
-                <h3>Direccion de envio: </h3>
-                <div>
-                  <div>
-                    <label for="dep" class="form-label">Departamento: </label>
-                    <input type="text" class="form-control" id="dep" required>
                   </div>
-    
+                </li>
+                <li>
+                  <h3>Direccion de envio: </h3>
                   <div>
-                    <label for="localidad" class="form-label">Localidad: </label>
-                    <input type="text" class="form-control" id="localidad" required>
-                  </div>
-    
-                  <div>
-                    <label for="calle" class="form-label">Calle: </label>
-                    <input type="text" class="form-control" id="calle" required>
-                  </div>
-    
-                  <div>
-                    <label for="numero" class="form-label">Numero: </label>
-                    <input type="text" class="form-control" id="numero" required>
-                  </div>
-    
-                  <div>
-                    <label for="esquina" class="form-label">Esquina: </label>
-                    <input type="text" class="form-control" id="esquina" required>
-                  </div>
-                </div>
-                
-              </li>
-              <li>
-                <h3>Forma de pago: </h3>
-                <div>
-                    <label>Forma de pago: </label>
                     <div>
-                      <input type="radio" name="pago" id="credito" required> 
-                      <label for="credito">Tarjeta de credito</label>
+                      <label for="dep" class="form-label">Departamento: </label>
+                      <input type="text" class="form-control" id="dep" required>
                     </div>
-                    <div>
-                      <input type="radio" name="pago" id="debito" required> 
-                      <label for="debito">Tarjeta de debito</label>
-                    </div>
-                    <div>
-                      <input type="radio" name="pago" id="transferencia" required> 
-                      <label for="transferencia">Transferencia Bancaria</label>
-                    </div>
-                </div>
-    
-              </li>
-    
-              <li>
-                <h3>Datos de tarjeta: </h3>
-                <div>
-                  <div>
-                    <label for="tar-titular">Titular: </label>
-                  </div>
-                  <div>
-                    <input type="text" class="form-control" id="tar-titular" required>
-                  </div>
-    
-                  <div>
-                    <label for="tar-num">Numero: </label>
-                  </div>
-                  <div>
-                    <input type="text" class="form-control" id="tar-num" required>
-                  </div>
-    
-                  <div>
-                    <label for="tar-fecha">Fecha: </label>
-                  </div>
-                  <div>
-                    <input type="text" class="form-control" id="tar-fecha" required>
-                  </div>
-    
-                  <div>
-                    <label>Emisor de la tarjeta: </label>
-                    <input type="radio" name="emisor" id="visa" required>
-                    <label for="visa">VISA</label>
-                    <input type="radio" name="emisor" id="mastercard" required>
-                    <label for="mastercard">MasterCard</label>
-                  </div>
-    
-                  <div>
-                    <label for="cvv">CVV: </label>
-                  </div>
-                  <div>
-                    <input type="text" class="form-control" id="cvv" required>
-                  </div>
-                </div>
-                
-              </li>
-              
-              <li>
-                <h3>Costos</h3>
-                <div>
-                  <label>Subtotal</label>
-                </div>
-                
-                <div>
-                  <label>Costos de envio</label>
-                </div>
 
-                <div>
-                  <label>TOTAL</label>
-                </div>
-              </li>
-            </ul>
-            <div>
-              <input type="submit" value="FINALIZAR COMPRA">
+                    <div>
+                      <label for="localidad" class="form-label">Localidad: </label>
+                      <input type="text" class="form-control" id="localidad" required>
+                    </div>
+
+                    <div>
+                      <label for="calle" class="form-label">Calle: </label>
+                      <input type="text" class="form-control" id="calle" required>
+                    </div>
+
+                    <div>
+                      <label for="numero" class="form-label">Numero: </label>
+                      <input type="text" class="form-control" id="numero" required>
+                    </div>
+
+                    <div>
+                      <label for="esquina" class="form-label">Esquina: </label>
+                      <input type="text" class="form-control" id="esquina" required>
+                    </div>
+                  </div>
+
+                </li>
+              </ul>
             </div>
-          </form>
-        </div>
+            <div class="pago">
+              <ul>
+                <li>
+                  <h3>Forma de pago: </h3>
+                  <div class="col-sm-10 form-check">
+                    <label>Forma de pago: </label>
+                    <div class="form-check">
+                      <input type="radio" name="pago" id="credito" class="form-check-input" required>
+                      <label for="credito" class="form-check-label">Tarjeta de credito</label>
+                    </div>
+                    <div class="form-check">
+                      <input type="radio" name="pago" class="form-check-input" id="debito" required>
+                      <label for="debito" class="form-check-label">Tarjeta de debito</label>
+                    </div>
+                    <div class="form-check">
+                      <input type="radio" name="pago" class="form-check-input" id="transferencia" required>
+                      <label for="transferencia" class="form-check-label">Transferencia Bancaria</label>
+                    </div>
+                  </div>
 
-    </main>
+                </li>
 
-    <footer class="text-muted">
-      <div class="container">
-        <p class="float-end">
-          <a href="#">Volver arriba</a>
-        </p>
-        <p>
-          Este sitio forma parte de
-          <a href="https://jovenesaprogramar.edu.uy/" target="_blank"
-            >Jovenes a Programar</a
-          >
-        </p>
-      </div>
-    </footer>
+                <li>
+                  <h3>Datos de tarjeta: </h3>
+                  <div>
+                    <div>
+                      <label for="tar-titular">Titular: </label>
+                    </div>
+                    <div>
+                      <input type="text" class="form-control" id="tar-titular" required>
+                    </div>
 
-    <div id="spinner-wrapper">
-      <div class="lds-ring">
-        <div></div>
-        <div></div>
-        <div></div>
-        <div></div>
-      </div>
+                    <div>
+                      <label for="tar-num">Numero: </label>
+                    </div>
+                    <div>
+                      <input type="text" class="form-control" id="tar-num" required>
+                    </div>
+
+                    <div>
+                      <label for="tar-fecha">Fecha: </label>
+                    </div>
+                    <div>
+                      <input type="text" class="form-control" id="tar-fecha" required>
+                    </div>
+
+                    <div>
+                      <p>Emisor de la tarjeta: </p>
+                      <div class="form-check">
+                        <label class="form-check-label">VISA</label>
+                        <input type="radio" name="emisor" id="visa" class="form-check-input" required>
+                      </div>
+                      <div class="form-check">
+                        <input type="radio" name="emisor" id="mastercard" class="form-check-input" required>
+                        <label for="mastercard" class="form-check-label">MasterCard</label>
+                      </div>
+                    </div>
+
+                    <div>
+                      <label for="cvv">CVV: </label>
+                    </div>
+                    <div>
+                      <input type="text" class="form-control" id="cvv" required>
+                    </div>
+                  </div>
+
+                </li>
+
+                <li>
+                  <h3>Costos</h3>
+                  <div>
+                    <label>Subtotal</label>
+                  </div>
+
+                  <div>
+                    <label>Costos de envio</label>
+                  </div>
+
+                  <div>
+                    <label>TOTAL</label>
+                  </div>
+                </li>
+              </ul>
+              <div>
+                <input type="submit" value="FINALIZAR COMPRA">
+              </div>
+            </div>
+          </div>
+        </form>
+  </main>
+
+  <footer class="text-muted">
+    <div class="container">
+      <p class="float-end">
+        <a href="#">Volver arriba</a>
+      </p>
+      <p>
+        Este sitio forma parte de
+        <a href="https://jovenesaprogramar.edu.uy/" target="_blank">Jovenes a Programar</a>
+      </p>
     </div>
+  </footer>
 
-    <script src="js/bootstrap.bundle.min.js"></script>
-    <script src="js/init.js"></script>
-    <script src="js/cart.js"></script>
-  </body>
+  <div id="spinner-wrapper">
+    <div class="lds-ring">
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+    </div>
+  </div>
+
+  <script src="js/bootstrap.bundle.min.js"></script>
+  <script src="js/init.js"></script>
+  <script src="js/cart.js"></script>
+</body>
+
 </html>
