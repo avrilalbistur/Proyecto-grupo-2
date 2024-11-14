@@ -1,12 +1,12 @@
 
 // Función para agregar un producto al carrito
-function agregarProducto(id, nombre, costo, moneda, imagen) {
-    const producto = { id, nombre, costo, moneda, imagen };
-    carrito.push(producto);
-    localStorage.setItem('carrito', JSON.stringify(carrito));
-    actualizarBadge();
-    calcularTotal();
-}
+// function agregarProducto(id, nombre, costo, moneda, imagen) {
+//     const producto = { id, nombre, costo, moneda, imagen };
+//     carrito.push(producto);
+//     localStorage.setItem('carrito', JSON.stringify(carrito));
+//     actualizarBadge();
+//     calcularTotal();
+// }
 
 // Función para calcular el total de productos en el carrito
 function calcularTotal() {
@@ -160,6 +160,7 @@ function eliminarProducto(id) {
     mostrarCarrito();
     actualizarCostos("USD");
 }
+console.log(carrito);
 
 
 // Llama a esta función cuando se carga la página para inicializar el badge

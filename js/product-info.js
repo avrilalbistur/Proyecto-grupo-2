@@ -266,13 +266,13 @@ document.addEventListener("DOMContentLoaded", (e) => {
 
 // Función que se ejecuta al dar clic en el botón "Agregar al carrito"
 function agregarAlCarrito() {
-  console.log(productInfo);
 
   // Recuperar el carrito del localStorage, o inicializarlo como un arreglo vacío
   let carrito = JSON.parse(localStorage.getItem("carrito")) || [];
 
   // Crear un objeto de producto con la información actual
   let productoAgregado = {
+    id: productInfo.id,
     nombre: productInfo.name,
     costo: productInfo.cost,
     moneda: productInfo.currency,
