@@ -173,12 +173,33 @@ function eliminarProducto(id) {
 }
 
 
-// Llama a esta función cuando se carga la página para inicializar el badge
-document.addEventListener("DOMContentLoaded", function () {
+document.addEventListener("DOMContentLoaded", () => {
+    // Modal de compra
+    const btnComprar = document.getElementById("btnComprar");
+    const modal = document.getElementById("modal");
+    const closeModal = document.getElementById("closeModal");
+
+    if (btnComprar && modal && closeModal) {
+        btnComprar.addEventListener("click", () => {
+            modal.style.display = "flex";
+        });
+
+        closeModal.addEventListener("click", () => {
+            modal.style.display = "none";
+        });
+
+        window.addEventListener("click", (event) => {
+            if (event.target === modal) {
+                modal.style.display = "none";
+            }
+        });
+    }
+
     actualizarCarrito();
-    actualizarBadge();
     mostrarCarrito();
-})
+    actualizarBadge();
+});
+
 document.addEventListener("DOMContentLoaded", function() {
     // El código JavaScript que maneja el formulario
     document.getElementById("formulario-compra").addEventListener("submit", function(event) {
@@ -210,19 +231,22 @@ document.addEventListener("DOMContentLoaded", function() {
                     // Aquí puedes agregar el código para vaciar el carrito y realizar las acciones correspondientes
                     console.log("Compra realizada con éxito.");
                 });
-                // Vaciar el carrito
-    localStorage.removeItem('carrito');  // Elimina el carrito del almacenamiento local
+     // Cerrar el formulario
+     document.getElementById('formulario-compra').style.display = 'none'; // Ocultar el formulario
 
-    // Limpiar el formulario de compra
-    document.getElementById('formulario-compra').reset();  // Restablece todos los campos del formulario
+     // Vaciar el carrito
+     localStorage.removeItem('carrito');  // Elimina el carrito del almacenamiento local
 
-    // Actualizar la vista para reflejar que el carrito está vacío
-    actualizarCarrito();  
-    mostrarCarrito();     
-    actualizarCostos("USD");  
+     // Limpiar el formulario de compra
+     document.getElementById('formulario-compra').reset();  // Restablece todos los campos del formulario
 
-    console.log("Compra realizada con éxito. El carrito ha sido vaciado y el formulario limpiado.");
-  } else if (result.isDismissed) {
+      // Actualizar la vista para reflejar que el carrito está vacío
+     actualizarCarrito();  
+     mostrarCarrito();     
+     actualizarCostos("USD");  
+
+     console.log("Compra realizada con éxito. El carrito ha sido vaciado y el formulario limpiado.");
+   } else if (result.isDismissed) {
                 // Si el usuario cancela
                 console.log("Compra cancelada.");
             }
