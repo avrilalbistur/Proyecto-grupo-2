@@ -1,13 +1,4 @@
 
-// Función para agregar un producto al carrito
-function agregarProducto(id, nombre, costo, moneda, imagen) {
-    const producto = { id, nombre, costo, moneda, imagen };
-    carrito.push(producto);
-    localStorage.setItem('carrito', JSON.stringify(carrito));
-    actualizarBadge();
-    calcularTotal();
-}
-
 // Función para calcular el total de productos en el carrito
 function calcularTotal() {
     const productosEnCarrito = JSON.parse(localStorage.getItem('carrito')) || [];
@@ -25,12 +16,12 @@ function calcularTotal() {
 // Función para actualizar el carrito en usuario
 function actualizarCarrito() {
     const cartContainer = document.getElementById('cart-container');
-    if(!cartContainer) return;
-    
+    if (!cartContainer) return;
+
     const productosEnCarrito = JSON.parse(localStorage.getItem('carrito')) || [];
     cartContainer.innerHTML = ''; // Limpiar el contenedor del carrito
 
-     productosEnCarrito.forEach(product => {
+    productosEnCarrito.forEach(product => {
         const productDiv = document.createElement('div');
         productDiv.className = 'producto';
         productDiv.innerHTML = `
@@ -41,7 +32,7 @@ function actualizarCarrito() {
             
         `;
         cartContainer.appendChild(productDiv);
-     });
+    });
 }
 // función para actualizar la sección de costos
 // function actualizarCostos(){
@@ -61,11 +52,11 @@ function actualizarCarrito() {
 //     });
 //     // Mostrar el precio total con la moneda
 //     totalPrecio.textContent = `TOTAL ${moneda} ${total.toFixed(2)}`;
- 
+
 //     // Mostrar el total de productos
 //     totalProductosElement.textContent = `PRODUCTOS TOTALES ${totalProductos}`;
 // }
-function actualizarCostos(moneda){
+function actualizarCostos(moneda) {
     const carrito = JSON.parse(localStorage.getItem('carrito')) || [];
     let productosEnUYU = carrito.filter(producto => producto.moneda === "UYU");
     let productosEnUSD = carrito.filter(producto => producto.moneda === "USD");
@@ -73,40 +64,40 @@ function actualizarCostos(moneda){
     const totalProductosElement = document.querySelector(".resumen-container h4");
     let total = 0;
     let totalProductos = 0;
-    
+
     totalPrecio.innerHTML = "";
     // para sumar la cantidad de productos
     carrito.forEach(producto => {
         totalProductos += producto.cantidad;
     });
-    if(moneda === "USD"){
+    if (moneda === "USD") {
         productosEnUYU.forEach(product => total += (product.costo / 42.16) * product.cantidad); // para convertir los pesos uruguayos en dólares
-        productosEnUSD.forEach(product =>total += product.costo * product.cantidad); //para sumar a lo que ya teniamos convertido los otros elementos en dolares
-    }else{
+        productosEnUSD.forEach(product => total += product.costo * product.cantidad); //para sumar a lo que ya teniamos convertido los otros elementos en dolares
+    } else {
         productosEnUSD.forEach(product => total += (product.costo * 42.48) * product.cantidad); // para convertir los dólares en pesos uruguayos
         productosEnUYU.forEach(product => total += product.costo * product.cantidad); //para sumar a lo que ya teniamos convertido.
     }
-      // Mostrar el precio total con la moneda
-      totalPrecio.textContent = `TOTAL ${moneda} ${total.toFixed(2)}`;
-      // Mostrar el total de productos
+    // Mostrar el precio total con la moneda
+    totalPrecio.textContent = `TOTAL ${moneda} ${total.toFixed(2)}`;
+    // Mostrar el total de productos
     totalProductosElement.textContent = `PRODUCTOS TOTALES ${totalProductos}`;
 }
 // Función para mostrar los productos en el carrito en cart.html
 function mostrarCarrito() {
-  const carrito = JSON.parse(localStorage.getItem("carrito")) || [];
-  const listaProductos = document.getElementById("lista-productos");
+    const carrito = JSON.parse(localStorage.getItem("carrito")) || [];
+    const listaProductos = document.getElementById("lista-productos");
 
 
-  listaProductos.innerHTML = ""; // Limpiar la lista de productos
+    listaProductos.innerHTML = ""; // Limpiar la lista de productos
 
-  carrito.forEach((producto, index) => {
-      // Crear el contenedor para cada producto
-      const productoDiv = document.createElement("div");
-      productoDiv.classList.add("producto-item");
+    carrito.forEach((producto, index) => {
+        // Crear el contenedor para cada producto
+        const productoDiv = document.createElement("div");
+        productoDiv.classList.add("producto-item");
 
 
-      // Crear el contenido del producto
-      productoDiv.innerHTML = `
+        // Crear el contenido del producto
+        productoDiv.innerHTML = `
         <img src="${producto.imagen}" alt="${producto.nombre}" class="imagen-producto">
         <div class="detalles-producto">
           <h4 class="dark-mode-title">${producto.nombre}</h4>
@@ -120,32 +111,32 @@ function mostrarCarrito() {
       `;
 
 
-      // Añadir el producto al contenedor de la lista de productos
-      listaProductos.appendChild(productoDiv);
-  });
-  actualizarCostos("USD");
+        // Añadir el producto al contenedor de la lista de productos
+        listaProductos.appendChild(productoDiv);
+    });
+    actualizarCostos("USD");
 
-  // Añadir event listeners a cada input de cantidad
-  document.querySelectorAll(".cantidad-input").forEach(input => {
-      input.addEventListener("change", actualizarCantidad);
-  });
+    // Añadir event listeners a cada input de cantidad
+    document.querySelectorAll(".cantidad-input").forEach(input => {
+        input.addEventListener("change", actualizarCantidad);
+    });
 }
 
 // Función para actualizar la cantidad de un producto en el carrito
 function actualizarCantidad(event) {
-  const carrito = JSON.parse(localStorage.getItem("carrito")) || [];
-  const index = event.target.dataset.index;
-  const nuevaCantidad = parseInt(event.target.value);
+    const carrito = JSON.parse(localStorage.getItem("carrito")) || [];
+    const index = event.target.dataset.index;
+    const nuevaCantidad = parseInt(event.target.value);
 
 
-  if (nuevaCantidad > 0) {
-      carrito[index].cantidad = nuevaCantidad;
-      carrito[index].subtotal = carrito[index].costo * nuevaCantidad;
-      localStorage.setItem("carrito", JSON.stringify(carrito));
-      mostrarCarrito(); // Recargar la vista del carrito
-  } else {
-      alert("La cantidad debe ser al menos 1");
-  }
+    if (nuevaCantidad > 0) {
+        carrito[index].cantidad = nuevaCantidad;
+        carrito[index].subtotal = carrito[index].costo * nuevaCantidad;
+        localStorage.setItem("carrito", JSON.stringify(carrito));
+        mostrarCarrito(); // Recargar la vista del carrito
+    } else {
+        alert("La cantidad debe ser al menos 1");
+    }
 }
 
 
@@ -160,9 +151,9 @@ navComprar.forEach(link => {
         link.classList.add("active")
 
     })
-    
+
 });
-   
+
 
 
 // Función para remover un producto
@@ -188,3 +179,41 @@ document.addEventListener("DOMContentLoaded", function () {
     actualizarBadge();
     mostrarCarrito();
 })
+document.addEventListener("DOMContentLoaded", function() {
+    // El código JavaScript que maneja el formulario
+    document.getElementById("formulario-compra").addEventListener("submit", function(event) {
+        event.preventDefault();  // Evitar que el formulario se envíe de forma tradicional
+
+        // Mostrar el SweetAlert de confirmación de compra
+        Swal.fire({
+            title: "¿Estás seguro/a de realizar esta compra?",
+            text: "¡No podrás revertir esto!",
+            icon: "warning",
+            showCancelButton: true,  // Botón de cancelar
+            confirmButtonText: "¡Sí, bórralo!", // Botón de confirmación
+            cancelButtonText: "Cancelar", // Botón de cancelar
+            confirmButtonColor: "#3085d6",  // Color del botón de confirmación
+            cancelButtonColor: "#d33",  // Color del botón de cancelar
+            allowOutsideClick: false,  // No permite cerrar fuera del cartel
+            allowEscapeKey: false,  // No permite cerrarlo con la tecla Escape
+            showConfirmButton: true,  // Asegura que el botón de confirmación esté siempre visible
+            showCancelButton: true,  // Asegura que el botón de cancelación esté visible
+        }).then((result) => {
+            if (result.isConfirmed) {
+                // Si el usuario confirma la compra
+                Swal.fire({
+                    title: "¡Confirmado!",
+                    text: "Tu compra ha sido realizada con éxito.",
+                    icon: "success",
+                    confirmButtonText: "Continuar"
+                }).then(() => {
+                    // Aquí puedes agregar el código para vaciar el carrito y realizar las acciones correspondientes
+                    console.log("Compra realizada con éxito.");
+                });
+            } else if (result.isDismissed) {
+                // Si el usuario cancela
+                console.log("Compra cancelada.");
+            }
+        });
+    });
+});
