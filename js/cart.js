@@ -7,6 +7,14 @@ function agregarProducto(id, nombre, costo, moneda, imagen) {
     actualizarBadge();
     calcularTotal();
 }
+// Función para actualizar el localStorage y las vistas
+function actualizarCarritoCompleto() {
+    localStorage.setItem('carrito', JSON.stringify(carrito));
+    actualizarBadge();
+    calcularTotal();
+    mostrarCarrito();
+    actualizarCostos("USD"); // Cambia la moneda si es necesario
+}
 
 // Función para calcular el total de productos en el carrito
 function calcularTotal() {
@@ -43,54 +51,35 @@ function actualizarCarrito() {
         cartContainer.appendChild(productDiv);
      });
 }
-// función para actualizar la sección de costos
-// function actualizarCostos(){
-//     const carrito = JSON.parse(localStorage.getItem('carrito')) || [];
-//     const totalPrecio = document.getElementById("total-precio");
-//     const totalProductosElement = document.querySelector(".resumen-container h4");
-//     let total = 0;
-//     let totalProductos = 0; 
-
-//     // Obtener la moneda del primer producto (asumiendo que todos tienen la misma moneda)
-//     const moneda = carrito.length > 0 ? carrito[0].moneda : "UYU"; // Cambia "UYU" a "USD" si es necesario
-
-//     // para sumar el total y la cantidad de productos
-//     carrito.forEach(producto => {
-//         total += producto.costo * producto.cantidad;
-//         totalProductos += producto.cantidad;
-//     });
-//     // Mostrar el precio total con la moneda
-//     totalPrecio.textContent = `TOTAL ${moneda} ${total.toFixed(2)}`;
- 
-//     // Mostrar el total de productos
-//     totalProductosElement.textContent = `PRODUCTOS TOTALES ${totalProductos}`;
-// }
+// función para actualizar la sección de costos dependiendo de la moneda que el usuario 
 function actualizarCostos(moneda){
-    const carrito = JSON.parse(localStorage.getItem('carrito')) || [];
-    let productosEnUYU = carrito.filter(producto => producto.moneda === "UYU");
-    let productosEnUSD = carrito.filter(producto => producto.moneda === "USD");
+    const TASA_CAMBIO_USD_UYU = 0.024;
+    const TASA_CAMBIO_UYU_USD = 42.48;
     const totalPrecio = document.getElementById("total-precio");
     const totalProductosElement = document.querySelector(".resumen-container h4");
     let total = 0;
     let totalProductos = 0;
-    
-    totalPrecio.innerHTML = "";
-    // para sumar la cantidad de productos
-    carrito.forEach(producto => {
-        totalProductos += producto.cantidad;
-    });
+
+    // sumar el total de productos
+    carrito.forEach(product => totalProductos += product.cantidad);
+
+    // calcular el total en base a la moneda seleccionada
     if(moneda === "USD"){
-        productosEnUYU.forEach(product => total += (product.costo / 42.16) * product.cantidad); // para convertir los pesos uruguayos en dólares
-        productosEnUSD.forEach(product =>total += product.costo * product.cantidad); //para sumar a lo que ya teniamos convertido los otros elementos en dolares
-    }else{
-        productosEnUSD.forEach(product => total += (product.costo * 42.48) * product.cantidad); // para convertir los dólares en pesos uruguayos
-        productosEnUYU.forEach(product => total += product.costo * product.cantidad); //para sumar a lo que ya teniamos convertido.
-    }
-      // Mostrar el precio total con la moneda
-      totalPrecio.textContent = `TOTAL ${moneda} ${total.toFixed(2)}`;
-      // Mostrar el total de productos
+        carrito.forEach(product =>{
+            let totalEnUSD = product.moneda ==="UYU" ? (product.costo * TASA_CAMBIO_USD_UYU) : product.costo;
+            total += totalEnUSD * product.cantidad;
+        })
+    }else if(moneda === "UYU"){
+        carrito.forEach(product =>{
+            let totalEnUYU = product.moneda === "USD" ? (product.costo * TASA_CAMBIO_UYU_USD) : product.costo;
+            total += totalEnUYU * product.cantidad;
+        });
+    };
+    // mostrar el precio total
+    totalPrecio.textContent = `TOTAL ${moneda} ${total.toFixed(2)}`;
+    // mostrar el total de productos
     totalProductosElement.textContent = `PRODUCTOS TOTALES ${totalProductos}`;
-}
+};
 // Función para mostrar los productos en el carrito en cart.html
 function mostrarCarrito() {
   const carrito = JSON.parse(localStorage.getItem("carrito")) || [];
@@ -169,10 +158,7 @@ navComprar.forEach(link => {
 
 function eliminarProducto(id) {
     const carrito = JSON.parse(localStorage.getItem('carrito')) || [];
-    console.log(carrito);
-    console.log(id);
     const nuevoCarrito = carrito.filter(producto => producto.id !== id);
-    console.log('Nuevo Carrito:', nuevoCarrito);
     localStorage.setItem('carrito', JSON.stringify(nuevoCarrito));
     actualizarBadge();
     calcularTotal();
