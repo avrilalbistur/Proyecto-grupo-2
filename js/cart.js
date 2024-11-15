@@ -179,77 +179,40 @@ document.addEventListener("DOMContentLoaded", function () {
     actualizarBadge();
     mostrarCarrito();
 })
+document.addEventListener("DOMContentLoaded", function() {
+    // El código JavaScript que maneja el formulario
+    document.getElementById("formulario-compra").addEventListener("submit", function(event) {
+        event.preventDefault();  // Evitar que el formulario se envíe de forma tradicional
 
-document.addEventListener("DOMContentLoaded", function () {
-    const formulario = document.getElementById('formulario-compra');
-
-    formulario.addEventListener('submit', function (event) {
-        // Validación de tipo de envío
-        const tipoEnvioSeleccionado = document.querySelector('input[name="tipo"]:checked');
-        if (!tipoEnvioSeleccionado) {
-            alert("Por favor, selecciona un tipo de envío.");
-            event.preventDefault(); // Evita el envío del formulario
-            return;
-        }
-
-        // Validación de forma de pago
-        const formaPagoSeleccionada = document.querySelector('input[name="pago"]:checked');
-        if (!formaPagoSeleccionada) {
-            alert("Por favor, selecciona una forma de pago.");
-            event.preventDefault(); // Evita el envío del formulario
-            return;
-        }
-
-        // Obtiene los valores de los campos de dirección
-        const departamento = document.getElementById('dep').value;
-        const localidad = document.getElementById('localidad').value;
-        const calle = document.getElementById('calle').value;
-        const numero = document.getElementById('numero').value;
-        const esquina = document.getElementById('esquina').value;
-
-        // Verifica si alguno de los campos de dirección está vacío
-        if (!departamento || !localidad || !calle || !numero || !esquina) {
-            event.preventDefault();
-            alert('Todos los campos de dirección son obligatorios.');
-            return;
-        }
-
-        // Validación de las cantidades de los productos
-        const productos = document.querySelectorAll('.producto'); // Suponiendo que cada producto tiene la clase "producto"
-        for (let producto of productos) {
-            const cantidad = producto.querySelector('.cantidad').value; // Suponiendo que el campo de cantidad tiene la clase "cantidad"
-            if (cantidad === "" || parseInt(cantidad) <= 0) {
-                event.preventDefault();
-                alert("La cantidad para cada producto debe ser mayor a 0.");
-                return;
-            }
-        }
-
-        // Si pasa todas las validaciones, mostrar el mensaje de confirmación con SweetAlert2
+        // Mostrar el SweetAlert de confirmación de compra
         Swal.fire({
             title: "¿Estás seguro/a de realizar esta compra?",
-            text: "No podrás revertir esto!",
+            text: "¡No podrás revertir esto!",
             icon: "warning",
-            showCancelButton: true,
-            confirmButtonColor: "#3085d6",
-            cancelButtonColor: "#d33",
-            confirmButtonText: "¡Sí, bórralo!",
-            allowOutsideClick: false, 
-            allowEscapeKey: false
+            showCancelButton: true,  // Botón de cancelar
+            confirmButtonText: "¡Sí, bórralo!", // Botón de confirmación
+            cancelButtonText: "Cancelar", // Botón de cancelar
+            confirmButtonColor: "#3085d6",  // Color del botón de confirmación
+            cancelButtonColor: "#d33",  // Color del botón de cancelar
+            allowOutsideClick: false,  // No permite cerrar fuera del cartel
+            allowEscapeKey: false,  // No permite cerrarlo con la tecla Escape
+            showConfirmButton: true,  // Asegura que el botón de confirmación esté siempre visible
+            showCancelButton: true,  // Asegura que el botón de cancelación esté visible
         }).then((result) => {
             if (result.isConfirmed) {
+                // Si el usuario confirma la compra
                 Swal.fire({
                     title: "¡Confirmado!",
                     text: "Tu compra ha sido realizada con éxito.",
-                    icon: "success"
+                    icon: "success",
+                    confirmButtonText: "Continuar"
                 }).then(() => {
-                    // Vaciar el carrito en localStorage
-                    localStorage.removeItem('carrito');
-                    // Actualizar la vista del carrito después de la compra
-                    actualizarCarrito();
-                    mostrarCarrito();
-                    actualizarCostos("USD");
+                    // Aquí puedes agregar el código para vaciar el carrito y realizar las acciones correspondientes
+                    console.log("Compra realizada con éxito.");
                 });
+            } else if (result.isDismissed) {
+                // Si el usuario cancela
+                console.log("Compra cancelada.");
             }
         });
     });
