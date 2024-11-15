@@ -28,7 +28,7 @@ function eliminarProducto(id) {
     actualizarBadge();
     actualizarCarrito();
     mostrarCarrito();
-    actualizarCostos();
+    actualizarCostos("UYU");
 }
 // funcion para pasar de una moneda a la otra dependiendo del usuario
 function convertirMoneda(costo, cantidad, monedaOrigen, monedaDestino) {
@@ -42,14 +42,12 @@ function convertirMoneda(costo, cantidad, monedaOrigen, monedaDestino) {
         : costo * cantidad * TASA_CAMBIO_USD_UYU;
 }
 // función para actualizar la sección de costos dependiendo de la moneda que el usuario 
-function actualizarCostos(moneda = null) {
+function actualizarCostos(moneda) {
     let carrito = JSON.parse(localStorage.getItem('carrito')) || [];
-    if (carrito.length === 0) return;
 
     const totalPrecio = document.getElementById("total-precio");
     const totalProductosElement = document.querySelector(".resumen-container h4");
 
-    moneda = moneda || carrito[0].moneda; // Usar la moneda del primer producto si no se especifica
     let total = 0;
     let totalProductos = 0;
 
@@ -65,7 +63,6 @@ function actualizarCostos(moneda = null) {
 
     // Guardar el total en el almacenamiento local
     localStorage.setItem(`totalCarrito${moneda}`, total.toFixed(2));
-    console.log(carrito);
     
     // Calcular el total con envío
     calcularTotalConEnvio(moneda);
@@ -135,7 +132,7 @@ function mostrarCarrito() {
     document.querySelectorAll(".cantidad-input").forEach(input => {
         input.addEventListener("change", actualizarCantidad);
     });
-    actualizarCostos();
+    actualizarCostos("UYU");
 }
 
 // Función para actualizar la cantidad de un producto en el carrito
@@ -153,7 +150,7 @@ function actualizarCantidad(event) {
     } else {
         alert("La cantidad debe ser al menos 1");
     }
-    actualizarCostos()
+    actualizarCostos("UYU")
 }
 
 
@@ -224,7 +221,7 @@ document.addEventListener("DOMContentLoaded", function() {
     // Actualizar la vista para reflejar que el carrito está vacío
     actualizarCarrito();  
     mostrarCarrito();     
-    actualizarCostos();  
+    actualizarCostos("UYU");  
 
     console.log("Compra realizada con éxito. El carrito ha sido vaciado y el formulario limpiado.");
   } else if (result.isDismissed) {

@@ -79,15 +79,15 @@
         </div>
         <!-- Añade más product-container según sea necesario -->
         <div class="resumen-container container col-12 ">
-          <h3 class="destacado dark-mode-title">TOTAL</h3>
+          <h3 class="destacado dark-mode-title">SUBTOTAL</h3>
           <h4 class="importante dark-mode-title">PRODUCTOS TOTALES</h4>
           <div class="row m-1" id="cambiar-moneda">
             <input type="radio" class="btn-check" name="moneda" id="USD" autocomplete="off"
-              onclick="actualizarCostos('USD')" checked>
+              onclick="actualizarCostos('USD')">
             <label class="btn btn-secondary col-lg-6" for="USD">USD</label>
 
             <input type="radio" class="btn-check" name="moneda" id="UYU" autocomplete="off"
-              onclick="actualizarCostos('UYU')">
+              onclick="actualizarCostos('UYU')" checked>
             <label class="btn btn-secondary col-lg-6" for="UYU">UYU</label>
           </div>
           <p id="total-precio" class="dark-mode-title">TOTAL $0.00</p>
