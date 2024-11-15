@@ -11,8 +11,10 @@
   <link href="css/bootstrap.min.css" rel="stylesheet" />
   <link href="css/font-awesome.min.css" rel="stylesheet" />
   <link href="css/styles.css" rel="stylesheet" />
-  <!-- Asegúrate de que este archivo contenga los estilos que vamos a mover -->
+  <link href="https://cdn.jsdelivr.net/npm/sweetalert2@11.0.0/dist/sweetalert2.min.css" rel="stylesheet">
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.0.0/dist/sweetalert2.min.js"></script>
 </head>
+
 
 <body>
   <nav class="navbar navbar-expand-lg navbar-dark bg-dark p-1">
@@ -98,32 +100,32 @@
           </div>
         </div>
 
-        <form>
+        <form id="formulario-compra">
           <div class="envioypago">
             <div class="envio">
               <ul>
                 <li>
-                  <h3>Formas de envio: </h3>
+                  <h3>Formas de envío: </h3>
                   <div>
-                    <legend>Tipo de envio: </legend>
+                    <legend>Tipo de envío: </legend>
                     <div class="col-sm-10">
                       <div class="form-check">
                         <input type="radio" name="tipo" class="form-check-input" id="premium" required>
                         <label for="premium" class="form-check-label">Premium</label>
                       </div>
                       <div class="form-check">
-                        <input type="radio" name="tipo" class="form-check-input" id="Express" required>
+                        <input type="radio" name="tipo" class="form-check-input" id="express" required>
                         <label for="express" class="form-check-label">Express</label>
                       </div>
                       <div class="form-check">
-                        <input type="radio" name="tipo" class="form-check-input" id="Standard" required>
+                        <input type="radio" name="tipo" class="form-check-input" id="standard" required>
                         <label for="standard" class="form-check-label">Standard</label>
                       </div>
                     </div>
                   </div>
                 </li>
                 <li>
-                  <h3>Direccion de envio: </h3>
+                  <h3>Dirección de envío: </h3>
                   <div>
                     <div>
                       <label for="dep" class="form-label">Departamento: </label>
@@ -141,8 +143,8 @@
                     </div>
 
                     <div>
-                      <label for="numero" class="form-label">Numero: </label>
-                      <input type="text" class="form-control" id="numero" required>
+                      <label for="numero" class="form-label">Número: </label>
+                      <input type="number" class="form-control" id="numero" required>
                     </div>
 
                     <div>
@@ -157,16 +159,16 @@
             <div class="pago">
               <ul>
                 <li>
-                  <h3>Forma de pago: </h3>
+                  <h3>Formas de pago: </h3>
                   <div class="col-sm-10 form-check">
                     <label>Forma de pago: </label>
                     <div class="form-check">
                       <input type="radio" name="pago" id="credito" class="form-check-input" required>
-                      <label for="credito" class="form-check-label">Tarjeta de credito</label>
+                      <label for="credito" class="form-check-label">Tarjeta de crédito</label>
                     </div>
                     <div class="form-check">
                       <input type="radio" name="pago" class="form-check-input" id="debito" required>
-                      <label for="debito" class="form-check-label">Tarjeta de debito</label>
+                      <label for="debito" class="form-check-label">Tarjeta de débito</label>
                     </div>
                     <div class="form-check">
                       <input type="radio" name="pago" class="form-check-input" id="transferencia" required>
@@ -187,17 +189,17 @@
                     </div>
 
                     <div>
-                      <label for="tar-num">Numero: </label>
+                      <label for="tar-num">Número: </label>
                     </div>
                     <div>
-                      <input type="text" class="form-control" id="tar-num" required>
+                      <input type="number" class="form-control" id="tar-num" required>
                     </div>
 
                     <div>
                       <label for="tar-fecha">Fecha: </label>
                     </div>
                     <div>
-                      <input type="text" class="form-control" id="tar-fecha" required>
+                      <input type="month" class="form-control" id="tar-fecha" required>
                     </div>
 
                     <div>
@@ -216,7 +218,7 @@
                       <label for="cvv">CVV: </label>
                     </div>
                     <div>
-                      <input type="text" class="form-control" id="cvv" required>
+                      <input type="number" class="form-control" id="cvv" required>
                     </div>
                   </div>
 
@@ -229,7 +231,7 @@
                   </div>
 
                   <div>
-                    <label>Costos de envio</label>
+                    <label>Costos de envío</label>
                   </div>
 
                   <div>
@@ -238,7 +240,7 @@
                 </li>
               </ul>
               <div>
-                <input type="submit" value="FINALIZAR COMPRA">
+                <input type="submit" id="finalizar-compra"value="FINALIZAR COMPRA">
               </div>
             </div>
           </div>
@@ -269,6 +271,7 @@
   <script src="js/bootstrap.bundle.min.js"></script>
   <script src="js/init.js"></script>
   <script src="js/cart.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 </body>
 
 </html>

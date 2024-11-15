@@ -1187,3 +1187,22 @@ body.dark-mode {
   .envioypago ul {
     list-style-type: none;
   }
+
+  /* Personaliza el fondo del modal */
+.swal2-popup {
+  background-color: #f0f0f0; /* Cambia el color de fondo */
+  font-family: 'Arial', sans-serif; /* Cambia la fuente */
+}
+
+/* Personaliza el botón de confirmación */
+.swal2-confirm {
+  background-color: #4CAF50; /* Cambia el color de fondo del botón */
+  border-radius: 5px; /* Redondea los bordes */
+  font-weight: bold; /* Cambia el peso de la fuente */
+}
+
+/* Personaliza el botón de cancelación */
+.swal2-cancel {
+  background-color: #f44336; /* Cambia el color de fondo del botón de cancelar */
+  border-radius: 5px; /* Redondea los bordes */
+}
