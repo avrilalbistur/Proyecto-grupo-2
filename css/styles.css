@@ -1214,6 +1214,18 @@ body.dark-mode {
   align-items: center;
   z-index: 1000;
 }
+#modal-content {
+  background-color: white;
+  padding: 20px;
+  border-radius: 8px;
+  width: 100%; /* Ajusta el ancho aquí */
+  max-width: 800px; /* Máximo ancho que puede alcanzar */
+  min-width: 300px; /* Mínimo ancho para mantenerlo accesible */
+  box-sizing: border-box; 
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
 .modal {
   display: flex;
   justify-content: center;
@@ -1259,9 +1271,14 @@ body.dark-mode {
 #formulario-compra {
   display: flex;
   flex-direction: column;
-  gap: 10px;
-  margin-top: 110px;
-  padding: 10px;
+  gap: 15px;
+  margin-top: 20px; /* Ajuste el margen superior para que se vea bien */
+  margin-bottom: 20px; /* Añade un margen inferior para mayor espacio */
+  padding: 20px;
+  width: 100%;
+  box-sizing: border-box; /* Asegura que el padding no afecte el ancho */
+  max-height: 500px; /* Asegura que no ocupe más de la mitad del modal */
+  overflow-y: auto; /* Permite desplazarse si el formulario es muy largo */
 }
 
 #formulario-compra label {
@@ -1287,12 +1304,12 @@ body.dark-mode {
 
 /* Asegurarse de que el botón de cerrar sea accesible y bien posicionado */
 #closeModal {
-  font-size: 2rem;
-  color: rgb(0, 0, 0);
+  font-size: 1.5rem;
+  color: red;
   cursor: pointer;
   position: absolute;
   top: 10px;
-  right: 100px;
+  right: 50px;
   z-index: 1001;
 }
 #closeModal:hover {

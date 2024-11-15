@@ -191,6 +191,7 @@ document.addEventListener("DOMContentLoaded", () => {
     const btnComprar = document.getElementById("btnComprar");
     const modal = document.getElementById("modal");
     const closeModal = document.getElementById("closeModal");
+    const formularioCompra = document.getElementById('formulario-compra');
 
     if (btnComprar && modal && closeModal) {
         btnComprar.addEventListener("click", () => {
