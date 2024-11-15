@@ -86,38 +86,37 @@
               onclick="actualizarCostos('USD')">
             <label class="btn btn-secondary col-lg-6" for="USD">USD</label>
 
-            <input type="radio" class="btn-check" name="moneda" id="UYU" autocomplete="off"
-              onclick="actualizarCostos('UYU')" checked>
-            <label class="btn btn-secondary col-lg-6" for="UYU">UYU</label>
+              <input type="radio" class="btn-check" name="moneda" id="UYU" autocomplete="off"
+                onclick="actualizarCostos('UYU')">
+              <label class="btn btn-secondary col-lg-6" for="UYU">UYU</label>
+            </div>
+            <p id="total-precio" class="dark-mode-title">TOTAL $0.00</p>
+            <button class="boton-comprar btn" href="#nav-comprar">
+              COMPRAR
+            </button>
           </div>
-          <p id="total-precio" class="dark-mode-title">TOTAL $0.00</p>
-          <button class="boton-comprar btn" href="#nav-comprar">
-            COMPRAR
-          </button>
         </div>
-
 
         <form id="formulario-compra">
           <div class="envioypago col-12">
             <div class="envio">
               <ul>
                 <li>
-                  <h3>Formas de envío: </h3>
+                  <h3>Tipos de envío: </h3>
                   <div>
-                    <legend>Tipo de envío: </legend>
                     <div class="col-sm-10">
                       <div class="form-check">
-                        <input type="radio" name="tipo" class="form-check-input" id="premium" required value="premium" checked>
-                        <label for="premium" class="form-check-label">Premium 2 a 5 días(15%)</label>
-                    </div>
-                    <div class="form-check">
-                        <input type="radio" name="tipo" class="form-check-input" id="express" required value="express">
-                        <label for="express" class="form-check-label">Express 5 a 8 días(7%)</label>
-                    </div>
-                    <div class="form-check">
-                        <input type="radio" name="tipo" class="form-check-input" id="standard" required value="standard">
-                        <label for="standard" class="form-check-label">Standard 12 a 15 días(5%)</label>
-                    </div>
+                        <input type="radio" name="tipo" class="form-check-input" id="premium" required>
+                        <label for="premium" class="form-check-label">Premium de 2 a 5 días(15%)</label>
+                      </div>
+                      <div class="form-check">
+                        <input type="radio" name="tipo" class="form-check-input" id="express" required>
+                        <label for="express" class="form-check-label">Express de 5 a 8 días(7%)</label>
+                      </div>
+                      <div class="form-check">
+                        <input type="radio" name="tipo" class="form-check-input" id="standard" required>
+                        <label for="standard" class="form-check-label">Standard de 12 a 15 días(5%)</label>
+                      </div>
                     </div>
                   </div>
                 </li>
