@@ -190,7 +190,7 @@ document.addEventListener("DOMContentLoaded", function() {
             text: "¡No podrás revertir esto!",
             icon: "warning",
             showCancelButton: true,  // Botón de cancelar
-            confirmButtonText: "¡Sí, bórralo!", // Botón de confirmación
+            confirmButtonText: "¡Sí, confirmar!", // Botón de confirmación
             cancelButtonText: "Cancelar", // Botón de cancelar
             confirmButtonColor: "#3085d6",  // Color del botón de confirmación
             cancelButtonColor: "#d33",  // Color del botón de cancelar
@@ -210,7 +210,19 @@ document.addEventListener("DOMContentLoaded", function() {
                     // Aquí puedes agregar el código para vaciar el carrito y realizar las acciones correspondientes
                     console.log("Compra realizada con éxito.");
                 });
-            } else if (result.isDismissed) {
+                // Vaciar el carrito
+    localStorage.removeItem('carrito');  // Elimina el carrito del almacenamiento local
+
+    // Limpiar el formulario de compra
+    document.getElementById('formulario-compra').reset();  // Restablece todos los campos del formulario
+
+    // Actualizar la vista para reflejar que el carrito está vacío
+    actualizarCarrito();  
+    mostrarCarrito();     
+    actualizarCostos("USD");  
+
+    console.log("Compra realizada con éxito. El carrito ha sido vaciado y el formulario limpiado.");
+  } else if (result.isDismissed) {
                 // Si el usuario cancela
                 console.log("Compra cancelada.");
             }
