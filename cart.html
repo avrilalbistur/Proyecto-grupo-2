@@ -67,43 +67,38 @@
   <main>
 
     <div class="container">
-      <h2 class="titulo-carrito">CARRITO</h2>
-      <div class="fila ">
-        <div class="carrito-container  ">
+      <div class="row justify-content-center ">
+        <h2 class="titulo-carrito">CARRITO</h2>
+
+        <div class="carrito-container col-12 ">
           <!-- Lista de productos en el carrito -->
           <div id="lista-productos">
-            <div class="product-container">
-              <div class="image-container">
-                <!-- Aquí puedes agregar la imagen del producto -->
-              
-                </div>
-              </div>
-              <!-- Añade más product-container según sea necesario -->
-            </div>
+            <!-- Aquí puedes agregar la imagen del producto -->
+
           </div>
-          <div class="resumen-container container ">
-            <h3 class="destacado dark-mode-title">TOTAL</h3>
-            <h4 class="importante dark-mode-title">PRODUCTOS TOTALES</h4>
-            <div class="row m-1" id="cambiar-moneda">
-              <input type="radio" class="btn-check" name="moneda" id="USD" autocomplete="off"
-                onclick="actualizarCostos('USD')" checked>
-              <label class="btn btn-secondary col-lg-6" for="USD">USD</label>
+        </div>
+        <!-- Añade más product-container según sea necesario -->
+        <div class="resumen-container container col-12 ">
+          <h3 class="destacado dark-mode-title">SUBTOTAL</h3>
+          <h4 class="importante dark-mode-title">PRODUCTOS TOTALES</h4>
+          <div class="row m-1" id="cambiar-moneda">
+            <input type="radio" class="btn-check" name="moneda" id="USD" autocomplete="off"
+              onclick="actualizarCostos('USD')">
+            <label class="btn btn-secondary col-lg-6" for="USD">USD</label>
 
               <input type="radio" class="btn-check" name="moneda" id="UYU" autocomplete="off"
                 onclick="actualizarCostos('UYU')">
               <label class="btn btn-secondary col-lg-6" for="UYU">UYU</label>
             </div>
             <p id="total-precio" class="dark-mode-title">TOTAL $0.00</p>
-            <button class="boton-comprar btn" href="#nav-comprar"id="btnComprar">COMPRAR</button>
+            <button class="boton-comprar btn" href="#nav-comprar">
+              COMPRAR
+            </button>
           </div>
         </div>
 
-        <div id="modal" class="modal">
-          <div class="modal-content">
-            <span id="closeModal" class="close-btn">&times;</span>
-            
         <form id="formulario-compra">
-          <div class="envioypago">
+          <div class="envioypago col-12">
             <div class="envio">
               <ul>
                 <li>
@@ -112,15 +107,15 @@
                     <div class="col-sm-10">
                       <div class="form-check">
                         <input type="radio" name="tipo" class="form-check-input" id="premium" required>
-                        <label for="premium" class="form-check-label">Premium (de 2 a 5 días 15%)</label>
+                        <label for="premium" class="form-check-label">Premium</label>
                       </div>
                       <div class="form-check">
                         <input type="radio" name="tipo" class="form-check-input" id="express" required>
-                        <label for="express" class="form-check-label">Express (de 5 a 8 días 7%)</label>
+                        <label for="express" class="form-check-label">Express</label>
                       </div>
                       <div class="form-check">
                         <input type="radio" name="tipo" class="form-check-input" id="standard" required>
-                        <label for="standard" class="form-check-label">Standard (de 12 a 15 días 5%)</label>
+                        <label for="standard" class="form-check-label">Standard</label>
                       </div>
                     </div>
                   </div>
@@ -241,11 +236,15 @@
                 </li>
               </ul>
               <div>
-                <input type="submit" id="finalizar-compra"value="FINALIZAR COMPRA">
+                <input type="submit" id="finalizar-compra" value="FINALIZAR COMPRA">
               </div>
             </div>
           </div>
         </form>
+      </div>
+    </div>
+
+
   </main>
 
   <footer class="text-muted">

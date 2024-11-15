@@ -94,7 +94,8 @@ document.addEventListener('DOMContentLoaded', () => {
 
 // Función para actualizar el badge del carrito
 function actualizarBadge() {
-  const carritoCount = document.getElementById('carritoCount');  
+  const carritoCount = document.getElementById('carritoCount'); 
+  let carrito = JSON.parse(localStorage.getItem('carrito')) || []; 
   if (carritoCount) {
       carritoCount.textContent = carrito.length; // Actualiza la cantidad en el badge
   } else {
