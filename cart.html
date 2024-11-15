@@ -91,11 +91,14 @@
               <label class="btn btn-secondary col-lg-6" for="UYU">UYU</label>
             </div>
             <p id="total-precio" class="dark-mode-title">TOTAL $0.00</p>
-            <button class="boton-comprar btn" href="#nav-comprar">
-              COMPRAR
-            </button>
+            <button class="boton-comprar btn" id="btnComprar" href="#nav-compra">COMPRAR </button>
           </div>
         </div>
+
+        <div id="modal" style="display: none;">
+          <div id="modal-content">
+            <span class="closeModal" id="closeModal">&times;</span> <!-- Botón para cerrar el modal -->
+            <form id="formulario-compra">
 
         <form id="formulario-compra">
           <div class="envioypago col-12">
