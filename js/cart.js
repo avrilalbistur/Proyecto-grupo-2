@@ -132,7 +132,6 @@ function mostrarCarrito() {
     document.querySelectorAll(".cantidad-input").forEach(input => {
         input.addEventListener("change", actualizarCantidad);
     });
-    actualizarCostos("UYU");
 }
 
 // Función para actualizar la cantidad de un producto en el carrito
