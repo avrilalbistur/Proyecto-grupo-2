@@ -109,15 +109,15 @@
                   <div>
                     <div class="col-sm-10">
                       <div class="form-check">
-                        <input type="radio" name="tipo" class="form-check-input" id="premium" required>
+                        <input type="radio" name="tipo" class="form-check-input" id="premium" value="premium" onclick="calcularTotalConEnvio(`premium`)" required>
                         <label for="premium" class="form-check-label">Premium de 2 a 5 días(15%)</label>
                       </div>
                       <div class="form-check">
-                        <input type="radio" name="tipo" class="form-check-input" id="express" required>
+                        <input type="radio" name="tipo" class="form-check-input" id="express" value="express" onclick="calcularTotalConEnvio(`express`)" required>
                         <label for="express" class="form-check-label">Express de 5 a 8 días(7%)</label>
                       </div>
                       <div class="form-check">
-                        <input type="radio" name="tipo" class="form-check-input" id="standard" required>
+                        <input type="radio" name="tipo" class="form-check-input" id="standard" value="standard" onclick="calcularTotalConEnvio(`standard`)" required>
                         <label for="standard" class="form-check-label">Standard de 12 a 15 días(5%)</label>
                       </div>
                     </div>
@@ -226,15 +226,15 @@
                 <li>
                   <h3>Costos</h3>
                   <div>
-                    <label>Subtotal</label>
+                    <label id="subtotal-modal">Subtotal</label>
                   </div>
 
                   <div>
-                    <label>Costos de envío</label>
+                    <label id="costo-envio-modal">Costos de envío</label>
                   </div>
 
                   <div>
-                    <label>TOTAL</label>
+                    <label id="total-precio-modal">TOTAL</label>
                   </div>
                 </li>
               </ul>
