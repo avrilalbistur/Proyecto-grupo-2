@@ -1,17 +1,3 @@
-// Función para calcular el total de productos en el carrito
-function calcularTotal() {
-    const productosEnCarrito = JSON.parse(localStorage.getItem('carrito')) || [];
-    let total = 0;
-    productosEnCarrito.forEach(product => {
-        total += product.costo; // Asumiendo que 'costo' es un número
-    });
-    const totalContainer = document.querySelector('#carrito h3');
-    if (totalContainer) {
-        totalContainer.textContent = `Total: $${total}`;
-    }
-}
-
-
 // Función para actualizar el carrito en usuario
 function actualizarCarrito() {
     const cartContainer = document.getElementById('cart-container');
@@ -33,38 +19,89 @@ function actualizarCarrito() {
         cartContainer.appendChild(productDiv);
     });
 }
-// función para actualizar la sección de costos dependiendo de la moneda que el usuario 
-function actualizarCostos(moneda){
+// Función para remover un producto
+
+function eliminarProducto(id) {
+    let carrito = JSON.parse(localStorage.getItem('carrito')) || [];
+    const nuevoCarrito = carrito.filter(producto => producto.id !== id);
+    localStorage.setItem('carrito', JSON.stringify(nuevoCarrito));
+    actualizarBadge();
+    actualizarCarrito();
+    mostrarCarrito();
+    actualizarCostos();
+}
+// funcion para pasar de una moneda a la otra dependiendo del usuario
+function convertirMoneda(costo, cantidad, monedaOrigen, monedaDestino) {
     const TASA_CAMBIO_USD_UYU = 0.024;
     const TASA_CAMBIO_UYU_USD = 42.48;
+
+    if (monedaOrigen === monedaDestino) return costo * cantidad;
+
+    return monedaOrigen === "USD"
+        ? costo * cantidad * TASA_CAMBIO_UYU_USD
+        : costo * cantidad * TASA_CAMBIO_USD_UYU;
+}
+// función para actualizar la sección de costos dependiendo de la moneda que el usuario 
+function actualizarCostos(moneda = null) {
+    let carrito = JSON.parse(localStorage.getItem('carrito')) || [];
+    if (carrito.length === 0) return;
+
     const totalPrecio = document.getElementById("total-precio");
     const totalProductosElement = document.querySelector(".resumen-container h4");
+
+    moneda = moneda || carrito[0].moneda; // Usar la moneda del primer producto si no se especifica
     let total = 0;
     let totalProductos = 0;
 
-    // sumar el total de productos
-    carrito.forEach(product => totalProductos += product.cantidad);
+    // Calcular el total y el total de productos
+    carrito.forEach(producto => {
+        total += convertirMoneda(producto.costo, producto.cantidad, producto.moneda, moneda);
+        totalProductos += producto.cantidad;
+    });
 
-    // calcular el total en base a la moneda seleccionada
-    if(moneda === "USD"){
-        carrito.forEach(product =>{
-            let totalEnUSD = product.moneda ==="UYU" ? (product.costo * TASA_CAMBIO_USD_UYU) : product.costo;
-            total += totalEnUSD * product.cantidad;
-        })
-    }else if(moneda === "UYU"){
-        carrito.forEach(product =>{
-            let totalEnUYU = product.moneda === "USD" ? (product.costo * TASA_CAMBIO_UYU_USD) : product.costo;
-            total += totalEnUYU * product.cantidad;
-        });
-    };
-    // mostrar el precio total
+    // Mostrar el precio total y la cantidad total de productos
     totalPrecio.textContent = `TOTAL ${moneda} ${total.toFixed(2)}`;
-    // mostrar el total de productos
     totalProductosElement.textContent = `PRODUCTOS TOTALES ${totalProductos}`;
-};
+
+    // Guardar el total en el almacenamiento local
+    localStorage.setItem(`totalCarrito${moneda}`, total.toFixed(2));
+    console.log(carrito);
+    
+    // Calcular el total con envío
+    calcularTotalConEnvio(moneda);
+}
+// funcion para calcular el total dependiendo del envio seleccionado
+function calcularTotalConEnvio(moneda) {
+    const totalPrecio = document.getElementById("total-precio");
+    let total = parseFloat(localStorage.getItem(`totalCarrito${moneda}`)) || 0; // Obtener el total actual
+    let costoEnvio = 0;
+
+    // para obtener el tipo de envío seleccionado
+    const tipoEnvio = document.querySelector('input[name="tipo"]:checked').value;
+    
+    // para calcular el costo de envío basado en el tipo seleccionado
+    switch (tipoEnvio) {
+        case "premium":
+            costoEnvio = total * 0.15; // 15% del total
+            break;
+        case "express":
+            costoEnvio = total * 0.07; // 7% del total
+            break;
+        case "standard":
+            costoEnvio = total * 0.05; // 5% del total
+            break;
+    }
+
+    // Sumar el costo del envío al total
+    total += costoEnvio;
+
+    // Mostrar el nuevo total
+    totalPrecio.textContent = `TOTAL ${moneda} ${total.toFixed(2)}`;
+}
+
 // Función para mostrar los productos en el carrito en cart.html
 function mostrarCarrito() {
-    const carrito = JSON.parse(localStorage.getItem("carrito")) || [];
+    let carrito = JSON.parse(localStorage.getItem("carrito")) || [];
     const listaProductos = document.getElementById("lista-productos");
 
 
@@ -94,17 +131,16 @@ function mostrarCarrito() {
         // Añadir el producto al contenedor de la lista de productos
         listaProductos.appendChild(productoDiv);
     });
-    actualizarCostos("USD");
-
     // Añadir event listeners a cada input de cantidad
     document.querySelectorAll(".cantidad-input").forEach(input => {
         input.addEventListener("change", actualizarCantidad);
     });
+    actualizarCostos();
 }
 
 // Función para actualizar la cantidad de un producto en el carrito
 function actualizarCantidad(event) {
-    const carrito = JSON.parse(localStorage.getItem("carrito")) || [];
+    let carrito = JSON.parse(localStorage.getItem("carrito")) || [];
     const index = event.target.dataset.index;
     const nuevaCantidad = parseInt(event.target.value);
 
@@ -117,6 +153,7 @@ function actualizarCantidad(event) {
     } else {
         alert("La cantidad debe ser al menos 1");
     }
+    actualizarCostos()
 }
 
 
@@ -136,22 +173,13 @@ navComprar.forEach(link => {
 
 
 
-// Función para remover un producto
-
-function eliminarProducto(id) {
-    const carrito = JSON.parse(localStorage.getItem('carrito')) || [];
-    const nuevoCarrito = carrito.filter(producto => producto.id !== id);
-    localStorage.setItem('carrito', JSON.stringify(nuevoCarrito));
-    actualizarBadge();
-    calcularTotal();
-    actualizarCarrito();
-    mostrarCarrito();
-    actualizarCostos("USD");
-}
-
-
 // Llama a esta función cuando se carga la página para inicializar el badge
 document.addEventListener("DOMContentLoaded", function () {
+    document.querySelectorAll('input[name="tipo"]').forEach((element) => {
+        element.addEventListener("change", function() {
+            calcularTotalConEnvio(); // Calcular total con el envío seleccionado
+        });
+    });
     actualizarCarrito();
     actualizarBadge();
     mostrarCarrito();
@@ -196,7 +224,7 @@ document.addEventListener("DOMContentLoaded", function() {
     // Actualizar la vista para reflejar que el carrito está vacío
     actualizarCarrito();  
     mostrarCarrito();     
-    actualizarCostos("USD");  
+    actualizarCostos();  
 
     console.log("Compra realizada con éxito. El carrito ha sido vaciado y el formulario limpiado.");
   } else if (result.isDismissed) {
