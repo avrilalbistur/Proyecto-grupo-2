@@ -76,9 +76,10 @@ function actualizarCostos(moneda) {
 
 // funcion para calcular el total dependiendo del envio seleccionado
 function calcularTotalConEnvio(tipoEnvio) {
-    const totalPrecio = document.getElementById("total-precio-modal");
-    const precioEnvio = document.getElementById("costo-envio-modal")
-    let total = parseFloat(localStorage.getItem(`totalCarritoUYU`)) || 0; // Obtener el total actual
+    let totalPrecio = document.getElementById("total-precio-modal");
+    let precioEnvio = document.getElementById("costo-envio-modal")
+    let moneda = localStorage.getItem("moneda");
+    let total = parseFloat(localStorage.getItem(`totalCarrito${moneda}`)) || 0; // Obtener el total actual
     let costoEnvio = 0;
 
     
@@ -86,15 +87,15 @@ function calcularTotalConEnvio(tipoEnvio) {
     switch (tipoEnvio) {
         case "premium":
             costoEnvio = total * 0.15; // 15% del total
-            precioEnvio.textContent=`Costos de envío UYU ${costoEnvio.toFixed(2)}`
+            precioEnvio.textContent=`Costos de envío ${moneda} ${costoEnvio.toFixed(2)}`
             break;
         case "express":
             costoEnvio = total * 0.07; // 7% del total
-            precioEnvio.textContent=`Costos de envío UYU ${costoEnvio.toFixed(2)}`
+            precioEnvio.textContent=`Costos de envío ${moneda} ${costoEnvio.toFixed(2)}`
             break;
         case "standard":
             costoEnvio = total * 0.05; // 5% del total
-            precioEnvio.textContent=`Costos de envío UYU ${costoEnvio.toFixed(2)}`
+            precioEnvio.textContent=`Costos de envío ${moneda} ${costoEnvio.toFixed(2)}`
             break;
     }
 
@@ -102,7 +103,7 @@ function calcularTotalConEnvio(tipoEnvio) {
     total += costoEnvio;
 
     // Mostrar el nuevo total
-    totalPrecio.textContent = `TOTAL UYU ${total.toFixed(2)}`;
+    totalPrecio.textContent = `TOTAL ${moneda} ${total.toFixed(2)}`;
 }
 
 // Función para mostrar los productos en el carrito en cart.html
