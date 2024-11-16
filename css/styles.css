@@ -1335,3 +1335,6 @@ body.dark-mode {
   padding-bottom: 2rem;
   
 }
+body {
+  overflow-x: hidden;
+}
