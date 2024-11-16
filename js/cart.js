@@ -266,4 +266,30 @@ document.addEventListener("DOMContentLoaded", function() {
             }
         });
     });
+//  Opción de Pago
+
+const transferenciaRadio = document.getElementById("transferencia");
+const debitoRadio = document.getElementById("debito");
+const creditoRadio = document.getElementById("credito");
+const opcionTransferencia = document.getElementById("opcionTransferencia");
+const opcionTarjeta = document.getElementById("opcionTarjeta");
+
+// Función para mostrar/ocultar opciones
+function mostrarOpcion(opcion) {
+  // Ocultamos todas las secciones
+  opcionTransferencia.classList.add("hidden");
+  opcionTarjeta.classList.add("hidden");
+
+  if (opcion === "transferencia") {
+    opcionTransferencia.classList.remove("hidden");
+  } else if (opcion === "tarjeta") {
+    opcionTarjeta.classList.remove("hidden");
+  }
+}
+// eventos para los radio
+transferenciaRadio.addEventListener("click", () => mostrarOpcion("transferencia"));
+debitoRadio.addEventListener("click", () => mostrarOpcion("tarjeta"));
+creditoRadio.addEventListener("click", () => mostrarOpcion("tarjeta"));
+
+
 });

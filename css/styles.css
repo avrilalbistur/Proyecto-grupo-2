@@ -1329,3 +1329,9 @@ body.dark-mode {
 #btnComprar:hover {
   background-color: #368948;
 }
+
+#opcionTransferencia {
+  padding-top: 2rem;
+  padding-bottom: 2rem;
+  
+}
