@@ -1,0 +1,15 @@
+{
+  "name": "proyecto-grupo-2",
+  "version": "1.0.0",
+  "description": "Proyecto ecommerce JAP",
+  "main": "app.js",
+  "scripts": {
+    "start": "node app.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Grupo 2",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.21.1"
+  }
+}
