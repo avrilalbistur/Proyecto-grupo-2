@@ -53,7 +53,7 @@ document.addEventListener("DOMContentLoaded", function () {
                 fetch('/protected', {
                     method: 'GET',
                     headers: {
-                        'Authorization': `Bearer ${token}`
+                        'access-token': token 
                     }
                 })
                     .then(response => {
