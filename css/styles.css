@@ -1346,12 +1346,11 @@ body {
   border: none;
   border-radius: 8px; 
   font-size: 10px;
-  font-weight: bold; /* Hacer el texto en negrita */
-  cursor: pointer; /* Cambia el cursor a una mano cuando se pasa sobre el botón */
-  transition: background-color 0.3s ease, transform 0.3s ease; /* Transición suave para el color y el tamaño */
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.3s ease; 
 }
 
 #getProtectedData:hover {
   background-color: #ff977a; 
-  transform: scale(1.05); /* Hace que el botón se agrande ligeramente al pasar el ratón */
+  transform: scale(1.05); 
 }

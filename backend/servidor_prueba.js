@@ -15,7 +15,7 @@ const SECRET_KEY = process.env.SECRET_KEY; // Recuperar la clave secreta para el
 const pool = mariadb.createPool({
   host: "localhost",
   user: "root",
-  password: "1202", // Tu contraseña de MariaDB
+  password: "1202",
   database: "users_db",
   connectionLimit: 5,
 });
