@@ -86,165 +86,198 @@
               onclick="actualizarCostos('USD')">
             <label class="btn btn-secondary col-lg-6" for="USD">USD</label>
 
-              <input type="radio" class="btn-check" name="moneda" id="UYU" autocomplete="off"
-                onclick="actualizarCostos('UYU')">
-              <label class="btn btn-secondary col-lg-6" for="UYU">UYU</label>
-            </div>
-            <p id="total-precio" class="dark-mode-title">TOTAL $0.00</p>
-            <button class="boton-comprar btn" id="btnComprar" href="#nav-compra">COMPRAR </button>
+            <input type="radio" class="btn-check" name="moneda" id="UYU" autocomplete="off"
+              onclick="actualizarCostos('UYU')">
+            <label class="btn btn-secondary col-lg-6" for="UYU">UYU</label>
           </div>
+          <p id="total-precio" class="dark-mode-title">TOTAL $0.00</p>
+          <button class="boton-comprar btn" id="btnComprar" href="#nav-compra">COMPRAR </button>
         </div>
-
-        <div id="modal" style="display: none;">
-          <div id="modal-content">
-            <span class="closeModal" id="closeModal">&times;</span> <!-- Botón para cerrar el modal -->
-            <form id="formulario-compra">
-
-        <form id="formulario-compra">
-          <div class="envioypago col-12">
-            <div class="envio">
-              <ul>
-                <li>
-                  <h3>Tipos de envío: </h3>
-                  <div>
-                    <div class="col-sm-10">
-                      <div class="form-check">
-                        <input type="radio" name="tipo" class="form-check-input" id="premium" required>
-                        <label for="premium" class="form-check-label">Premium de 2 a 5 días(15%)</label>
-                      </div>
-                      <div class="form-check">
-                        <input type="radio" name="tipo" class="form-check-input" id="express" required>
-                        <label for="express" class="form-check-label">Express de 5 a 8 días(7%)</label>
-                      </div>
-                      <div class="form-check">
-                        <input type="radio" name="tipo" class="form-check-input" id="standard" required>
-                        <label for="standard" class="form-check-label">Standard de 12 a 15 días(5%)</label>
-                      </div>
-                    </div>
-                  </div>
-                </li>
-                <li>
-                  <h3>Dirección de envío: </h3>
-                  <div>
-                    <div>
-                      <label for="dep" class="form-label">Departamento: </label>
-                      <input type="text" class="form-control" id="dep" required>
-                    </div>
-
-                    <div>
-                      <label for="localidad" class="form-label">Localidad: </label>
-                      <input type="text" class="form-control" id="localidad" required>
-                    </div>
-
-                    <div>
-                      <label for="calle" class="form-label">Calle: </label>
-                      <input type="text" class="form-control" id="calle" required>
-                    </div>
-
-                    <div>
-                      <label for="numero" class="form-label">Número: </label>
-                      <input type="number" class="form-control" id="numero" required>
-                    </div>
-
-                    <div>
-                      <label for="esquina" class="form-label">Esquina: </label>
-                      <input type="text" class="form-control" id="esquina" required>
-                    </div>
-                  </div>
-
-                </li>
-              </ul>
-            </div>
-            <div class="pago">
-              <ul>
-                <li>
-                  <h3>Formas de pago: </h3>
-                  <div class="col-sm-10 form-check">
-                    <div class="form-check">
-                      <input type="radio" name="pago" id="credito" class="form-check-input" required>
-                      <label for="credito" class="form-check-label">Tarjeta de crédito</label>
-                    </div>
-                    <div class="form-check">
-                      <input type="radio" name="pago" class="form-check-input" id="debito" required>
-                      <label for="debito" class="form-check-label">Tarjeta de débito</label>
-                    </div>
-                    <div class="form-check">
-                      <input type="radio" name="pago" class="form-check-input" id="transferencia" required>
-                      <label for="transferencia" class="form-check-label">Transferencia Bancaria</label>
-                    </div>
-                  </div>
-
-                </li>
-
-                <li>
-                  <h3>Datos de tarjeta: </h3>
-                  <div>
-                    <div>
-                      <label for="tar-titular">Titular: </label>
-                    </div>
-                    <div>
-                      <input type="text" class="form-control" id="tar-titular" required>
-                    </div>
-
-                    <div>
-                      <label for="tar-num">Número: </label>
-                    </div>
-                    <div>
-                      <input type="number" class="form-control" id="tar-num" required>
-                    </div>
-
-                    <div>
-                      <label for="tar-fecha">Fecha: </label>
-                    </div>
-                    <div>
-                      <input type="month" class="form-control" id="tar-fecha" required>
-                    </div>
-
-                    <div>
-                      <p>Emisor de la tarjeta: </p>
-                      <div class="form-check">
-                        <label class="form-check-label">VISA</label>
-                        <input type="radio" name="emisor" id="visa" class="form-check-input" required>
-                      </div>
-                      <div class="form-check">
-                        <input type="radio" name="emisor" id="mastercard" class="form-check-input" required>
-                        <label for="mastercard" class="form-check-label">MasterCard</label>
-                      </div>
-                    </div>
-
-                    <div>
-                      <label for="cvv">CVV: </label>
-                    </div>
-                    <div>
-                      <input type="number" class="form-control" id="cvv" required>
-                    </div>
-                  </div>
-
-                </li>
-
-                <li>
-                  <h3>Costos</h3>
-                  <div>
-                    <label>Subtotal</label>
-                  </div>
-
-                  <div>
-                    <label>Costos de envío</label>
-                  </div>
-
-                  <div>
-                    <label>TOTAL</label>
-                  </div>
-                </li>
-              </ul>
-              <div>
-                <input type="submit" id="finalizar-compra" value="FINALIZAR COMPRA">
-              </div>
-            </div>
-          </div>
-        </form>
       </div>
-    </div>
+
+      <div id="modal" style="display: none;">
+        <div id="modal-content">
+          <span class="closeModal" id="closeModal">&times;</span> <!-- Botón para cerrar el modal -->
+          <form id="formulario-compra">
+
+            <form id="formulario-compra">
+              <div class="envioypago col-12">
+                <div class="envio">
+                  <ul>
+                    <li>
+                      <h3>Tipos de envío: </h3>
+                      <div>
+                        <div class="col-sm-10">
+                          <div class="form-check">
+                            <input type="radio" name="tipo" class="form-check-input" id="premium" value="premium"
+                              onclick="calcularTotalConEnvio(`premium`)" required>
+                            <label for="premium" class="form-check-label">Premium de 2 a 5 días(15%)</label>
+                          </div>
+                          <div class="form-check">
+                            <input type="radio" name="tipo" class="form-check-input" id="express" value="express"
+                              onclick="calcularTotalConEnvio(`express`)" required>
+                            <label for="express" class="form-check-label">Express de 5 a 8 días(7%)</label>
+                          </div>
+                          <div class="form-check">
+                            <input type="radio" name="tipo" class="form-check-input" id="standard" value="standard"
+                              onclick="calcularTotalConEnvio(`standard`)" required>
+                            <label for="standard" class="form-check-label">Standard de 12 a 15 días(5%)</label>
+                          </div>
+                        </div>
+                      </div>
+                    </li>
+                    <li>
+                      <h3>Dirección de envío: </h3>
+                      <div>
+                        <div>
+                          <label for="dep" class="form-label">Departamento: </label>
+                          <select class="form-control" id="dep" required>
+                            <option value="" disabled selected>Selecciona un departamento</option>
+                            <option value="Artigas">Artigas</option>
+                            <option value="Canelones">Canelones</option>
+                            <option value="Cerro Largo">Cerro Largo</option>
+                            <option value="Colonia">Colonia</option>
+                            <option value="Durazno">Durazno</option>
+                            <option value="Flores">Flores</option>
+                            <option value="Florida">Florida</option>
+                            <option value="Lavalleja">Lavalleja</option>
+                            <option value="Maldonado">Maldonado</option>
+                            <option value="Montevideo">Montevideo</option>
+                            <option value="Paysandú">Paysandú</option>
+                            <option value="Río Negro">Río Negro</option>
+                            <option value="Rivera">Rivera</option>
+                            <option value="Rocha">Rocha</option>
+                            <option value="Salto">Salto</option>
+                            <option value="San José">San José</option>
+                            <option value="Soriano">Soriano</option>
+                            <option value="Tacuarembó">Tacuarembó</option>
+                            <option value="Treinta y Tres">Treinta y Tres</option>
+                          </select>
+                        </div>
+
+                        <div>
+                          <label for="localidad" class="form-label">Localidad: </label>
+                          <input type="text" class="form-control" id="localidad" required>
+                        </div>
+
+                        <div>
+                          <label for="calle" class="form-label">Calle: </label>
+                          <input type="text" class="form-control" id="calle" required>
+                        </div>
+
+                        <div>
+                          <label for="numero" class="form-label">Número: </label>
+                          <input type="number" class="form-control" id="numero" required>
+                        </div>
+
+                        <div>
+                          <label for="esquina" class="form-label">Esquina: </label>
+                          <input type="text" class="form-control" id="esquina" required>
+                        </div>
+                      </div>
+
+                    </li>
+                  </ul>
+                </div>
+                <div class="pago ms-3">
+                  <ul>
+                    <li>
+                      <h3>Formas de pago: </h3>
+                      <div class="col-sm-10 form-check">
+                        <div class="form-check">
+                          <input type="radio" name="pago" id="credito" class="form-check-input" required>
+                          <label for="credito" class="form-check-label">Tarjeta de crédito</label>
+                        </div>
+                        <div class="form-check">
+                          <input type="radio" name="pago" class="form-check-input" id="debito" required>
+                          <label for="debito" class="form-check-label">Tarjeta de débito</label>
+                        </div>
+                        <div class="form-check">
+                          <input type="radio" name="pago" class="form-check-input" id="transferencia" required>
+                          <label for="transferencia" class="form-check-label">Transferencia Bancaria</label>
+                        </div>
+                      </div>
+
+                    </li>
+
+                    <li id="opcionPago">
+                      <div id="opcionTarjeta" class="hidden">
+                        <h3>Datos de tarjeta: </h3>
+                        <div>
+                          <div>
+                            <label for="tar-titular">Titular: </label>
+                          </div>
+                          <div>
+                            <input type="text" class="form-control" id="tar-titular" required>
+                          </div>
+
+                          <div>
+                            <label for="tar-num">Número: </label>
+                          </div>
+                          <div>
+                            <input type="number" class="form-control" id="tar-num" required>
+                          </div>
+
+                          <div>
+                            <label for="tar-fecha">Fecha: </label>
+                          </div>
+                          <div>
+                            <input type="month" class="form-control" id="tar-fecha" required>
+                          </div>
+
+                          <div>
+                            <p>Emisor de la tarjeta: </p>
+                            <div class="form-check">
+                              <label class="form-check-label">VISA</label>
+                              <input type="radio" name="emisor" id="visa" class="form-check-input" required>
+                            </div>
+                            <div class="form-check">
+                              <input type="radio" name="emisor" id="mastercard" class="form-check-input" required>
+                              <label for="mastercard" class="form-check-label">MasterCard</label>
+                            </div>
+                          </div>
+
+                          <div>
+                            <label for="cvv">CVV: </label>
+                          </div>
+                          <div>
+                            <input type="number" class="form-control" id="cvv" required>
+                          </div>
+                        </div>
+                      </div>
+
+                      <div id="opcionTransferencia" class="hidden m-3">
+                          <h3>Transferencia: </h3>
+                          <p><strong>Banco: </strong>BBVA</p>
+                          <p></p><strong>Número de cuenta:</strong>34456720</p>
+                          <label for="confirmación">Sube tu comprobante de transferencia:</label>
+                          <input type="file" class="form-control">
+                      </div>
+                    </li>
+
+                    <li>
+                      <h3>Costos</h3>
+                      <div>
+                        <label id="subtotal-modal">Subtotal</label>
+                      </div>
+
+                      <div>
+                        <label id="costo-envio-modal">Costos de envío</label>
+                      </div>
+
+                      <div>
+                        <label id="total-precio-modal">TOTAL</label>
+                      </div>
+                    </li>
+                  </ul>
+                  <div>
+                    <input type="submit" id="finalizar-compra" value="FINALIZAR COMPRA" class="ms-4">
+                  </div>
+                </div>
+              </div>
+            </form>
+        </div>
+      </div>
 
 
   </main>
