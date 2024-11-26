@@ -932,15 +932,15 @@ body {
 /* Estilo base para el botón */
 .btn {
   color: #0a0a0a;
-  background-color: rgb(255, 254, 254);
+  background-color: #f9a383;
   padding: 10px; /* Espaciado interno */
   cursor: pointer;
 }
 
 /* Cambiar el color al pasar el mouse */
 .btn:hover {
-  color: #f1bd96;
-  background-color: gray;
+  color: black;
+  background-color: #f1bd96;
 }
 
 #toggle-theme-btn {
@@ -1337,4 +1337,21 @@ body.dark-mode {
 }
 body {
   overflow-x: hidden;
+}
+
+#getProtectedData {
+  background-color: #f9a383;
+  color: black; 
+  padding: 12px 24px; 
+  border: none;
+  border-radius: 8px; 
+  font-size: 10px;
+  font-weight: bold; /* Hacer el texto en negrita */
+  cursor: pointer; /* Cambia el cursor a una mano cuando se pasa sobre el botón */
+  transition: background-color 0.3s ease, transform 0.3s ease; /* Transición suave para el color y el tamaño */
+}
+
+#getProtectedData:hover {
+  background-color: #ff977a; 
+  transform: scale(1.05); /* Hace que el botón se agrande ligeramente al pasar el ratón */
 }

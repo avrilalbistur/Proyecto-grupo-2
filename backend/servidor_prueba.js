@@ -6,7 +6,7 @@ const mariadb = require('mariadb');
 require("dotenv").config(); // Cargar variables de entorno desde el archivo .env
 
 const app = express();
-app.use(bodyParser.json());
+app.use(bodyParser.json()); // Para poder parsear el cuerpo de las peticiones JSON
 
 const PORT = 3000;
 const SECRET_KEY = process.env.SECRET_KEY; // Recuperar la clave secreta para el JWT
@@ -15,7 +15,7 @@ const SECRET_KEY = process.env.SECRET_KEY; // Recuperar la clave secreta para el
 const pool = mariadb.createPool({
   host: "localhost",
   user: "root",
-  password: "1202",
+  password: "1202", // Tu contraseña de MariaDB
   database: "users_db",
   connectionLimit: 5,
 });
@@ -59,6 +59,7 @@ app.post("/login", async (req, res) => {
       return res.status(401).send("Credenciales inválidas.");
     }
 
+    // Crear y devolver el token JWT
     const token = jwt.sign({ email: user.email }, SECRET_KEY, { expiresIn: "1h" });
     res.json({ token });
   } catch (err) {
