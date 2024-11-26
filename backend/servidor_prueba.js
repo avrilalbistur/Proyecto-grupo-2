@@ -2,30 +2,22 @@ const express = require("express");
 const bodyParser = require("body-parser");
 const bcrypt = require("bcryptjs");
 const jwt = require("jsonwebtoken");
-const mysql = require("mysql2");
+const mariadb = require('mariadb');
+require("dotenv").config(); // Cargar variables de entorno desde el archivo .env
 
 const app = express();
 app.use(bodyParser.json());
 
 const PORT = 3000;
-require("dotenv").config(); // Cargar variables de entorno desde el archivo .env
 const SECRET_KEY = process.env.SECRET_KEY; // Recuperar la clave secreta para el JWT
 
-// Configura la conexión a MariaDB, especificando la base de datos 'users_db'
-const db = mysql.createConnection({
-  host: "localhost",      
-  user: "root",          
-  password: "tu_contraseña",
-  database: "users_db"  
-});
-
-// Verifica la conexión a la base de datos
-db.connect((err) => {
-  if (err) {
-    console.error("Error de conexión a la base de datos:", err);
-    return;
-  }
-  console.log("Conexión a la base de datos establecida");
+// Configuración del pool de conexiones
+const pool = mariadb.createPool({
+  host: "localhost",
+  user: "root",
+  password: "1202",
+  database: "users_db",
+  connectionLimit: 5,
 });
 
 // Ruta para registrar un usuario
@@ -36,40 +28,80 @@ app.post("/register", async (req, res) => {
     return res.status(400).send("Email y contraseña son requeridos.");
   }
 
-  const hashedPassword = await bcrypt.hash(password, 10);
+  try {
+    const hashedPassword = await bcrypt.hash(password, 10);
+    const conn = await pool.getConnection();
+    await conn.query("INSERT INTO login (email, password) VALUES (?, ?)", [email, hashedPassword]);
+    conn.release();
 
-  // Inserta el nuevo usuario en la tabla 'login' dentro de la base de datos 'users_db'
-  db.query(
-    "INSERT INTO login (email, password) VALUES (?, ?)",
-    [email, hashedPassword],
-    (err, results) => {
-      if (err) {
-        console.error("Error al registrar el usuario:", err);
-        return res.status(500).send("Error al registrar el usuario.");
-      }
-      res.status(201).send("Usuario registrado.");
-    }
-  );
+    res.status(201).send("Usuario registrado.");
+  } catch (err) {
+    console.error("Error al registrar el usuario:", err);
+    res.status(500).send("Error al registrar el usuario.");
+  }
 });
 
 // Ruta para hacer login
 app.post("/login", async (req, res) => {
   const { email, password } = req.body;
 
-  // Verifica si el usuario existe en la tabla 'login'
-  db.query("SELECT * FROM login WHERE email = ?", [email], async (err, results) => {
-    if (err) {
-      console.error("Error al verificar las credenciales:", err);
-      return res.status(500).send("Error al verificar las credenciales.");
-    }
+  if (!email || !password) {
+    return res.status(400).send("Email y contraseña son requeridos.");
+  }
 
-    const user = results[0];
+  try {
+    const conn = await pool.getConnection();
+    const rows = await conn.query("SELECT * FROM login WHERE email = ?", [email]);
+    conn.release();
+
+    const user = rows[0];
     if (!user || !(await bcrypt.compare(password, user.password))) {
       return res.status(401).send("Credenciales inválidas.");
     }
 
-    // Genera un token JWT
     const token = jwt.sign({ email: user.email }, SECRET_KEY, { expiresIn: "1h" });
-    res.json({ token }); // Envia el token al cliente
+    res.json({ token });
+  } catch (err) {
+    console.error("Error al verificar las credenciales:", err);
+    res.status(500).send("Error al verificar las credenciales.");
+  }
+});
+
+// Ruta protegida
+app.get("/protected", (req, res) => {
+  const authHeader = req.headers["authorization"];
+  if (!authHeader) return res.status(401).send("Token no proporcionado.");
+
+  const token = authHeader.split(" ")[1];
+  jwt.verify(token, SECRET_KEY, (err, user) => {
+    if (err) return res.status(403).send("Token inválido.");
+    res.json({ message: "Acceso concedido.", user });
   });
 });
+
+// Iniciar el servidor
+app.listen(PORT, () => {
+  console.log(`Servidor ejecutándose en http://localhost:${PORT}`);
+});
+
+//const express = require("express");
+//const app = express();
+//const PORT = 3000;
+
+// CÓDIGO CASI CASI LISTO DEL DESAFIATE PARTE 2
+
+// app.post('/', async (req,res)=>{
+//     let conn;
+//     try{
+//         conn = await pool.getConecction();
+//         const rows = await conn.query(
+//             `INSERT INTO ..... VALUE(?,?,?,?)`[req.body.] //FALTA COMPLETAR COSAS
+//         );
+
+//         res.json(rows[0]);
+//     }catch (error){
+//         res.status(500).json({ message: "Se rompió el servidor"});
+//     }finally{
+//         if (conn) conn.release();
+//     }
+// })
