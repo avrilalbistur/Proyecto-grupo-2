@@ -274,7 +274,11 @@ document.addEventListener("DOMContentLoaded", () => {
     // Modal de compra
     mostrarModalDeCompra();
     // El código JavaScript que maneja el formulario
-    document.getElementById("formulario-compra").addEventListener("submit", (event) =>funcionamientoFormulario(event));
+    document.getElementById("formulario-compra").addEventListener("submit", (event) =>{
+      funcionamientoFormulario(event);
+      // saveCartItemsInDB(); CÓDIGO PARA GUARDAR EL CARRITO EN LA BASE DE DATOS.
+    });
+      
     // En caso de que el usuario decida hacer una transferencia
     document.getElementById("transferencia").addEventListener("click", () => mostrarOpcion("transferencia"));
 

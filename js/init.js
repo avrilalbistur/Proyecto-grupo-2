@@ -102,3 +102,24 @@ function actualizarBadge() {
       console.error("Element 'carritoCount' no encontrado en el DOM.");
   }
 }
+
+// función para hacer el fetch POST a la API con los datos del carrito para mandarlos a la base de datos.
+let saveCartItemsInDB = async () => {
+  try{
+    const response = await fetch('http://localhost:3000/cart',{
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(localStorage.getItem('carrito')),
+    })
+    if(!response.ok){
+      throw new Error(`Error: ${response.status}`);
+    }
+    const data = await response.json();
+    console.log(data);
+  }catch(error){
+    console.log("ocurrió un error al envir el carrito a la base de datos",error.message);
+    
+  }
+}

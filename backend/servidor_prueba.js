@@ -85,13 +85,10 @@ app.listen(PORT, () => {
   console.log(`Servidor ejecutándose en http://localhost:${PORT}`);
 });
 
-//const express = require("express");
-//const app = express();
-//const PORT = 3000;
 
 // CÓDIGO CASI CASI LISTO DEL DESAFIATE PARTE 2
 
-// app.post('/', async (req,res)=>{
+// app.post('/cart', async (req,res)=>{
 //     let conn;
 //     try{
 //         conn = await pool.getConecction();
