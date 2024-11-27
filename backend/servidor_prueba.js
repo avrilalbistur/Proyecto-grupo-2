@@ -3,14 +3,14 @@ const bodyParser = require("body-parser");
 const bcrypt = require("bcryptjs");
 const jwt = require("jsonwebtoken");
 const mariadb = require('mariadb');
-require("dotenv").config(); // Cargar variables de entorno desde el archivo .env
+require("dotenv").config({ path: "./backend/.env" }); // Cargar variables de entorno desde el archivo .env
 
 const app = express();
 app.use(bodyParser.json()); // Para poder parsear el cuerpo de las peticiones JSON
 
 const PORT = 3000;
 const SECRET_KEY = process.env.SECRET_KEY; // Recuperar la clave secreta para el JWT
-
+console.log("SECRET_KEY:", SECRET_KEY);
 // Configuración del pool de conexiones
 const pool = mariadb.createPool({
   host: "localhost",
