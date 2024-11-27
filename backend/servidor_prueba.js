@@ -32,7 +32,7 @@ app.post("/register", async (req, res) => {
     const hashedPassword = await bcrypt.hash(password, 10);
     const conn = await pool.getConnection();
     await conn.query("INSERT INTO login (email, password) VALUES (?, ?)", [email, hashedPassword]);
-    conn.release();
+    conn.release(); 
 
     res.status(201).send("Usuario registrado.");
   } catch (err) {
@@ -105,3 +105,4 @@ app.listen(PORT, () => {
 //         if (conn) conn.release();
 //     }
 // })
+       
