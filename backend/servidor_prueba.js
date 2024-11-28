@@ -68,7 +68,7 @@ app.post("/login", async (req, res) => {
   }
 });
 
-// Ruta protegida
+// Middleware para verificar el token
 app.get("/protected", (req, res) => {
   const authHeader = req.headers["authorization"];
   if (!authHeader) return res.status(401).send("Token no proporcionado.");
