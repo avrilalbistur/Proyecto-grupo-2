@@ -2,7 +2,7 @@
   "name": "proyecto-grupo-2",
   "version": "1.0.0",
   "description": "Proyecto ecommerce JAP",
-  "main": "app.js",
+  "main": "backend/servidor_prueba.js",
   "scripts": {
     "dev": "nodemon backend/app.js",
     "start": "node backend/app.js",
