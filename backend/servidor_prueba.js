@@ -18,7 +18,7 @@ const pool = mariadb.createPool({
   password: "1202",
   database: "users_db",
   connectionLimit: 5,
-});
+});  
 
 // Ruta para registrar un usuario
 app.post("/register", async (req, res) => {
