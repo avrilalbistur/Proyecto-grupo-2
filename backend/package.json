@@ -2,10 +2,10 @@
   "name": "proyecto-grupo-2",
   "version": "1.0.0",
   "description": "Proyecto ecommerce JAP",
-  "main": "app.js",
+  "main": "backend/servidor_prueba.js",
   "scripts": {
-    "dev": "nodemon backend/servidor_prueba.js",
-    "start": "node app.js",
+    "dev": "nodemon servidor_prueba.js",
+    "start": "node servidor_prueba.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "Grupo 2",

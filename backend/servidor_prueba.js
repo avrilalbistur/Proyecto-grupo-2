@@ -3,7 +3,7 @@ const bodyParser = require("body-parser");
 const bcrypt = require("bcryptjs");
 const jwt = require("jsonwebtoken");
 const mariadb = require('mariadb');
-require("dotenv").config({ path: "./backend/.env" }); // Cargar variables de entorno desde el archivo .env
+require("dotenv").config({ path: ".env" }); // Cargar variables de entorno desde el archivo .env
 
 const app = express();
 app.use(bodyParser.json()); // Para poder parsear el cuerpo de las peticiones JSON
