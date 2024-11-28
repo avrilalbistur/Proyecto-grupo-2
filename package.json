@@ -4,8 +4,8 @@
   "description": "Proyecto ecommerce JAP",
   "main": "app.js",
   "scripts": {
-    "dev": "nodemon backend/servidor_prueba.js",
-    "start": "node app.js",
+    "dev": "nodemon backend/app.js",
+    "start": "node backend/app.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "Grupo 2",
