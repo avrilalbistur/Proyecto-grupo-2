@@ -1,0 +1,17 @@
+{
+  "name": "proyecto-grupo-2",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Grupo 2",
+  "license": "ISC",
+  "description": "",
+  "dependencies": {
+    "body-parse": "^0.1.0",
+    "express": "^4.21.1",
+    "jsonwebtoken": "^9.0.2",
+    "mariadb": "^3.4.0"
+  }
+}
