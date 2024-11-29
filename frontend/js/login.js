@@ -5,7 +5,7 @@ let validateUserExistance = () => {
     let lastUserData = localStorage.getItem("userData") || "";
     if (lastUserData) {
         const { email } = JSON.parse(lastUserData);
-        let currentUserEmail = document.getElementById("username").value;
+        let currentUserEmail = document.getElementById("email").value;
         if (email !== currentUserEmail) {
             localStorage.removeItem("userData")
             localStorage.removeItem("carrito")
@@ -22,16 +22,16 @@ let verifyUser = () => {
 
         } else {
             e.preventDefault()
-            let username = document.getElementById('username').value;
+            let email = document.getElementById('email').value;
             let password = document.getElementById('password').value;
-            localStorage.setItem('usuario', username);
+            localStorage.setItem('usuario', email);
             validateUserExistance();
             fetch('/login', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json'
                 },
-                body: JSON.stringify({ username, password })
+                body: JSON.stringify({ email, password })
             })
                 .then(response => response.json())
                 .then(data => {
