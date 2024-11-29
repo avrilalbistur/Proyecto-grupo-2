@@ -49,8 +49,5 @@ let verifyUser = () => {
         }
     }, false);
 }
-// evento del documento//////////////////////////////////////////////////////////////////////////////////////////////////////////
-document.addEventListener("DOMContentLoaded", () => {
-    verifyUser();
-})
+
 

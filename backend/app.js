@@ -3,13 +3,13 @@ const bodyParser = require("body-parser");
 const bcrypt = require("bcryptjs");
 const jwt = require("jsonwebtoken");
 const mariadb = require('mariadb');
-require("dotenv").config({ path: ".env" }); // Cargar variables de entorno desde el archivo .env
+require("dotenv").config({ path: "./backend/.env" });
 
 const app = express();
 app.use(bodyParser.json()); // Para poder parsear el cuerpo de las peticiones JSON
 
 const PORT = 3000;
-const SECRET_KEY = process.env.SECRET_KEY; // Recuperar la clave secreta para el JWT
+const SECRET_KEY = process.env.SECRET_KEY; // nodeRecuperar la clave secreta para el JWT
 console.log("SECRET_KEY:", SECRET_KEY);
 // Configuración del pool de conexiones
 const pool = mariadb.createPool({
@@ -43,15 +43,15 @@ app.post("/register", async (req, res) => {
 
 // Ruta para hacer login
 app.post("/login", async (req, res) => {
-  const { email, password } = req.body;
+  const { username, password } = req.body;
 
-  if (!email || !password) {
+  if (!username || !password) {
     return res.status(400).send("Email y contraseña son requeridos.");
   }
 
   try {
     const conn = await pool.getConnection();
-    const rows = await conn.query("SELECT * FROM login WHERE email = ?", [email]);
+    const rows = await conn.query("SELECT * FROM login WHERE email = ?", [username]);
     conn.release();
 
     const user = rows[0];
@@ -60,8 +60,8 @@ app.post("/login", async (req, res) => {
     }
 
     // Crear y devolver el token JWT
-    const token = jwt.sign({ email: user.email }, SECRET_KEY, { expiresIn: "1h" });
-    res.json({ token });
+    const token = jwt.sign({ username: user.username }, SECRET_KEY, { expiresIn: "1h" });
+res.json({ token });
   } catch (err) {
     console.error("Error al verificar las credenciales:", err);
     res.status(500).send("Error al verificar las credenciales.");
