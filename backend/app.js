@@ -43,15 +43,15 @@ app.post("/register", async (req, res) => {
 
 // Ruta para hacer login
 app.post("/login", async (req, res) => {
-  const { username, password } = req.body;
+  const { email, password } = req.body;
 
-  if (!username || !password) {
+  if (!email || !password) {
     return res.status(400).send("Email y contraseña son requeridos.");
   }
 
   try {
     const conn = await pool.getConnection();
-    const rows = await conn.query("SELECT * FROM login WHERE email = ?", [username]);
+    const rows = await conn.query("SELECT * FROM login WHERE email = ?", [email]);
     conn.release();
 
     const user = rows[0];
@@ -60,7 +60,7 @@ app.post("/login", async (req, res) => {
     }
 
     // Crear y devolver el token JWT
-    const token = jwt.sign({ username: user.username }, SECRET_KEY, { expiresIn: "1h" });
+    const token = jwt.sign({ email: user.email }, SECRET_KEY, { expiresIn: "1h" });
 res.json({ token });
   } catch (err) {
     console.error("Error al verificar las credenciales:", err);
