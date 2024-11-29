@@ -22,9 +22,29 @@ form.addEventListener('submit', (e) =>{
 
     }else{
         e.preventDefault()
-        let username = document.getElementById('username').value;
-        localStorage.setItem('usuario', username);
+        let email = document.getElementById('username').value;
+        let password = document.getElementById('password').value;
+        localStorage.setItem('usuario', email);
         validateUserExistance();
+        fetch('http://localhost:3001/login', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({ email, password })
+        })
+        .then(response => response.json())
+        .then(data => {
+            console.log("Respuesta del servidor:", data); // Verifica la respuesta completa
+            if (data.token) {
+                localStorage.setItem('authToken', data.token); // Guardar el token en localStorage
+                console.log("Token guardado:", data.token);
+                window.location.href = "index.html"; // Redirigir a la página principal
+            } else {
+                console.error("No se recibió el token");
+            }
+        })
+
         window.location.href = 'index.html';
     }
 },false);
