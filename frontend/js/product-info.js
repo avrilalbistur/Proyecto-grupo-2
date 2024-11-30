@@ -30,7 +30,7 @@ let showProductInfo = (product) => {
         <h2 class="product-title" id="product-title">${product.name}</h2>
         <p class="product-description" id="product-description">${product.description}</p>
         <p class="product-price" id="product-price">$${product.cost}</p>
-        <button class="btn bg-dark text-light" onclick="agregarAlCarrito()">Agregar al carrito</button> 
+        <button class="btn bg-dark text-light" onclick="agregarAlCarrito()">Agregar al carrito</button>
       </div>
     </div>
   `;
