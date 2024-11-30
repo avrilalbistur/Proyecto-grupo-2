@@ -107,6 +107,7 @@ function calcularTotalConEnvio(tipoEnvio) {
 
   // Sumar el costo del envío al total
   total += costoEnvio;
+  localStorage.setItem("totalConEnvio", total)
 
   // Mostrar el nuevo total
   totalPrecio.textContent = `TOTAL ${moneda} ${total.toFixed(2)}`;
@@ -224,6 +225,7 @@ function funcionamientoFormulario(event) {
       }).then((result) => {
         if (result.isConfirmed) {
           // Si el usuario confirma la compra
+          saveCartItemsInDB()
           Swal.fire({
             title: "¡Confirmado!",
             text: "Tu compra ha sido realizada con éxito.",

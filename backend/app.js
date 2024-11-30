@@ -19,7 +19,7 @@ console.log("SECRET_KEY:", SECRET_KEY);
 const pool = mariadb.createPool({
   host: "localhost",
   user: "root",
-  password: "1202",
+  password: "1234",
   database: "users_db",
   connectionLimit: 5,
 });  
@@ -30,8 +30,9 @@ app.post("/register", async (req, res) => {
     if (!email || !password) {
       return res.status(400).send("Email y contraseña son requeridos.");
     }
-  
+
     try {
+      console.log(password);
       const hashedPassword = await bcrypt.hash(password, 10);
       const conn = await pool.getConnection();
       await conn.query("INSERT INTO login (email, password) VALUES (?, ?)", [email, hashedPassword]);
@@ -91,3 +92,22 @@ app.use('/api', router); // Prefijamos "/api" a todas las rutas
 app.listen(PORT, () => {
     console.log(`Servidor corriendo en http://localhost:${PORT}`);
 });
+
+
+// POST PARA ENVIAR EL CARRITO A LA BASE DE DATOS
+
+app.post('/cart', async (req,res)=>{
+      let conn;
+      try{
+          conn = await pool.getConnection();
+          const rows = await conn.query(
+              `INSERT INTO carrito (usuario, moneda, total, productos) VALUE(?,?,?,?)`,[req.body.usuario, req.body.moneda,req.body.total,JSON.stringify(req.body.productos)] //FALTA COMPLETAR COSAS
+          );
+          res.status(200).json({ message: "Carrito agregado exitosamente"})
+      }catch (error) {
+        console.error('Error:', error); 
+        res.status(500).json({ message: "Se rompió el servidor lalal", error: error.message });
+      }finally{
+          if (conn) conn.release();
+      }
+  })
