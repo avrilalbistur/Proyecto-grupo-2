@@ -92,3 +92,22 @@ app.use('/api', router); // Prefijamos "/api" a todas las rutas
 app.listen(PORT, () => {
     console.log(`Servidor corriendo en http://localhost:${PORT}`);
 });
+
+
+// POST PARA ENVIAR EL CARRITO A LA BASE DE DATOS
+
+app.post('/cart', async (req,res)=>{
+      let conn;
+      try{
+          conn = await pool.getConnection();
+          const rows = await conn.query(
+              `INSERT INTO carrito (usuario, moneda, total, productos) VALUE(?,?,?,?)`,[req.body.usuario, req.body.moneda,req.body.total,JSON.stringify(req.body.productos)] //FALTA COMPLETAR COSAS
+          );
+          res.status(200).json({ message: "Carrito agregado exitosamente"})
+      }catch (error) {
+        console.error('Error:', error); 
+        res.status(500).json({ message: "Se rompió el servidor lalal", error: error.message });
+      }finally{
+          if (conn) conn.release();
+      }
+  })
