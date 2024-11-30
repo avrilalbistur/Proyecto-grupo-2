@@ -19,7 +19,7 @@ console.log("SECRET_KEY:", SECRET_KEY);
 const pool = mariadb.createPool({
   host: "localhost",
   user: "root",
-  password: "1202",
+  password: "1234",
   database: "users_db",
   connectionLimit: 5,
 });  
@@ -30,8 +30,9 @@ app.post("/register", async (req, res) => {
     if (!email || !password) {
       return res.status(400).send("Email y contraseña son requeridos.");
     }
-  
+
     try {
+      console.log(password);
       const hashedPassword = await bcrypt.hash(password, 10);
       const conn = await pool.getConnection();
       await conn.query("INSERT INTO login (email, password) VALUES (?, ?)", [email, hashedPassword]);
