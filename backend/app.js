@@ -106,7 +106,7 @@ app.post('/cart', async (req,res)=>{
           res.status(200).json({ message: "Carrito agregado exitosamente"})
       }catch (error) {
         console.error('Error:', error); 
-        res.status(500).json({ message: "Se rompió el servidor lalal", error: error.message });
+        res.status(500).json({ message: "Se rompió el servidor", error: error.message });
       }finally{
           if (conn) conn.release();
       }

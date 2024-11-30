@@ -105,7 +105,6 @@ function actualizarBadge() {
 
 // función para hacer el fetch POST a la API con los datos del carrito para mandarlos a la base de datos.
 let saveCartItemsInDB = async () => {
-  console.log("entró a la función");
   
   let moneda = JSON.stringify(localStorage.getItem("moneda"));
   try{
@@ -128,7 +127,7 @@ let saveCartItemsInDB = async () => {
     const data = await response.json();
     console.log(data);
   }catch(error){
-    console.log("ocurrió un error al envir el carrito a la base de datos",error.message);
+    console.log("ocurrió un error al enviar el carrito a la base de datos",error.message);
     
   }
 }
